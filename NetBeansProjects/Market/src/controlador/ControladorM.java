@@ -8,62 +8,53 @@ package controlador;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import javax.swing.SwingUtilities;
+import modelo.ModeloEmpleado;
+import vista.Facturaa;
 import vista.MenuPricpal;
 import vista.PanelCliente;
+import vista.PanelEmpleado;
 import vista.PanelFactura;
 import vista.PanelProducto;
 import vista.PanelProveedor;
-//import proyecto.Vista.MenuPricpal;
-//import proyecto.Vista.PanelCliente;
-//import proyecto.Vista.Menu;
-//import proyecto.Vista.PanelFactura;
-//import proyecto.Vista.PanelProducto;
-//import proyecto.Vista.PanelProveedor;
 
 /**
  *
  * @author 59399
  */
 public class ControladorM {
-    PanelCliente panelcliente= new PanelCliente();
-    PanelProducto panelproducto= new PanelProducto();
-    PanelProveedor panelproveedor= new PanelProveedor(); 
-    PanelFactura panelfactura= new PanelFactura();
-    
-    CardLayout traslado = new CardLayout();
-    private MenuPricpal vista;
+//
 
-//    Producto PanelProducto = new Producto();
+    private MenuPricpal vista;
+    private ModeloEmpleado modelo;
+
     public ControladorM() {
     }
 
-    public ControladorM(MenuPricpal vista) {
-//        try {
+    public ControladorM(MenuPricpal vista, ModeloEmpleado modelo) {
         this.vista = vista;
+        this.modelo = modelo;
         Vista();
         InicioControl();
-//
-//        } catch (Exception e) {
-//        }
-
     }
 
     public void Vista() {
         vista.setVisible(true);
-//        vista.setExtendedState(MAXIMIZED_BOTH);
+        vista.setExtendedState(MAXIMIZED_BOTH);
+
     }
 
     public void InicioControl() {
-//        vista.getBtnNose().addActionListener(l -> System.exit(0));
         vista.getBtnCambia().addActionListener(l -> Empleado());
         vista.getBtnCliente().addActionListener(l -> Cliente());
-        vista.getBtnCliente().addActionListener(l -> Cliente());
-        vista.getBtnCliente().addActionListener(l -> Cliente());
-        vista.getBtnCliente().addActionListener(l -> Cliente());
+        vista.getBtnProveedor().addActionListener(l -> Proveedor());
+        vista.getBtnFactura().addActionListener(l -> Factura());
+        vista.getBtnProducto().addActionListener(l -> Producto());
+        vista.getBtnSalir().addActionListener(l -> System.exit(0));
 
     }
 
     public void Cliente() {
+        PanelCliente panelcliente = new PanelCliente();
         vista.getPANELCAR().removeAll();
         vista.getPANELCAR().add(panelcliente);
         vista.getPANELCAR().repaint();
@@ -72,36 +63,42 @@ public class ControladorM {
     }
 
     public void Empleado() {
+
+        PanelEmpleado panelempleado = new PanelEmpleado();
+        ModeloEmpleado me = new ModeloEmpleado();
         vista.getPANELCAR().removeAll();
-        vista.getPANELCAR().add(vista.getPanelEmpleado());
+        vista.getPANELCAR().add(panelempleado);
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
-
+        ControladorE empleado = new ControladorE(me, panelempleado);
+        empleado.IncioControl();
     }
-    
+
     public void Producto() {
+        PanelProducto panelproducto = new PanelProducto();
         vista.getPANELCAR().removeAll();
-        vista.getPANELCAR().add(vista.getPanelEmpleado());
+        vista.getPANELCAR().add(panelproducto);
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
 
     }
 
     public void Proveedor() {
+        PanelProveedor panelproveedor = new PanelProveedor();
         vista.getPANELCAR().removeAll();
-        vista.getPANELCAR().add(vista.getPanelEmpleado());
+        vista.getPANELCAR().add(panelproveedor);
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
 
     }
 
     public void Factura() {
+        Facturaa factura= new Facturaa();
         vista.getPANELCAR().removeAll();
-        vista.getPANELCAR().add(vista.getPanelEmpleado());
+        vista.getPANELCAR().add(factura);
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
 
     }
-
 
 }

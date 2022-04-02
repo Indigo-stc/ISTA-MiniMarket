@@ -7,11 +7,11 @@ package controlador;
 //
 //import Controlador.ControladorM;
 
+import modelo.ModeloEmpleado;
 import vista.MenuPricpal;
 
 //import proyecto.Vista.MenuPricpal;
 //import proyecto.Vista.Menu;
-
 /**
  *
  * @author 59399
@@ -22,10 +22,11 @@ public class Proyecto {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        MenuPricpal vista= new MenuPricpal();
-        ControladorM controlador= new ControladorM(vista);
+        MenuPricpal vista = new MenuPricpal();
+        ModeloEmpleado modelo_E = new ModeloEmpleado();
+
+        ControladorM controlador = new ControladorM(vista,modelo_E);
         controlador.InicioControl();
     }
-    
+
 }

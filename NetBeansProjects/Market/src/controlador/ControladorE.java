@@ -24,6 +24,7 @@ import modelo.MensajeFantasma;
 import modelo.ModeloEmpleado;
 import vista.PanelEmpleado;
 
+
 /**
  *
  * @author 59399
@@ -82,7 +83,7 @@ public class ControladorE {
 
                     if (!(vista.getCombo_Rol().getSelectedItem().equals("Seleccione"))) {
 
-//                        if (!(((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).getText().equals(""))) {
+                        if (!(((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).getText().equals(""))) {
 
                             if (!(vista.getTxtSalario().getText().isEmpty())) {
 
@@ -99,7 +100,7 @@ public class ControladorE {
                                                     modelo.setCedula(vista.getTxtCedula().getText());
                                                     modelo.setNombre(vista.getTxtNombre().getText());
                                                     modelo.setApellido(vista.getTxtApellido().getText());
-//                                                    modelo.setFecha_nacimiento(((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).getText());
+                                                    modelo.setFecha_nacimiento(((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).getText());
                                                     modelo.setNumero_telefono(vista.getTxtPhone().getText());
                                                     modelo.setCorreo(vista.getTxtCorreo().getText());
                                                     modelo.setDireccion(vista.getTxtDireccion().getText());
@@ -142,10 +143,10 @@ public class ControladorE {
 
                             }
 
-//                        } else {
-//                            JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-//
-//                        }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+
+                        }
 
                     } else {
                         JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
@@ -175,7 +176,7 @@ public class ControladorE {
 
                     if (!(vista.getCombo_Rol().getSelectedItem().equals("Seleccione"))) {
 
-//                        if (!(((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).getText().equals(""))) {
+                        if (!(((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).getText().equals(""))) {
 
                             if (!(vista.getTxtSalario().getText().isEmpty())) {
 
@@ -190,7 +191,7 @@ public class ControladorE {
                                                 modelo.setCedula(vista.getTxtCedula().getText());
                                                 modelo.setNombre(vista.getTxtNombre().getText());
                                                 modelo.setApellido(vista.getTxtApellido().getText());
-//                                                modelo.setFecha_nacimiento(((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).getText());
+                                                modelo.setFecha_nacimiento(((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).getText());
                                                 modelo.setNumero_telefono(vista.getTxtPhone().getText());
                                                 modelo.setCorreo(vista.getTxtCorreo().getText());
                                                 modelo.setDireccion(vista.getTxtDireccion().getText());
@@ -234,10 +235,10 @@ public class ControladorE {
 
                             }
 
-//                        } else {
-//                            JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-//
-//                        }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+
+                        }
 
                     } else {
                         JOptionPane.showMessageDialog(null, "Existen Campos Fecha");
@@ -281,7 +282,7 @@ public class ControladorE {
         vista.getTxtPhone().setText("");
         vista.getTxtDireccion().setText("");
         vista.getCombo_Rol().setSelectedItem("Seleccione");
-//        ((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).setText(null);
+        ((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).setText(null);
     }
 
     public void IncioControl() {
@@ -296,7 +297,7 @@ public class ControladorE {
                     vista.getTxtCedula().setText(vista.getTablaEmpleado().getValueAt(tabla, 0).toString());
                     vista.getTxtNombre().setText(vista.getTablaEmpleado().getValueAt(tabla, 2).toString());
                     vista.getTxtApellido().setText(vista.getTablaEmpleado().getValueAt(tabla, 3).toString());
-//                    vista.getDateFecha().setDate(Date.valueOf(vista.getTablaEmpleado().getValueAt(tabla, 4).toString()));
+                    vista.getDateFecha().setDate(Date.valueOf(vista.getTablaEmpleado().getValueAt(tabla, 4).toString()));
                     vista.getTxtPhone().setText(vista.getTablaEmpleado().getValueAt(tabla, 5).toString());
                     vista.getTxtCorreo().setText(vista.getTablaEmpleado().getValueAt(tabla, 6).toString());
                     vista.getCombo_Rol().setSelectedItem(vista.getTablaEmpleado().getValueAt(tabla, 7).toString());

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.sql.Connection;
@@ -12,19 +7,15 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author 59399
- */
 public class Conexion {
 
     private Connection con;
     private java.sql.Statement st;
     private ResultSet rs;
 
-    private String cadenaConexion = "jdbc:postgresql://localhost:5432/Proyecto_MK";
+    private String cadenaConexion = "jdbc:postgresql://localhost:5432/MiniMarket";
     private String usuarioPG = "postgres";
-    private String contrasenia = "1234";
+    private String contrasenia = "root";
 
     public  Conexion() {
 

@@ -6,6 +6,7 @@
 package vista;
 
 //import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -71,8 +72,6 @@ public class PanelEmpleado extends javax.swing.JPanel {
 
         PanelEmpleado.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(255, 198, 93));
-
         jLabel2.setFont(new java.awt.Font("Bahnschrift", 3, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("REGISTRO Y REPORTE DE EMPLEADO");
@@ -94,7 +93,6 @@ public class PanelEmpleado extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Bahnschrift", 3, 18)); // NOI18N
@@ -261,8 +259,6 @@ public class PanelEmpleado extends javax.swing.JPanel {
                 .addGap(101, 101, 101))
         );
 
-        jPanel3.setBackground(new java.awt.Color(132, 17, 255));
-
         TablaEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -351,21 +347,15 @@ public class PanelEmpleado extends javax.swing.JPanel {
         this.Combo_Rol = Combo_Rol;
     }
 
-//    public JDateChooser getDateFecha() {
-//        return DateFecha;
-//    }
-//
-//    public void setDateFecha(JDateChooser DateFecha) {
-//        this.DateFecha = DateFecha;
-//    }
-
-    public JPanel getPanelEmpleado() {
-        return PanelEmpleado;
+    public JDateChooser getDateFecha() {
+        return DateFecha;
     }
 
-    public void setPanelEmpleado(JPanel PanelEmpleado) {
-        this.PanelEmpleado = PanelEmpleado;
+    public void setDateFecha(JDateChooser DateFecha) {
+        this.DateFecha = DateFecha;
     }
+
+  
 
     public JTable getTablaEmpleado() {
         return TablaEmpleado;

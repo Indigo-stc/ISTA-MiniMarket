@@ -49,10 +49,10 @@ public class ModeloEmpleado extends Empleado implements Crud {
     public boolean Modificar(String codigo) {
         String sql1 = "update persona set nombre='" + getNombre() + "',apellido='" + getApellido() + "',fecha_n='" + getFecha_nacimiento() + "',phone='" + getNumero_telefono() + "',correo='" + getCorreo() + "',\n"
                 + "direccion='" + getDireccion() + "' where cedula='" + codigo + "';";
-        
-        String sql2= "update empleado set sueldo= '"+getSalario()+"',rol='"+getRol()+"',clave='"+getPassword()+"' where cedula='"+codigo+"';";
-        
-        String sql=sql1+sql2;
+
+        String sql2 = "update empleado set sueldo= '" + getSalario() + "',rol='" + getRol() + "',clave='" + getPassword() + "' where cedula='" + codigo + "';";
+
+        String sql = sql1 + sql2;
         System.out.println(sql);
         return con.insertUpdateDelete(sql);
     }

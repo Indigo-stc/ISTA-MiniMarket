@@ -18,7 +18,7 @@ public class Conexion {
     private String contrasenia = "root";
 
     public  Conexion() {
-
+        
         try {
             Class.forName("org.postgresql.Driver");
             System.out.println("se cargo el driver");
@@ -50,6 +50,7 @@ public class Conexion {
             rs = st.executeQuery(sql);
             return rs;
         } catch (SQLException e) {
+            System.out.println(sql);
             System.out.println("EXE");
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
             return null;
@@ -57,12 +58,14 @@ public class Conexion {
     }
 
     public boolean insertUpdateDelete(String sqla) {
+        System.out.println(sqla);
         try {
             st = con.createStatement();
             boolean rb = st.execute(sqla);
             st.close();
             return true;
         } catch (SQLException ex) {
+            System.out.println(sqla);
             System.out.println("EXEPCION");
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return false;

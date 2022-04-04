@@ -57,5 +57,12 @@ public class Proveedor {
     public String getDireccion() {
         return direccion;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
+    
     
 }

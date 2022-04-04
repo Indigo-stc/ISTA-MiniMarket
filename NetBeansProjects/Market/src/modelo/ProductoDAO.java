@@ -1,9 +1,8 @@
 package modelo;
-
-import java.util.ArrayList;
+import java.sql.ResultSet;
 
 public interface ProductoDAO extends DDL<Producto> {
 
-    ArrayList buscar(String search);
+    public ResultSet buscar(String search);
     
 }

@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.File;
 import java.util.UUID;
 
 public class Producto {
@@ -8,12 +9,12 @@ public class Producto {
     private String nombre;
     private double precio;
     private int stock;
-    private byte[] imagen;
+    private File imagen;
     private String descripcion;
     private String proveedor_id;
     private String categoria_id;
 
-    public Producto(String nombre, double precio, int stock, byte[] imagen, 
+    public Producto(String nombre, double precio, int stock, File imagen, 
             String descripcion, String proveedor_id, String categoria_id) {
         this.producto_id = "Pdt-" + UUID.randomUUID().toString().substring(0, 5);;
         this.nombre = nombre;
@@ -26,7 +27,7 @@ public class Producto {
     }
 
     public Producto(String producto_id, String nombre, double precio, int stock, 
-            byte[] imagen, String descripcion, String proveedor_id, String categoria_id) {
+            File imagen, String descripcion, String proveedor_id, String categoria_id) {
         this.producto_id = producto_id;
         this.nombre = nombre;
         this.precio = precio;
@@ -53,7 +54,7 @@ public class Producto {
         this.stock = stock;
     }
 
-    public void setImagen(byte[] imagen) {
+    public void setImagen(File imagen) {
         this.imagen = imagen;
     }
 
@@ -97,8 +98,15 @@ public class Producto {
         return categoria_id;
     }
 
-    public byte[] getImagen() {
+    public File getImagen() {
         return imagen;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s %s %s %s %s %s %s", producto_id,nombre, precio,  stock, 
+             imagen, descripcion, proveedor_id, categoria_id);
+    }
+
+    
 }

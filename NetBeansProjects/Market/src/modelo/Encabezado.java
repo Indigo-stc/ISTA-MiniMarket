@@ -1,27 +1,28 @@
-
 package modelo;
 
 import java.util.Date;
 
 public class Encabezado {
-    
-     private int codigoEncabezado;
-     private String cedula;
-     private Date fechaEncabezado;
-     
 
-    public Encabezado(int codigoEncabezado, String cedula, Date fechaEncabezado) {
+    private String codigoEncabezado;
+    private String cedula;
+    private Date fechaEncabezado;
+
+    public Encabezado() {
+    }
+
+    public Encabezado(String codigoEncabezado, String cedula, Date fechaEncabezado) {
         this.codigoEncabezado = codigoEncabezado;
         this.cedula = cedula;
         this.fechaEncabezado = fechaEncabezado;
-       
     }
 
-    public int getCodigoEncabezado() {
+    
+    public String getCodigoEncabezado() {
         return codigoEncabezado;
     }
 
-    public void setCodigoEncabezado(int codigoEncabezado) {
+    public void setCodigoEncabezado(String codigoEncabezado) {
         this.codigoEncabezado = codigoEncabezado;
     }
 
@@ -40,6 +41,5 @@ public class Encabezado {
     public void setFechaEncabezado(Date fechaEncabezado) {
         this.fechaEncabezado = fechaEncabezado;
     }
-       
-}
 
+}

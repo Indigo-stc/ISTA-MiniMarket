@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import javax.swing.SwingUtilities;
-import modelo.ModeloCliente;
 import modelo.ModeloEmpleado;
-import vista.Facturaa;
+import vista.Factura;
 import vista.MenuPricpal;
 import vista.PanelCliente;
 import vista.PanelEmpleado;
@@ -26,18 +20,16 @@ public class ControladorM {
 //
 
     private MenuPricpal vista;
-    private ModeloEmpleado modeloE;
-    private ModeloCliente modeloC;
+    private ModeloEmpleado modelo;
+
     public ControladorM() {
     }
 
-    public ControladorM(MenuPricpal vista, ModeloCliente modeloC) {
-//        ModeloEmpleado modelo
+    public ControladorM(MenuPricpal vista, ModeloEmpleado modelo) {
         this.vista = vista;
-////        this.modeloC=modeloC;
-//        this.modeloE = modelo;
+        this.modelo = modelo;
         Vista();
-//        InicioControl();
+        InicioControl();
     }
 
     public void Vista() {
@@ -53,18 +45,16 @@ public class ControladorM {
         vista.getBtnFactura().addActionListener(l -> Factura());
         vista.getBtnProducto().addActionListener(l -> Producto());
         vista.getBtnSalir().addActionListener(l -> System.exit(0));
-        vista.getBtnSalir().setEnabled(false);
 
     }
 
     public void Cliente() {
         PanelCliente panelcliente = new PanelCliente();
-        ModeloCliente ci= new ModeloCliente();
         vista.getPANELCAR().removeAll();
         vista.getPANELCAR().add(panelcliente);
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
-        ControladorC cliente= new ControladorC(ci,panelcliente);
+
     }
 
     public void Empleado() {
@@ -77,7 +67,6 @@ public class ControladorM {
         vista.getPANELCAR().revalidate();
         ControladorE empleado = new ControladorE(me, panelempleado);
         empleado.IncioControl();
-        System.out.println("iiii");
     }
 
     public void Producto() {
@@ -98,7 +87,7 @@ public class ControladorM {
     }
 
     public void Factura() {
-        Facturaa factura = new Facturaa();
+        Factura factura= new Factura();
         vista.getPANELCAR().removeAll();
         vista.getPANELCAR().add(factura);
         vista.getPANELCAR().repaint();

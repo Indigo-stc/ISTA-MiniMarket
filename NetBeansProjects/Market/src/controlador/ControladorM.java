@@ -9,7 +9,7 @@ import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import javax.swing.SwingUtilities;
 import modelo.ModeloEmpleado;
-import vista.Facturaa;
+import vista.Factura;
 import vista.MenuPricpal;
 import vista.PanelCliente;
 import vista.PanelEmpleado;
@@ -92,7 +92,7 @@ public class ControladorM {
     }
 
     public void Factura() {
-        Facturaa factura= new Facturaa();
+        Factura factura= new Factura();
         vista.getPANELCAR().removeAll();
         vista.getPANELCAR().add(factura);
         vista.getPANELCAR().repaint();

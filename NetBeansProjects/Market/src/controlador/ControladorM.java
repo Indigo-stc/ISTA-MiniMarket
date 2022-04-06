@@ -81,12 +81,11 @@ public class ControladorM {
     }
 
     public void Producto() {
-        PanelProducto panelproducto = new PanelProducto();
+        ProductoCtrl panelPdt = new ProductoCtrl();
         vista.getPANELCAR().removeAll();
-        vista.getPANELCAR().add(panelproducto);
+        vista.getPANELCAR().add(panelPdt.viewPdt);
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
-
     }
 
     public void Proveedor() {

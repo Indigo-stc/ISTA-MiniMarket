@@ -8,6 +8,7 @@ package controlador;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import javax.swing.SwingUtilities;
+import modelo.ModeloCliente;
 import modelo.ModeloEmpleado;
 import vista.Facturaa;
 import vista.MenuPricpal;
@@ -25,16 +26,18 @@ public class ControladorM {
 //
 
     private MenuPricpal vista;
-    private ModeloEmpleado modelo;
-
+    private ModeloEmpleado modeloE;
+    private ModeloCliente modeloC;
     public ControladorM() {
     }
 
-    public ControladorM(MenuPricpal vista, ModeloEmpleado modelo) {
+    public ControladorM(MenuPricpal vista, ModeloCliente modeloC) {
+//        ModeloEmpleado modelo
         this.vista = vista;
-        this.modelo = modelo;
+////        this.modeloC=modeloC;
+//        this.modeloE = modelo;
         Vista();
-        InicioControl();
+//        InicioControl();
     }
 
     public void Vista() {
@@ -50,16 +53,18 @@ public class ControladorM {
         vista.getBtnFactura().addActionListener(l -> Factura());
         vista.getBtnProducto().addActionListener(l -> Producto());
         vista.getBtnSalir().addActionListener(l -> System.exit(0));
+        vista.getBtnSalir().setEnabled(false);
 
     }
 
     public void Cliente() {
         PanelCliente panelcliente = new PanelCliente();
+        ModeloCliente ci= new ModeloCliente();
         vista.getPANELCAR().removeAll();
         vista.getPANELCAR().add(panelcliente);
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
-
+        ControladorC cliente= new ControladorC(ci,panelcliente);
     }
 
     public void Empleado() {
@@ -72,6 +77,7 @@ public class ControladorM {
         vista.getPANELCAR().revalidate();
         ControladorE empleado = new ControladorE(me, panelempleado);
         empleado.IncioControl();
+        System.out.println("iiii");
     }
 
     public void Producto() {
@@ -92,7 +98,7 @@ public class ControladorM {
     }
 
     public void Factura() {
-        Facturaa factura= new Facturaa();
+        Facturaa factura = new Facturaa();
         vista.getPANELCAR().removeAll();
         vista.getPANELCAR().add(factura);
         vista.getPANELCAR().repaint();

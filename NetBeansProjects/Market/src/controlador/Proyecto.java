@@ -7,6 +7,10 @@ package controlador;
 //
 //import Controlador.ControladorM;
 
+import java.util.UUID;
+import modelo.Cliente;
+import modelo.Conexion;
+import modelo.ModeloCliente;
 import modelo.ModeloEmpleado;
 import vista.MenuPricpal;
 
@@ -24,9 +28,13 @@ public class Proyecto {
     public static void main(String[] args) {
         MenuPricpal vista = new MenuPricpal();
         ModeloEmpleado modelo_E = new ModeloEmpleado();
-
-        ControladorM controlador = new ControladorM(vista,modelo_E);
+        ModeloCliente modelo_C= new ModeloCliente();
+        ControladorM controlador = new ControladorM(vista,modelo_C);
         controlador.InicioControl();
+
+//        Cliente cl = new Cliente();
+//        System.out.println(cl.getIdCliente());
+            
     }
 
 }

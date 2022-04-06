@@ -12,7 +12,7 @@ import vista.MenuPricpal;
 
 //import proyecto.Vista.MenuPricpal;
 //import proyecto.Vista.Menu;
-/** 
+/**
  *
  * @author 59399
  */

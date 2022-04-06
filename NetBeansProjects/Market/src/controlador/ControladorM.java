@@ -34,7 +34,6 @@ public class ControladorM {
         this.vista = vista;
         this.modelo = modelo;
         Vista();
-        InicioControl();
     }
 
     public void Vista() {
@@ -59,7 +58,7 @@ public class ControladorM {
         vista.getPANELCAR().add(panelcliente);
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
-
+        System.out.println("CLIENTE!!!!!");
     }
 
     public void Empleado() {
@@ -75,11 +74,17 @@ public class ControladorM {
     }
 
     public void Producto() {
+        CardLayout cl = new CardLayout();
+        cl = (CardLayout) vista.getPANELCAR().getLayout();
         ProductoCtrl panelPdt = new ProductoCtrl();
         vista.getPANELCAR().removeAll();
         vista.getPANELCAR().add(panelPdt.viewPdt);
-        vista.getPANELCAR().repaint();
-        vista.getPANELCAR().revalidate();
+        //cl.show(vista.getPANELCAR(), "Productos");
+        SwingUtilities.updateComponentTreeUI(vista);
+//        vista.getPANELCAR().repaint();  
+//        vista.getPANELCAR().revalidate();
+        vista.repaint();
+        System.out.println("holaaaaa");
     }
 
     public void Proveedor() {

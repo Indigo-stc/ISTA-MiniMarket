@@ -54,7 +54,7 @@ public class ProductoCtrl implements FocusListener, KeyListener, MouseListener, 
         viewPdt.lblImagen.addMouseListener(this);
         viewPdt.txtPrecio.addKeyListener(this);
         viewPdt.txtBuscar.addKeyListener(this);
-        
+        System.out.println("ALERTAAAAA!!!!!!");
     }
 
     private void spinnerModel() {
@@ -71,7 +71,6 @@ public class ProductoCtrl implements FocusListener, KeyListener, MouseListener, 
         if (!c.registros().isEmpty()) {
             for (Proveedor r : c.registros()) {
                 model.addElement(r);
-                System.out.println(r);
             }
         }
         viewPdt.cbProdr.setModel(model);
@@ -88,6 +87,7 @@ public class ProductoCtrl implements FocusListener, KeyListener, MouseListener, 
             }
         }
         viewPdt.cbCatgr.setModel(model);
+        
     }
 
     private void tblModel(String search) {

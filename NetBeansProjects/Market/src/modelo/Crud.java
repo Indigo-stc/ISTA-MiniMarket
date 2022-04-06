@@ -13,13 +13,15 @@ import java.util.List;
  * @author 59399
  */
 public interface Crud {
-    
+
     public boolean Insertar();
 
-    public List<Empleado> Leer(String codigo);
+//    public List<Empleado> LeerT();
+//
+//    public List<Cliente> Leer();
 
     public boolean Modificar(String codigo);
 
     public boolean Eliminar(String codigo);
-    
+
 }

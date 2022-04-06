@@ -59,10 +59,16 @@ public class ModeloEmpleado extends Empleado implements Crud {
 
     @Override
     public boolean Eliminar(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql2 = "DELETE FROM public.persona WHERE cedula='" + codigo + "';";
+
+        String sql1 = "DELETE FROM public.empleado WHERE cedula='" + codigo + "';";
+        String sqlE = sql1 + sql2;
+        System.out.println("Eliminado: " + sqlE);
+
+        return con.insertUpdateDelete(sqlE);
     }
 
-//   @Override
+//    @Override
     public List<Empleado> LeerT() {
         try {
             String sql = "select p.cedula,e.empleado_id, p.nombre, p.apellido, p.fecha_n,p.phone,p.correo,  e.rol, e.sueldo,p.direccion,e.clave from persona p, empleado e where p.cedula=e.cedula;";
@@ -90,10 +96,51 @@ public class ModeloEmpleado extends Empleado implements Crud {
         }
         return null;
     }
-
-    @Override
-    public List<Empleado> Leer(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      public List<Empleado> Buscar(String codigo) {
+        try {
+            String sql="select p.cedula,e.empleado_id, p.nombre, p.apellido, p.fecha_n,p.phone,p.correo,  e.rol, e.sueldo,p.direccion,e.clave from persona p, empleado e where p.cedula=e.cedula and e.cedula='"+codigo+"';";
+            ResultSet rs = con.selectConsulta(sql);
+            List<Empleado> em = new ArrayList<>();
+            while (rs.next()) {
+                Empleado empleado = new Empleado();
+                empleado.setCedula(rs.getString("cedula"));
+                empleado.setEmpleado_id(rs.getString("empleado_id"));
+                empleado.setNombre(rs.getString("nombre"));
+                empleado.setApellido(rs.getString("apellido"));
+                empleado.setFecha_nacimiento(rs.getString("fecha_n"));
+                empleado.setNumero_telefono(rs.getString("phone"));
+                empleado.setCorreo(rs.getString("correo"));
+                empleado.setRol(rs.getString("rol"));
+                empleado.setSalario(rs.getDouble("sueldo"));
+                empleado.setDireccion(rs.getString("direccion"));
+                empleado.setPassword(rs.getString("clave"));
+                em.add(empleado);
+            }
+            rs.close();
+            return em;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
+    
 
+//    @Override
+//    public List<Empleado> Leer(String codigo) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//    @Override
+//    public boolean Eliminar(String codigo) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//    public boolean Eliminarer(String IdEmpleado) {
+//        String sql1 = "DELETE FROM public.empleado\n"
+//                + "	WHERE cedula='" + getCedula() + "';";
+//        String sql2 = "DELETE FROM public.persona\n"
+//                + "	WHERE cedula='" + getCedula() + "';";
+//        String sqlE = sql2 + sql1;
+//        System.out.println("Eliminado: " + sqlE);
+//
+//        return con.insertUpdateDelete(sqlE);
+//    }
 }

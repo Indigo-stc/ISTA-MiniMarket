@@ -8,8 +8,6 @@ package controlador;
 //import Clases.Empleado;
 //import Menu.Vista.MenuPricpal;
 //import Menu.Vista.PanelEmpleado;
-//import Modelo.MensajeFantasma;
-//import Modelo.ModeloEmpleado;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -23,7 +21,8 @@ import modelo.Empleado;
 import modelo.MensajeFantasma;
 import modelo.ModeloEmpleado;
 import vista.PanelEmpleado;
-
+//import sun.security.rsa.RSAUtil;
+//import sun.security.rsa.RSAUtil.KeyType;
 
 /**
  *
@@ -46,21 +45,21 @@ public class ControladorE {
         cargaLista();
         TextFantasma();
     }
-
-    public void MODELO() {
-        tabla_modelo.addColumn("Cedula");
-        tabla_modelo.addColumn("Codigo");
-        tabla_modelo.addColumn("Nombre");
-        tabla_modelo.addColumn("Apellido");
-        tabla_modelo.addColumn("Fecha_N");
-        tabla_modelo.addColumn("Phone");
-        tabla_modelo.addColumn("Correo");
-        tabla_modelo.addColumn("Rol");
-        tabla_modelo.addColumn("Salario");
-        tabla_modelo.addColumn("Direccion");
-        tabla_modelo.addColumn("Password");
-        vista.getTablaEmpleado().setModel(tabla_modelo);
-    }
+//
+//    public void MODELO() {
+//        tabla_modelo.addColumn("Cedula");
+//        tabla_modelo.addColumn("Codigo");
+//        tabla_modelo.addColumn("Nombre");
+//        tabla_modelo.addColumn("Apellido");
+//        tabla_modelo.addColumn("Fecha_N");
+//        tabla_modelo.addColumn("Phone");
+//        tabla_modelo.addColumn("Correo");
+//        tabla_modelo.addColumn("Rol");
+//        tabla_modelo.addColumn("Salario");
+//        tabla_modelo.addColumn("Direccion");
+//        tabla_modelo.addColumn("Password");
+//        vista.getTablaEmpleado().setModel(tabla_modelo);
+//    }
 
     public void TextFantasma() {
         MensajeFantasma m1 = new MensajeFantasma("Ditgite la Cedula", vista.getTxtCedula());
@@ -75,27 +74,27 @@ public class ControladorE {
     }
 
     public void Registrar() {
-        if (!(vista.getTxtCedula().getText().isEmpty())) {
-
-            if (!(vista.getTxtNombre().getText().isEmpty())) {
-
-                if (!(vista.getTxtApellido().getText().isEmpty())) {
-
-                    if (!(vista.getCombo_Rol().getSelectedItem().equals("Seleccione"))) {
-
-                        if (!(((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).getText().equals(""))) {
-
-                            if (!(vista.getTxtSalario().getText().isEmpty())) {
-
-                                if (!(vista.getTxtPhone().getText().isEmpty())) {
-
-                                    if (!(vista.getTxtCorreo().getText().isEmpty())) {
-
-                                        if (!(vista.getTxtDireccion().getText().isEmpty())) {
-
-                                            if (!(vista.getTxtPassword().getText().isEmpty())) {
-
-                                                if (validarCedulaRepetida(vista.getTxtCedula().getText()) == true) {
+//        if (!(vista.getTxtCedula().getText().isEmpty())) {
+//
+//            if (!(vista.getTxtNombre().getText().isEmpty())) {
+//
+//                if (!(vista.getTxtApellido().getText().isEmpty())) {
+//
+//                    if (!(vista.getCombo_Rol().getSelectedItem().equals("Seleccione"))) {
+//
+//                        if (!(((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).getText().equals(""))) {
+//
+//                            if (!(vista.getTxtSalario().getText().isEmpty())) {
+//
+//                                if (!(vista.getTxtPhone().getText().isEmpty())) {
+//
+//                                    if (!(vista.getTxtCorreo().getText().isEmpty())) {
+//
+//                                        if (!(vista.getTxtDireccion().getText().isEmpty())) {
+//
+//                                            if (!(vista.getTxtPassword().getText().isEmpty())) {
+//
+//                                                if (validarCedulaRepetida(vista.getTxtCedula().getText()) == true) {
 
                                                     modelo.setCedula(vista.getTxtCedula().getText());
                                                     modelo.setNombre(vista.getTxtNombre().getText());
@@ -116,77 +115,77 @@ public class ControladorE {
                                                     } else {
                                                         JOptionPane.showMessageDialog(null, "hubo un error");
                                                     }
-                                                }
-
-                                            } else {
-                                                JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-
-                                            }
-
-                                        } else {
-                                            JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-
-                                        }
-
-                                    } else {
-                                        JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-
-                                    }
-
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-
-                                }
-
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-
-                            }
-
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-
-                        }
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-
-                    }
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Existen Campos Vacios3");
-
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Existen Campos Vaciosaa");
-
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Existen Campos Vaciospp");
-
-        }
+//                                                }
+//
+//                                            } else {
+//                                                JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                                            }
+//
+//                                        } else {
+//                                            JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                                        }
+//
+//                                    } else {
+//                                        JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                                    }
+//
+//                                } else {
+//                                    JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                                }
+//
+//                            } else {
+//                                JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                            }
+//
+//                        } else {
+//                            JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                        }
+//
+//                    } else {
+//                        JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                    }
+//
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Existen Campos Vacios3");
+//
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Existen Campos Vaciosaa");
+//
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Existen Campos Vaciospp");
+//
+//        }
     }
 
     public void Modificar() {
-        if (!(vista.getTxtCedula().getText().isEmpty())) {
-
-            if (!(vista.getTxtNombre().getText().isEmpty())) {
-
-                if (!(vista.getTxtApellido().getText().isEmpty())) {
-
-                    if (!(vista.getCombo_Rol().getSelectedItem().equals("Seleccione"))) {
-
-                        if (!(((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).getText().equals(""))) {
-
-                            if (!(vista.getTxtSalario().getText().isEmpty())) {
-
-                                if (!(vista.getTxtPhone().getText().isEmpty())) {
-
-                                    if (!(vista.getTxtCorreo().getText().isEmpty())) {
-
-                                        if (!(vista.getTxtDireccion().getText().isEmpty())) {
-
-                                            if (!(vista.getTxtPassword().getText().isEmpty())) {
+//        if (!(vista.getTxtCedula().getText().isEmpty())) {
+//
+//            if (!(vista.getTxtNombre().getText().isEmpty())) {
+//
+//                if (!(vista.getTxtApellido().getText().isEmpty())) {
+//
+//                    if (!(vista.getCombo_Rol().getSelectedItem().equals("Seleccione"))) {
+//
+//                        if (!(((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).getText().equals(""))) {
+//
+//                            if (!(vista.getTxtSalario().getText().isEmpty())) {
+//
+//                                if (!(vista.getTxtPhone().getText().isEmpty())) {
+//
+//                                    if (!(vista.getTxtCorreo().getText().isEmpty())) {
+//
+//                                        if (!(vista.getTxtDireccion().getText().isEmpty())) {
+//
+//                                            if (!(vista.getTxtPassword().getText().isEmpty())) {
 
                                                 modelo.setCedula(vista.getTxtCedula().getText());
                                                 modelo.setNombre(vista.getTxtNombre().getText());
@@ -210,52 +209,73 @@ public class ControladorE {
                                                     }
                                                 }
 
-                                            } else {
-                                                JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//                                            } else {
+//                                                JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                                            }
+//
+//                                        } else {
+//                                            JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                                        }
+//
+//                                    } else {
+//                                        JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                                    }
+//
+//                                } else {
+//                                    JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                                }
+//
+//                            } else {
+//                                JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                            }
+//
+//                        } else {
+//                            JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
+//
+//                        }
 
-                                            }
+//                    } else {
+//                        JOptionPane.showMessageDialog(null, "Existen Campos Fecha");
+//
+//                    }
+//
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Existen Campos pellido");
+//
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Existen Campos Nombre");
+//
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Existen Campos cedula");
+//
+//        }
+    }
 
-                                        } else {
-                                            JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-
-                                        }
-
-                                    } else {
-                                        JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-
-                                    }
-
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-
-                                }
-
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-
-                            }
-
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Existen Campos Vacios2");
-
-                        }
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Existen Campos Fecha");
-
-                    }
-
+    public void Eliminar() {
+        DefaultTableModel tblPersonas = (DefaultTableModel) vista.getTablaEmpleado().getModel();
+        int fila = vista.getTablaEmpleado().getSelectedRow();
+        if (fila != -1) {
+            String idPersona = tblPersonas.getValueAt(fila, 0).toString();
+            ModeloEmpleado empleado = new ModeloEmpleado();
+            int resultado = JOptionPane.showConfirmDialog(vista, "ESTA SEGURO QUE DESEA BORRAR A ESTE DATO", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (resultado == JOptionPane.YES_NO_OPTION) {
+                if (empleado.Eliminar(idPersona)) {
+                    JOptionPane.showMessageDialog(vista, "SE LOGRO ELIMINAR DE LA BDD");
+                    cargaLista();
+                    Limpiar();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Existen Campos pellido");
-
+                    JOptionPane.showMessageDialog(vista, "hubo un error");
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Existen Campos Nombre");
-
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Existen Campos cedula");
-
+            JOptionPane.showMessageDialog(vista, "DE PRIMERO CLICK ENCIMA EN ALGUNA PERSONA Y LUEGO EN ELIMINAR", "AVISO", 2);
         }
     }
 
@@ -263,6 +283,19 @@ public class ControladorE {
         DefaultTableModel tblModel = (DefaultTableModel) vista.getTablaEmpleado().getModel();
         tblModel.setNumRows(0);
         List<Empleado> lista = modelo.LeerT();
+        lista.stream().forEach(p -> {
+
+            String[] Persona = {p.getCedula(), p.getEmpleado_id(), p.getNombre(), p.getApellido(), p.getFecha_nacimiento(),
+                p.getNumero_telefono(), p.getCorreo(), p.getRol(), String.valueOf(p.getSalario()), p.getDireccion(), p.getPassword()};
+            tblModel.addRow(Persona);
+        });
+    }
+
+    public void Buscar() {
+
+        DefaultTableModel tblModel = (DefaultTableModel) vista.getTablaEmpleado().getModel();
+        tblModel.setNumRows(0);
+        List<Empleado> lista = modelo.Buscar(vista.getTxtBuscar().getText());
         lista.stream().forEach(p -> {
 
             String[] Persona = {p.getCedula(), p.getEmpleado_id(), p.getNombre(), p.getApellido(), p.getFecha_nacimiento(),
@@ -288,6 +321,8 @@ public class ControladorE {
     public void IncioControl() {
         vista.getBtnAceptar().addActionListener(l -> Registrar());
         vista.getBtnModificar().addActionListener(l -> Modificar());
+        vista.getBtnEliminar().addActionListener(l -> Eliminar());
+        vista.getBtnBuscar().addActionListener(l->Buscar());
 
         vista.getTablaEmpleado().addMouseListener(new MouseAdapter() {
 
@@ -304,7 +339,7 @@ public class ControladorE {
                     vista.getTxtSalario().setText(vista.getTablaEmpleado().getValueAt(tabla, 8).toString());
                     vista.getTxtDireccion().setText(vista.getTablaEmpleado().getValueAt(tabla, 9).toString());
                     vista.getTxtPassword().setText(vista.getTablaEmpleado().getValueAt(tabla, 10).toString());
-                    vista.getTxtCedula().setEnabled(false);
+//                    vista.getTxtCedula().setEnabled(false);
                 }
             }
         });

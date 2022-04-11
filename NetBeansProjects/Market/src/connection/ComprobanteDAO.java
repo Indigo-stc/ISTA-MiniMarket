@@ -11,7 +11,6 @@ public class ComprobanteDAO implements Crud {
 
     Conexion con = new Conexion(); // intancia de la clase conexionpg
 
-    
     public int idFactura() {
         String num = null;
         try {
@@ -108,13 +107,6 @@ public class ComprobanteDAO implements Crud {
 
 
     @Override
-    public void update(Object objeto) {
-//        String sql = "UPDATE comprobante SET id_comprobante='" + getIdComprobante() + "', producto_id='" + getProductoID() 
-//                + "',  cantidad='" + getCantidadProducto() + "',subtotal ='" + getSubTotal() + "', total ='" + getTotal() 
-//                + "', iva ='" + getIVA() + "', encabezado_id ='" + getCodigoEncabezado() + "')";
-    }
-
-    @Override
     public ArrayList registros() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -136,6 +128,11 @@ public class ComprobanteDAO implements Crud {
 
     @Override
     public List Buscar(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean update(Object objeto) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

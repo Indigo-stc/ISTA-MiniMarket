@@ -16,9 +16,6 @@ public class ICategoriaDAO implements Crud<Categoria>{
     }
 
     @Override
-    public void update(Categoria objeto) {}
-
-    @Override
     public ResultSet pk(String id) {
         return null;
     
@@ -53,6 +50,11 @@ public class ICategoriaDAO implements Crud<Categoria>{
 
     @Override
     public List<Categoria> Buscar(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean update(Categoria objeto) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import modelo.Comprobante;
 import modelo.Encabezado;
-import modelo.IProductoDAO;
+import connection.IProductoDAO;
 import vista.Factura;
 import java.sql.ResultSet;
 import java.sql.SQLException;

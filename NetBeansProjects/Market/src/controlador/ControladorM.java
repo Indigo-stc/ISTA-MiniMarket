@@ -3,7 +3,7 @@ package controlador;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import javax.swing.SwingUtilities;
-import modelo.ModeloCliente;
+import connection.ModeloCliente;
 import vista.Factura;
 import vista.MenuPricpal;
 import vista.PanelCliente;

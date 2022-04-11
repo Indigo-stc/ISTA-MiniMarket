@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author 59399
@@ -13,7 +15,7 @@ public class Persona {
     private String Cedula;
     private String Nombre;
     private String Apellido;
-    private String fecha_nacimiento;
+    private Date fecha_nacimiento;
     private String Numero_telefono;
     private String Correo;
     private String Direccion;
@@ -21,7 +23,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String Cedula, String Nombre, String Apellido, String fecha_nacimiento, String Numero_telefono, String Correo, String Direccion) {
+    public Persona(String Cedula, String Nombre, String Apellido, Date fecha_nacimiento, String Numero_telefono, String Correo, String Direccion) {
         this.Cedula = Cedula;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
@@ -30,8 +32,6 @@ public class Persona {
         this.Correo = Correo;
         this.Direccion = Direccion;
     }
-
-   
 
     public String getCedula() {
         return Cedula;
@@ -57,12 +57,20 @@ public class Persona {
         this.Apellido = Apellido;
     }
 
-    public String getFecha_nacimiento() {
+    public Date getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
+    public void setFecha_nacimiento(Date fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    public String getNumero_telefono() {
+        return Numero_telefono;
+    }
+
+    public void setNumero_telefono(String Numero_telefono) {
+        this.Numero_telefono = Numero_telefono;
     }
 
     public String getCorreo() {
@@ -81,13 +89,6 @@ public class Persona {
         this.Direccion = Direccion;
     }
 
-    public String getNumero_telefono() {
-        return Numero_telefono;
-    }
-
-    public void setNumero_telefono(String Numero_telefono) {
-        this.Numero_telefono = Numero_telefono;
-    }
     
     
 }

@@ -3,7 +3,7 @@ package controlador;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import javax.swing.SwingUtilities;
-import modelo.ModeloEmpleado;
+import modelo.ModeloCliente;
 import vista.Factura;
 import vista.MenuPricpal;
 import vista.PanelCliente;
@@ -20,14 +20,12 @@ public class ControladorM {
 //
 
     private MenuPricpal vista;
-    private ModeloEmpleado modelo;
 
     public ControladorM() {
     }
 
-    public ControladorM(MenuPricpal vista, ModeloEmpleado modelo) {
+    public ControladorM(MenuPricpal vista) {
         this.vista = vista;
-        this.modelo = modelo;
         Vista();
         InicioControl();
     }
@@ -49,24 +47,21 @@ public class ControladorM {
     }
 
     public void Cliente() {
-        PanelCliente panelcliente = new PanelCliente();
+        ControladorC cliente = new ControladorC();
         vista.getPANELCAR().removeAll();
-        vista.getPANELCAR().add(panelcliente);
+        vista.getPANELCAR().add(cliente.vista);
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
 
     }
 
     public void Empleado() {
-
-        PanelEmpleado panelempleado = new PanelEmpleado();
-        ModeloEmpleado me = new ModeloEmpleado();
+        ControladorE empleado = new ControladorE();
         vista.getPANELCAR().removeAll();
-        vista.getPANELCAR().add(panelempleado);
+        vista.getPANELCAR().add(empleado.vista);
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
-        ControladorE empleado = new ControladorE(me, panelempleado);
-        empleado.IncioControl();
+      
     }
 
     public void Producto() {
@@ -87,7 +82,7 @@ public class ControladorM {
     }
 
     public void Factura() {
-        Factura factura= new Factura();
+        Factura factura = new Factura();
         vista.getPANELCAR().removeAll();
         vista.getPANELCAR().add(factura);
         vista.getPANELCAR().repaint();

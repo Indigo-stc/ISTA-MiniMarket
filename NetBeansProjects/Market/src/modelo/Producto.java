@@ -107,6 +107,5 @@ public class Producto {
         return String.format("%s %s %s %s %s %s %s", producto_id,nombre, precio,  stock, 
              imagen, descripcion, proveedor_id, categoria_id);
     }
-
     
 }

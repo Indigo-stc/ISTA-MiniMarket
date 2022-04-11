@@ -9,6 +9,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -60,12 +61,11 @@ public class PanelEmpleado extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         txtPhone = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtSalario = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
         btnRefrescar = new javax.swing.JButton();
-        jToolBar1 = new javax.swing.JToolBar();
+        txtPassword = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaEmpleado = new javax.swing.JTable();
@@ -131,9 +131,7 @@ public class PanelEmpleado extends javax.swing.JPanel {
 
         txtCorreo.setMinimumSize(new java.awt.Dimension(70, 22));
 
-        DateFecha.setDateFormatString("yyyy/MM/dd");
-
-        Combo_Rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Cajero", "Guardia", "Reponedor", "Adminitrador" }));
+        Combo_Rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
 
         btnAceptar.setText("ACEPTAR");
 
@@ -163,7 +161,7 @@ public class PanelEmpleado extends javax.swing.JPanel {
 
         btnRefrescar.setText("REFRESCAR");
 
-        jToolBar1.setRollover(true);
+        txtPassword.setPreferredSize(new java.awt.Dimension(64, 22));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -220,11 +218,8 @@ public class PanelEmpleado extends javax.swing.JPanel {
                             .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,11 +262,11 @@ public class PanelEmpleado extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(btnModificar)
@@ -281,9 +276,7 @@ public class PanelEmpleado extends javax.swing.JPanel {
                     .addComponent(btnEliminar)
                     .addComponent(btnImprimir)
                     .addComponent(btnRefrescar))
-                .addGap(18, 18, 18)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGap(101, 101, 101))
         );
 
         jPanel3.setBackground(new java.awt.Color(132, 17, 255));
@@ -293,7 +286,7 @@ public class PanelEmpleado extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Cedula", "Codigo", "Nombre", "Apellido", "FechaN", "Phone", "Correo", "Rol", "Salario", "Direccion", "Password"
+                "Cedula", "Codigo", "Nombre", "Apellido", "FechaN", "Phone", "Correo", "Rol", "Rol_ID", "Salario", "Direccion", "Password"
             }
         ));
         jScrollPane1.setViewportView(TablaEmpleado);
@@ -360,7 +353,7 @@ public class PanelEmpleado extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 721, Short.MAX_VALUE)
+            .addGap(0, 724, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(PanelEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -496,11 +489,11 @@ public class PanelEmpleado extends javax.swing.JPanel {
         this.txtNombre = txtNombre;
     }
 
-    public JTextField getTxtPassword() {
+    public JPasswordField getTxtPassword() {
         return txtPassword;
     }
 
-    public void setTxtPassword(JTextField txtPassword) {
+    public void setTxtPassword(JPasswordField txtPassword) {
         this.txtPassword = txtPassword;
     }
 
@@ -551,14 +544,13 @@ public class PanelEmpleado extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables

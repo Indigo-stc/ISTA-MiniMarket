@@ -1,20 +1,19 @@
-package modelo;
+package connection;
 
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Categoria;
 
-public class ICategoriaDAO implements DDL<Categoria>{
+public class ICategoriaDAO implements Crud<Categoria>{
 
     @Override
     public boolean insert(Categoria objeto) {
         return false;
     }
-
-    @Override
-    public void delete(String column) {}
 
     @Override
     public void update(Categoria objeto) {}
@@ -41,5 +40,20 @@ public class ICategoriaDAO implements DDL<Categoria>{
         }
         return reg;
     } 
+
+    @Override
+    public List<Categoria> LeerT() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean delete(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Categoria> Buscar(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

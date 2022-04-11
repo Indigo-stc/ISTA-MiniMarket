@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 //import Clases.Empleado;
@@ -21,12 +16,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.Empleado;
-import modelo.IProveedorDAO;
+import connection.IProveedorDAO;
 import modelo.MensajeFantasma;
-import modelo.ModeloEmpleado;
+import connection.ModeloEmpleado;
 import modelo.Proveedor;
-import modelo.RolDao;
-import modelo.Roles;
+import connection.RolDao;
+import modelo.Rol;
 import vista.PanelEmpleado;
 //import sun.security.rsa.RSAUtil;
 //import sun.security.rsa.RSAUtil.KeyType;
@@ -86,7 +81,7 @@ public class ControladorE implements KeyListener {
             Empleado empl = new Empleado(Double.valueOf(vista.getTxtSalario().getText()), vista.getTxtPassword().getText(),
                     rol_iid, vista.getTxtCedula().getText(), vista.getTxtNombre().getText(), vista.getTxtApellido().getText(),
                     vista.getDateFecha().getDate(), vista.getTxtPhone().getText(), vista.getTxtCorreo().getText(), vista.getTxtDireccion().getText());
-            if (modelo.Insertar(empl)) {
+            if (modelo.insert(empl)) {
                 JOptionPane.showMessageDialog(null, "Registro en la base de Datos");
 
                 cargaLista();
@@ -135,7 +130,7 @@ public class ControladorE implements KeyListener {
             ModeloEmpleado empleado = new ModeloEmpleado();
             int resultado = JOptionPane.showConfirmDialog(vista, "ESTA SEGURO QUE DESEA BORRAR A ESTE DATO", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (resultado == JOptionPane.YES_NO_OPTION) {
-                if (empleado.Eliminar(idPersona)) {
+                if (empleado.delete(idPersona)) {
                     JOptionPane.showMessageDialog(vista, "SE LOGRO ELIMINAR DE LA BDD");
                     cargaLista();
                     Limpiar();
@@ -243,7 +238,7 @@ public class ControladorE implements KeyListener {
 
     private void cbRoles() {
         RolDao rol = new RolDao();
-        List<Roles> lista = rol.Aa();
+        List<Rol> lista = rol.Aa();
         lista.stream().forEach(ab -> {
             String[] rolDatos = {ab.getEtiqueta()};
             vista.getCombo_Rol().addItem(rolDatos[0]);

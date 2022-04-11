@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package connection;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,17 +12,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Empleado;
 
-/**
- *
- * @author 59399
- */
 public class ModeloEmpleado implements Crud<Empleado> {
 
     Conexion con = new Conexion();
 
     @Override
-    public boolean Insertar(Empleado em) {
+    public boolean insert(Empleado em) {
         long form = em.getFecha_nacimiento().getTime();
         java.sql.Date time = new java.sql.Date(form);
         String sqlE1 = " INSERT INTO public.personas(\n"
@@ -74,7 +71,7 @@ public class ModeloEmpleado implements Crud<Empleado> {
     }
 
     @Override
-    public boolean Eliminar(String codigo) {
+    public boolean delete(String codigo) {
         String sql2 = "DELETE FROM public.personas\n"
                 + "	WHERE dni='" + codigo + "';";
 
@@ -136,6 +133,21 @@ public class ModeloEmpleado implements Crud<Empleado> {
                 + "	WHERE dni='" + codigo + "';";
         String sql = sql1 + sql2;
         return con.insertUpdateDelete(sql);
+    }
+
+    @Override
+    public ArrayList<Empleado> registros() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ResultSet pk(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void update(Empleado objeto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
   

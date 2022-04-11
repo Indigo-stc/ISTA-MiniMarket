@@ -1,7 +1,5 @@
-package modelo;
+package connection;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,7 +7,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ComprobanteDAO implements DDL {
+public class ComprobanteDAO implements Crud {
 
     Conexion con = new Conexion(); // intancia de la clase conexionpg
 
@@ -108,10 +106,6 @@ public class ComprobanteDAO implements DDL {
         return false;
     }
 
-    @Override
-    public void delete(String column) {
-//        String sql = "DELETE FROM comprobante WHERE id_comprobante = '" + id + "'";
-    }
 
     @Override
     public void update(Object objeto) {
@@ -128,5 +122,20 @@ public class ComprobanteDAO implements DDL {
     @Override
     public ResultSet pk(String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List LeerT() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean delete(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List Buscar(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

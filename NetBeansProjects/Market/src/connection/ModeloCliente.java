@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package modelo;
+package connection;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,11 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Cliente;
 
-/**
- *
- * @author 59399
- */
 public class ModeloCliente implements Crud<Cliente> {
 
     Conexion con = new Conexion();
@@ -49,7 +41,7 @@ public class ModeloCliente implements Crud<Cliente> {
     }
 
     @Override
-    public boolean Eliminar(String codigo) {
+    public boolean delete(String codigo) {
         String sql1 = "DELETE FROM public.personas\n"
                 + "	WHERE dni='" + codigo + "';";
 
@@ -92,7 +84,7 @@ public class ModeloCliente implements Crud<Cliente> {
     }
 
     @Override
-    public boolean Insertar(Cliente cl) {
+    public boolean insert(Cliente cl) {
         long form = cl.getFecha_nacimiento().getTime();
         java.sql.Date time = new java.sql.Date(form);
         String sqlC1 = "INSERT INTO public.personas(\n"
@@ -121,5 +113,20 @@ public class ModeloCliente implements Crud<Cliente> {
         System.out.println(sqlC);
         return con.insertUpdateDelete(sqlC);
 
+    }
+
+    @Override
+    public ArrayList<Cliente> registros() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ResultSet pk(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void update(Cliente objeto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

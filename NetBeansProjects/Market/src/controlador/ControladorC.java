@@ -12,8 +12,8 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Empleado;
 import modelo.MensajeFantasma;
-import modelo.ModeloCliente;
-import modelo.ModeloEmpleado;
+import connection.ModeloCliente;
+import connection.ModeloEmpleado;
 import vista.PanelCliente;
 
 /**
@@ -60,7 +60,7 @@ public class ControladorC implements KeyListener {
                     vista.getTxtApellido().getText(), vista.getDateFecha().getDate(),
                     vista.getTxtPhone().getText(), vista.getTxtCorreo().getText(), vista.getTxtDireccion().getText());
             ModeloCliente md = new ModeloCliente();
-            if (md.Insertar(cl)) {
+            if (md.insert(cl)) {
                 JOptionPane.showMessageDialog(null, "REGISTRO");
                 cargaLista();
                 Limpiar();
@@ -113,7 +113,7 @@ public class ControladorC implements KeyListener {
             ModeloCliente clientes = new ModeloCliente();
             int resultado = JOptionPane.showConfirmDialog(vista, "ESTA SEGURO QUE DESEA BORRAR A ESTE DATO", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (resultado == JOptionPane.YES_NO_OPTION) {
-                if (clientes.Eliminar(id_Clientes)) {
+                if (clientes.delete(id_Clientes)) {
                     JOptionPane.showMessageDialog(vista, "SE LOGRO ELIMINAR DE LA BDD");
                     cargaLista();
                     Limpiar();

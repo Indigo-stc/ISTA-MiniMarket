@@ -8,14 +8,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Modelo_Encabezado extends Encabezado {
+public class EncabezadoDAO extends Encabezado {
 
     Conexion con = new Conexion(); // intancia de la clase conexionpg
 
-    public Modelo_Encabezado() {
-    }
+    
 
-    public Modelo_Encabezado(String codigoEncabezado, String cedula, Date fechaEncabezado) {
+    public EncabezadoDAO(String codigoEncabezado, String cedula, Date fechaEncabezado) {
         super(codigoEncabezado, cedula, fechaEncabezado);
     }
 
@@ -30,7 +29,7 @@ public class Modelo_Encabezado extends Encabezado {
                 num = rs.getString("encabezado_id");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Factura.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ComprobanteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (num == null) {
             return 0;
@@ -39,27 +38,27 @@ public class Modelo_Encabezado extends Encabezado {
         }
     }
 
-    public List<Encabezado> listar(String buscar) {
-        try {
-            List<Encabezado> lista = new ArrayList<Encabezado>(); // creacion de la lista (es un array list)
-
-            String sql = "select * from detallefactura";
-            ResultSet rs = con.selectConsulta(sql);
-            while (rs.next()) {
-                Encabezado encabezadoF = new Encabezado();
-                encabezadoF.setCodigoEncabezado(rs.getString("encabezado_id"));
-                encabezadoF.setCedula(rs.getString("dni"));
-                encabezadoF.setFechaEncabezado(rs.getDate("fecha"));
-                
-                lista.add(encabezadoF);
-            }
-            rs.close();
-            return lista;
-        } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Encabezado.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-    }
+//    public List<Encabezado> listar(String buscar) {
+//        try {
+//            List<Encabezado> lista = new ArrayList<Encabezado>(); // creacion de la lista (es un array list)
+//
+//            String sql = "select * from detallefactura";
+//            ResultSet rs = con.selectConsulta(sql);
+//            while (rs.next()) {
+//                Encabezado encabezadoF = new Encabezado();
+//                encabezadoF.setCodigoEncabezado(rs.getString("encabezado_id"));
+//                encabezadoF.setCedula(rs.getString("dni"));
+//                encabezadoF.setFechaEncabezado(rs.getDate("fecha"));
+//                
+//                lista.add(encabezadoF);
+//            }
+//            rs.close();
+//            return lista;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(EncabezadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+//            return null;
+//        }
+//    }
 
     public Boolean crearDetalleFactura() {
         String sql;

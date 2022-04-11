@@ -38,6 +38,9 @@ public class IProveedorDAO implements DDL<Proveedor> {
     }
 
     @Override
-    public void pk(String id) {}
+    public ResultSet pk(String id) {
+        return null;
+        
+    }
     
 }

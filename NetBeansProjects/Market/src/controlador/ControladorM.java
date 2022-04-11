@@ -82,9 +82,9 @@ public class ControladorM {
     }
 
     public void Factura() {
-        Factura factura = new Factura();
+        ControladorFactura controler = new ControladorFactura();
         vista.getPANELCAR().removeAll();
-        vista.getPANELCAR().add(factura);
+        vista.getPANELCAR().add(controler.viewFact);
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
 

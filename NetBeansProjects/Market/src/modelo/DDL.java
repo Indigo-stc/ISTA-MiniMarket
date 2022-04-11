@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.sql.ResultSet;
 
 public interface DDL<T> {
     
@@ -8,6 +9,6 @@ public interface DDL<T> {
     void delete(String column);
     void update(T objeto);
     ArrayList<T> registros();
-    void pk(String id);
+    ResultSet pk(String id);
     
 }

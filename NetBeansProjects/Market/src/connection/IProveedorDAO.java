@@ -17,9 +17,6 @@ public class IProveedorDAO implements Crud<Proveedor> {
 
 
     @Override
-    public void update(Proveedor objeto) {}
-
-    @Override
     public ArrayList<Proveedor> registros() {
         String stm = "Select * from proveedores";
         Conexion con = new Conexion();
@@ -55,6 +52,11 @@ public class IProveedorDAO implements Crud<Proveedor> {
 
     @Override
     public List<Proveedor> Buscar(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean update(Proveedor objeto) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

@@ -1,7 +1,5 @@
 package connection;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
@@ -24,13 +22,8 @@ public class IProductoDAO implements Crud<Producto> {
             ps.setString(2, objeto.getNombre());
             ps.setDouble(3, objeto.getPrecio());
             ps.setInt(4, objeto.getStock());
-            try {
-                FileInputStream fin = new FileInputStream(objeto.getImagen());
-                ps.setBinaryStream(5, fin, (int) objeto.getImagen().length());
-            } catch (FileNotFoundException ex) {
-                System.out.println("Problemas con la imagen");
-                Logger.getLogger(IProductoDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            ps.setBytes(5, objeto.getImagen());
+
             ps.setString(6, objeto.getDescripcion());
             ps.setString(7, objeto.getProveedor_id());
             ps.setString(8, objeto.getCategoria_id());
@@ -44,52 +37,54 @@ public class IProductoDAO implements Crud<Producto> {
     }
 
     @Override
-    public void update(Producto objeto) {}
-
-   
-
-//    @Override
-//    public ArrayList<Object> buscar(String search) {
-//        String stm = "";
-//        if ("".equals(search.trim())) {
-//            stm = """
-//                  SELECT producto_id, pdt.nombre, precio, stock, imagen, descripcion, titulo, pvd.nombre
-//                  FROM productos pdt 
-//                    JOIN categorias cat ON pdt.categoria_id = cat.categoria_id 
-//                    JOIN proveedores pvd ON pvd.proveedor_id = pdt.proveedor_id;""";
-//        } else {
-//            stm = """
-//                  SELECT producto_id, pdt.nombre, precio, stock, imagen, descripcion, titulo, pvd.nombre
-//                  FROM productos pdt 
-//                  	JOIN categorias cat ON pdt.categoria_id = cat.categoria_id 
-//                  	JOIN proveedores pvd ON pvd.proveedor_id = pdt.proveedor_id
-//                  WHERE like(pdt.nombre) LIKE LOWER('%%') OR 
-//                  	LOWER(titulo) = LIKE LOWER('%%') OR 
-//                  	LOWER(pvd.nombre) LIKE LOWER('%%') OR
-//                  	LOWER(product_id) LIKE LOWER('%%');""";
-//        }
-//        Conexion con = new Conexion();
-//        ResultSet res = con.selectConsulta(stm);
-//        ArrayList registros = new ArrayList();
-//        try {
-//            while(res.next()) {
-//                Object[] sql = {res.getString(1), res.getString(2),
-//                    res.getDouble(3), res.getInt(4), res.getBytes(5),
-//                    res.getString(6), res.getString(7), res.getString(8)};
-//                registros.add(sql);
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(IProductoDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return registros;
-//    }
-
-    @Override
     public ArrayList registros() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        ArrayList<Producto> pdts = new ArrayList<>();
+        String stm = """
+                    SELECT producto_id, pdt.nombre, precio, stock, imagen, descripcion, titulo, pvd.nombre
+                    FROM productos pdt 
+                    JOIN categorias cat ON pdt.categoria_id = cat.categoria_id 
+                    JOIN proveedores pvd ON pvd.proveedor_id = pdt.proveedor_id;""";
+
+        Conexion con = new Conexion();
+        ResultSet res = con.selectConsulta(stm);
+        try {
+            while (res.next()) {
+                Producto pdt = new Producto(res.getString(1), res.getString(2),
+                        res.getDouble(3), res.getInt(4), res.getBytes(5),
+                        res.getString(6), res.getString(8), res.getString(7));
+                pdts.add(pdt);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(IProductoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return pdts;
     }
 
-    public ResultSet buscar(String search) {
+    @Override
+    public boolean delete(String column) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
+    public boolean existeID(String id) {
+        Conexion con = new Conexion();
+        String stm = "SELECT * FROM productos WHERE producto_id = '" + id + "'";
+        ResultSet res = con.selectConsulta(stm);
+        try {
+            return res.next();
+        } catch (SQLException ex) {
+            System.out.println("producto_id existente");
+            return false;
+        }
+    }
+
+    @Override
+    public ResultSet pk(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public ArrayList<Producto> buscar(String search) {
+        ArrayList<Producto> pdts = new ArrayList<>();
         String stm = "";
         if ("".equals(search.trim())) {
             stm = """
@@ -109,15 +104,17 @@ public class IProductoDAO implements Crud<Producto> {
         }
         Conexion con = new Conexion();
         ResultSet res = con.selectConsulta(stm);
-        return res;
-    }
-
-    @Override
-    public  ResultSet pk(String id) {
-        Conexion con = new Conexion();
-        String sql = "select * from productos where producto_id = '"+id+"'";
-        ResultSet rs = con.selectConsulta(sql);
-        return rs;
+        try {
+            while(res.next()) {
+                Producto pdt = new Producto(res.getString(1), res.getString(2),
+                        res.getDouble(3), res.getInt(4), res.getBytes(5),
+                        res.getString(6), res.getString(8), res.getString(7));
+                pdts.add(pdt);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(IProductoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return pdts;
     }
 
     @Override
@@ -131,7 +128,7 @@ public class IProductoDAO implements Crud<Producto> {
     }
 
     @Override
-    public boolean delete(String codigo) {
+    public boolean update(Producto objeto) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

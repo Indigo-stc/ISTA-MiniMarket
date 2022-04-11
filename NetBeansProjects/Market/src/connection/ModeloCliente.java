@@ -126,7 +126,8 @@ public class ModeloCliente implements Crud<Cliente> {
     }
 
     @Override
-    public void update(Cliente objeto) {
+    public boolean update(Cliente objeto) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }

@@ -146,10 +146,9 @@ public class ModeloEmpleado implements Crud<Empleado> {
     }
 
     @Override
-    public void update(Empleado objeto) {
+    public boolean update(Empleado objeto) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
   
 
 }

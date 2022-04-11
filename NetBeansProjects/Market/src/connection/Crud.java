@@ -20,7 +20,7 @@ public interface Crud<T> {
 // public boolean Modificar(T codigo);
 
     boolean delete(String codigo);
-    void update(T objeto);
+    boolean update(T objeto);
     List<T> Buscar(String codigo);
     ArrayList<T> registros();
     ResultSet pk(String id);

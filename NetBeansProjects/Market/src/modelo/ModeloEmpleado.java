@@ -5,11 +5,10 @@
  */
 package modelo;
 
-//import Clases.Empleado;
-//import Conexion.Conexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,70 +17,52 @@ import java.util.logging.Logger;
  *
  * @author 59399
  */
-public class ModeloEmpleado extends Empleado implements Crud {
+public class ModeloEmpleado implements Crud<Empleado> {
 
     Conexion con = new Conexion();
 
-    public ModeloEmpleado() {
-    }
-
-    public ModeloEmpleado(String Empleado_id, String Rol, double Salario, String Password) {
-        super(Empleado_id, Rol, Salario, Password);
-    }
-
-    public ModeloEmpleado(String Empleado_id, String Rol, double Salario, String Password, String Cedula, String Nombre, String Apellido, String fecha_nacimiento, String Numero_telefono, String Correo, String Direccion) {
-        super(Empleado_id, Rol, Salario, Password, Cedula, Nombre, Apellido, fecha_nacimiento, Numero_telefono, Correo, Direccion);
-    }
-
     @Override
-    public boolean Insertar() {
-        String sqlE1 = "	INSERT INTO public.persona(cedula, nombre, apellido, fecha_n, phone, correo, direccion)\n"
-                + "VALUES ('" + getCedula() + "', '" + getNombre() + "', '" + getApellido() + "', '" + getFecha_nacimiento() + "', '" + getNumero_telefono() + "', '" + getCorreo() + "', '" + getDireccion() + "');";
-        String sqlP1 = "INSERT INTO public.empleado(\n"
-                + "	 sueldo, rol, cedula, clave)\n"
-                + "	VALUES ( '" + getSalario() + "', '" + getRol() + "', '" + getCedula() + "','" + getPassword() + "');";
-        String sql = sqlE1 + sqlP1;
-        return con.insertUpdateDelete(sql);
+    public boolean Insertar(Empleado em) {
+        long form = em.getFecha_nacimiento().getTime();
+        java.sql.Date time = new java.sql.Date(form);
+        String sqlE1 = " INSERT INTO public.personas(\n"
+                + "	dni, nombre, apellido, birth, telefono, direccion, email)\n"
+                + "	VALUES ('" + em.getCedula() + "', '" + em.getNombre() + "', '" + em.getApellido() + "', '" + time + "', "
+                + "'" + em.getNumero_telefono() + "', '" + em.getDireccion() + "', '" + em.getCorreo() + "');";
 
-    }
-
-    @Override
-    public boolean Modificar(String codigo) {
-        String sql1 = "update persona set nombre='" + getNombre() + "',apellido='" + getApellido() + "',fecha_n='" + getFecha_nacimiento() + "',phone='" + getNumero_telefono() + "',correo='" + getCorreo() + "',\n"
-                + "direccion='" + getDireccion() + "' where cedula='" + codigo + "';";
-
-        String sql2 = "update empleado set sueldo= '" + getSalario() + "',rol='" + getRol() + "',clave='" + getPassword() + "' where cedula='" + codigo + "';";
-
-        String sql = sql1 + sql2;
-        System.out.println(sql);
+        String sqlC1 = " INSERT INTO public.empleados(\n"
+                + "	empleado_id, \"contraseña\", dni, rol_id, salarios)\n"
+                + "	VALUES ('" + em.getEmpleado_id() + "', '" + em.getPassword() + "', '"
+                + em.getCedula() + "', '" + em.getRol_id() + "', '" + em.getSalario() + "');";
+        String sql = sqlE1 + sqlC1;
         return con.insertUpdateDelete(sql);
     }
 
     @Override
-    public boolean Eliminar(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-//   @Override
     public List<Empleado> LeerT() {
         try {
-            String sql = "select p.cedula,e.empleado_id, p.nombre, p.apellido, p.fecha_n,p.phone,p.correo,  e.rol, e.sueldo,p.direccion,e.clave from persona p, empleado e where p.cedula=e.cedula;";
+            String sql = "select p.dni, e.empleado_id,p.nombre,p.apellido,p.birth,p.telefono,p.email,r.etiqueta,\n"
+                    + "e.rol_id,e.salarios,p.direccion,\n"
+                    + "e.contraseña from personas p, empleados e, roles r where p.dni=e.dni and\n"
+                    + "e.rol_id=r.rol_id;";
             ResultSet rs = con.selectConsulta(sql);
+
             List<Empleado> em = new ArrayList<>();
             while (rs.next()) {
-                Empleado empleado = new Empleado();
-                empleado.setCedula(rs.getString("cedula"));
-                empleado.setEmpleado_id(rs.getString("empleado_id"));
-                empleado.setNombre(rs.getString("nombre"));
-                empleado.setApellido(rs.getString("apellido"));
-                empleado.setFecha_nacimiento(rs.getString("fecha_n"));
-                empleado.setNumero_telefono(rs.getString("phone"));
-                empleado.setCorreo(rs.getString("correo"));
-                empleado.setRol(rs.getString("rol"));
-                empleado.setSalario(rs.getDouble("sueldo"));
-                empleado.setDireccion(rs.getString("direccion"));
-                empleado.setPassword(rs.getString("clave"));
-                em.add(empleado);
+                Empleado emp = new Empleado();
+                emp.setCedula(rs.getString(1));
+                emp.setEmpleado_id(rs.getString(2));
+                emp.setNombre(rs.getString(3));
+                emp.setApellido(rs.getString(4));
+                emp.setFecha_nacimiento(rs.getDate(5));
+                emp.setNumero_telefono(rs.getString(6));
+                emp.setCorreo(rs.getString(7));
+                emp.setRol(rs.getString(8));
+                emp.setRol_id(rs.getInt(9));
+                emp.setSalario(rs.getDouble(10));
+                emp.setDireccion(rs.getString(11));
+                emp.setPassword(rs.getString(12));
+                em.add(emp);
             }
             rs.close();
             return em;
@@ -89,11 +70,74 @@ public class ModeloEmpleado extends Empleado implements Crud {
             Logger.getLogger(ModeloEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+
     }
 
     @Override
-    public List<Empleado> Leer(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean Eliminar(String codigo) {
+        String sql2 = "DELETE FROM public.personas\n"
+                + "	WHERE dni='" + codigo + "';";
+
+        String sql1 = "DELETE FROM public.empleados\n"
+                + "	WHERE dni='" + codigo + "';";
+        String sqlE = sql1 + sql2;
+        System.out.println("Eliminado: " + sqlE);
+
+        return con.insertUpdateDelete(sqlE);
     }
+
+    @Override
+    public List<Empleado> Buscar(String codigo) {
+
+        try {
+            String sql = "select p.dni, e.empleado_id,p.nombre,p.apellido,"
+                    + "p.birth,p.telefono,p.email,r.etiqueta,\n"
+                    + "                    e.rol_id,e.salarios,p.direccion,\n"
+                    + "                    e.contraseña from personas p, empleados e, roles r where p.dni=e.dni and\n"
+                    + "                    e.rol_id=r.rol_id and p.dni like lower('%"+codigo+"%');";
+            ResultSet rs = con.selectConsulta(sql);
+
+            List<Empleado> em = new ArrayList<>();
+            while (rs.next()) {
+                Empleado emp = new Empleado();
+                emp.setCedula(rs.getString(1));
+                emp.setEmpleado_id(rs.getString(2));
+                emp.setNombre(rs.getString(3));
+                emp.setApellido(rs.getString(4));
+                emp.setFecha_nacimiento(rs.getDate(5));
+                emp.setNumero_telefono(rs.getString(6));
+                emp.setCorreo(rs.getString(7));
+                emp.setRol(rs.getString(8));
+                emp.setRol_id(rs.getInt(9));
+                emp.setSalario(rs.getDouble(10));
+                emp.setDireccion(rs.getString(11));
+                emp.setPassword(rs.getString(12));
+                em.add(emp);
+            }
+            rs.close();
+            return em;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+
+    }
+
+//    @Override
+    public boolean ModificarT(Empleado empl, String codigo) {
+        long form = empl.getFecha_nacimiento().getTime();
+        java.sql.Date fecha = new java.sql.Date(form);
+        String sql1 = "UPDATE public.personas\n"
+                + "	SET  nombre='" + empl.getNombre() + "', apellido='" + empl.getApellido() + "',  birth='" + fecha + "', telefono='" + empl.getNumero_telefono()
+                + "', direccion='" + empl.getDireccion() + "', email='" + empl.getCorreo() + "'\n"
+                + "	WHERE dni='" + codigo + "';";
+        String sql2 = "UPDATE public.empleados\n"
+                + "	SET  rol_id='" + empl.getRol_id() + "', salarios='" + empl.getSalario() + "'\n"
+                + "	WHERE dni='" + codigo + "';";
+        String sql = sql1 + sql2;
+        return con.insertUpdateDelete(sql);
+    }
+
+  
 
 }

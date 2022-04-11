@@ -4,15 +4,17 @@
  * and open the template in the editor.
  */
 package controlador;
-//
-//import Controlador.ControladorM;
 
-import modelo.ModeloEmpleado;
+import java.util.UUID;
+import modelo.Cliente;
+import modelo.Conexion;
+import modelo.Empleado;
+import modelo.ModeloCliente;
 import vista.MenuPricpal;
 
 //import proyecto.Vista.MenuPricpal;
 //import proyecto.Vista.Menu;
-/** 
+/**
  *
  * @author 59399
  */
@@ -22,11 +24,10 @@ public class Proyecto {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MenuPricpal vista = new MenuPricpal();
-        ModeloEmpleado modelo_E = new ModeloEmpleado();
 
-        ControladorM controlador = new ControladorM(vista,modelo_E);
-        controlador.InicioControl();
+        MenuPricpal vista = new MenuPricpal();
+        ControladorM controlador = new ControladorM(vista);
+
     }
 
 }

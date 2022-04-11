@@ -12,14 +12,16 @@ import java.util.List;
  *
  * @author 59399
  */
-public interface Crud {
-    
-    public boolean Insertar();
+public interface Crud<T> {
 
-    public List<Empleado> Leer(String codigo);
+    boolean Insertar(T kl);
 
-    public boolean Modificar(String codigo);
+    public List<T> LeerT();
+
+//    public boolean Modificar(T codigo);
 
     public boolean Eliminar(String codigo);
-    
+
+    public List<T> Buscar(String codigo);
+
 }

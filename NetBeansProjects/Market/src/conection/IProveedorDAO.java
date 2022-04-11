@@ -1,10 +1,11 @@
-package modelo;
+package conection;
 
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Proveedor;
 
 public class IProveedorDAO implements DDL<Proveedor> {
 
@@ -12,12 +13,6 @@ public class IProveedorDAO implements DDL<Proveedor> {
     public boolean insert(Proveedor objeto) {
         return false;
     }
-
-    @Override
-    public void delete(String column) {}
-
-    @Override
-    public void update(Proveedor objeto) {}
 
     @Override
     public ArrayList<Proveedor> registros() {
@@ -38,6 +33,23 @@ public class IProveedorDAO implements DDL<Proveedor> {
     }
 
     @Override
-    public void pk(String id) {}
+    public boolean delete(String column) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean update(Proveedor objeto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean existeID(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ResultSet pk(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

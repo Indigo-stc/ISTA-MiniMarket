@@ -84,7 +84,6 @@ public class ControladorM {
 //        vista.getPANELCAR().repaint();  
 //        vista.getPANELCAR().revalidate();
         vista.repaint();
-        System.out.println("holaaaaa");
     }
 
     public void Proveedor() {

@@ -16,7 +16,7 @@ public class Producto {
 
     public Producto(String nombre, double precio, int stock, File imagen, 
             String descripcion, String proveedor_id, String categoria_id) {
-        this.producto_id = "Pdt-" + UUID.randomUUID().toString().substring(0, 5);;
+        this.producto_id = "Pdt-" + UUID.randomUUID().toString().substring(0, 5);
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;

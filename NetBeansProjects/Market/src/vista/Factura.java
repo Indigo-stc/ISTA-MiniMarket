@@ -37,13 +37,8 @@ public class Factura extends javax.swing.JPanel {
         Datos_productos = new javax.swing.JPanel();
         tituloProductos = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txt_buscar = new javax.swing.JTextField();
         txt_idproducto = new javax.swing.JTextField();
-        txt_producto = new javax.swing.JTextField();
-        txt_precio = new javax.swing.JTextField();
         spinnetcant = new javax.swing.JSpinner();
         btn_agregar = new javax.swing.JButton();
         btn_quitar = new javax.swing.JButton();
@@ -66,7 +61,6 @@ public class Factura extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        lbl_foto = new javax.swing.JLabel();
         txt_cedula = new javax.swing.JTextField();
         txt_nombres = new javax.swing.JTextField();
         txt_apellidos = new javax.swing.JTextField();
@@ -184,10 +178,10 @@ public class Factura extends javax.swing.JPanel {
                         .addGap(560, 560, 560)
                         .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(Titulo_facLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblfechaV, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblnumfacV, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(256, Short.MAX_VALUE))
+                .addGroup(Titulo_facLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblnumfacV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblfechaV, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Titulo_facLayout.setVerticalGroup(
             Titulo_facLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,33 +206,24 @@ public class Factura extends javax.swing.JPanel {
         tituloProductos.setText("Productos");
         Datos_productos.add(tituloProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 69, 26));
 
-        jLabel2.setText("Buscar:");
-        Datos_productos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 62, 25));
-
-        jLabel3.setText("ID_Producto:");
-        Datos_productos.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, 30));
-
-        jLabel4.setText("Producto:");
-        Datos_productos.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 71, 24));
+        jLabel2.setText("ID Producto");
+        Datos_productos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 70, 25));
 
         jLabel5.setText("Cantidad:");
-        Datos_productos.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, -1));
-        Datos_productos.add(txt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 97, -1));
-        Datos_productos.add(txt_idproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 89, -1));
-        Datos_productos.add(txt_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 124, -1));
-        Datos_productos.add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 55, -1));
-        Datos_productos.add(spinnetcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, -1, -1));
+        Datos_productos.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 70, 30));
+        Datos_productos.add(txt_idproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 150, -1));
+        Datos_productos.add(spinnetcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 60, 30));
 
         btn_agregar.setText("Agregar");
-        Datos_productos.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 90, 30));
+        Datos_productos.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 90, 30));
 
-        btn_quitar.setText("Cancelar");
+        btn_quitar.setText("Quitar");
         btn_quitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_quitarActionPerformed(evt);
             }
         });
-        Datos_productos.add(btn_quitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 90, 30));
+        Datos_productos.add(btn_quitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 90, 30));
 
         panelproductos.setBackground(new java.awt.Color(235, 235, 246));
 
@@ -282,10 +267,11 @@ public class Factura extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pro4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelproductosLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(pro5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pro6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(pro7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pro8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -301,15 +287,20 @@ public class Factura extends javax.swing.JPanel {
                     .addComponent(pro3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pro4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pro5, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pro6, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pro7, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pro8, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelproductosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(pro5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelproductosLayout.createSequentialGroup()
+                        .addGroup(panelproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pro7, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pro8, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pro6, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
-        Datos_productos.add(panelproductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        Datos_productos.add(panelproductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
         Datos_productos.add(CantidadProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 90, 30));
 
         Datos_cliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -318,45 +309,44 @@ public class Factura extends javax.swing.JPanel {
         Datos_cliente.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 6, -1, -1));
 
         jLabel7.setText("Cedula:");
-        Datos_cliente.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 53, 24));
+        Datos_cliente.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 53, 24));
 
         jLabel8.setText("Nombres:");
-        Datos_cliente.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        Datos_cliente.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
 
         jLabel9.setText("Apellidos:");
-        Datos_cliente.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        Datos_cliente.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
         jLabel10.setText("Telefono:");
-        Datos_cliente.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        Datos_cliente.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
 
         jLabel12.setText("Sub Total:");
-        Datos_cliente.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 377, -1, -1));
+        Datos_cliente.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, -1, -1));
 
         jLabel13.setText("IVA 12%:");
-        Datos_cliente.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 407, -1, -1));
+        Datos_cliente.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, -1, -1));
 
         jLabel14.setText("TOTAL:");
-        Datos_cliente.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 431, -1, -1));
-        Datos_cliente.add(lbl_foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 111, 117));
-        Datos_cliente.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 124, -1));
-        Datos_cliente.add(txt_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 123, -1));
+        Datos_cliente.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, -1));
+        Datos_cliente.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 150, -1));
+        Datos_cliente.add(txt_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 150, -1));
 
         txt_apellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_apellidosActionPerformed(evt);
             }
         });
-        Datos_cliente.add(txt_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 123, -1));
-        Datos_cliente.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 120, -1));
+        Datos_cliente.add(txt_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 150, -1));
+        Datos_cliente.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 150, -1));
 
         txt_subtotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_subtotalActionPerformed(evt);
             }
         });
-        Datos_cliente.add(txt_subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 373, 122, -1));
-        Datos_cliente.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 427, 122, -1));
-        Datos_cliente.add(txt_iva, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 403, 122, -1));
+        Datos_cliente.add(txt_subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 122, -1));
+        Datos_cliente.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 122, -1));
+        Datos_cliente.add(txt_iva, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 122, -1));
 
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -364,13 +354,13 @@ public class Factura extends javax.swing.JPanel {
                 btn_buscarActionPerformed(evt);
             }
         });
-        Datos_cliente.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 38, -1, -1));
+        Datos_cliente.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
         btn_guardar.setText("Guardar");
-        Datos_cliente.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 373, 80, -1));
+        Datos_cliente.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 80, -1));
 
         btn_cancelar.setText("Cancelar");
-        Datos_cliente.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 403, -1, -1));
+        Datos_cliente.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 80, -1));
 
         btn_imprimir.setText("Imprimir");
         btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -378,7 +368,7 @@ public class Factura extends javax.swing.JPanel {
                 btn_imprimirActionPerformed(evt);
             }
         });
-        Datos_cliente.add(btn_imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 80, -1));
+        Datos_cliente.add(btn_imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 80, -1));
 
         tbl_factura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -390,10 +380,10 @@ public class Factura extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbl_factura);
 
-        Datos_cliente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 381, 143));
+        Datos_cliente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 420, 143));
 
         btnConsumidorF.setText("Consumidor Final");
-        Datos_cliente.add(btnConsumidorF, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
+        Datos_cliente.add(btnConsumidorF, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -401,10 +391,10 @@ public class Factura extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(Datos_productos, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Datos_productos, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(Datos_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Datos_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Titulo_fac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -416,9 +406,11 @@ public class Factura extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(Titulo_fac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Datos_productos, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                    .addComponent(Datos_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Datos_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Datos_productos, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 8, Short.MAX_VALUE)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -523,13 +515,6 @@ public class Factura extends javax.swing.JPanel {
         this.dlgPersona = dlgPersona;
     }
 
-    public JLabel getLbl_foto() {
-        return lbl_foto;
-    }
-
-    public void setLbl_foto(JLabel lbl_foto) {
-        this.lbl_foto = lbl_foto;
-    }
 
     public JLabel getLblfecha() {
         return lblfecha;
@@ -660,11 +645,11 @@ public class Factura extends javax.swing.JPanel {
     }
 
     public JTextField getTxt_buscar() {
-        return txt_buscar;
+        return txt_idproducto;
     }
 
     public void setTxt_buscar(JTextField txt_buscar) {
-        this.txt_buscar = txt_buscar;
+        this.txt_idproducto = txt_buscar;
     }
 
     public JTextField getTxt_cedula() {
@@ -675,13 +660,6 @@ public class Factura extends javax.swing.JPanel {
         this.txt_cedula = txt_cedula;
     }
 
-    public JTextField getTxt_idproducto() {
-        return txt_idproducto;
-    }
-
-    public void setTxt_idproducto(JTextField txt_idproducto) {
-        this.txt_idproducto = txt_idproducto;
-    }
 
     public JTextField getTxt_iva() {
         return txt_iva;
@@ -697,22 +675,6 @@ public class Factura extends javax.swing.JPanel {
 
     public void setTxt_nombres(JTextField txt_nombres) {
         this.txt_nombres = txt_nombres;
-    }
-
-    public JTextField getTxt_precio() {
-        return txt_precio;
-    }
-
-    public void setTxt_precio(JTextField txt_precio) {
-        this.txt_precio = txt_precio;
-    }
-
-    public JTextField getTxt_producto() {
-        return txt_producto;
-    }
-
-    public void setTxt_producto(JTextField txt_producto) {
-        this.txt_producto = txt_producto;
     }
 
     public JTextField getTxt_subtotal() {
@@ -776,13 +738,13 @@ public class Factura extends javax.swing.JPanel {
     private javax.swing.JLabel blEstado1;
     private javax.swing.JButton btnActualizar1;
     private javax.swing.JButton btnAgregarPersoD;
-    private javax.swing.JButton btnConsumidorF;
-    private javax.swing.JButton btn_agregar;
-    private javax.swing.JButton btn_buscar;
-    private javax.swing.JButton btn_cancelar;
-    private javax.swing.JButton btn_guardar;
-    private javax.swing.JButton btn_imprimir;
-    private javax.swing.JButton btn_quitar;
+    public javax.swing.JButton btnConsumidorF;
+    public javax.swing.JButton btn_agregar;
+    public javax.swing.JButton btn_buscar;
+    public javax.swing.JButton btn_cancelar;
+    public javax.swing.JButton btn_guardar;
+    public javax.swing.JButton btn_imprimir;
+    public javax.swing.JButton btn_quitar;
     private javax.swing.JDialog dlgPersona;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -791,8 +753,6 @@ public class Factura extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -801,7 +761,6 @@ public class Factura extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lbl_foto;
     private javax.swing.JLabel lblfecha;
     private javax.swing.JLabel lblfechaV;
     private javax.swing.JLabel lblnumfac;
@@ -815,21 +774,18 @@ public class Factura extends javax.swing.JPanel {
     private javax.swing.JButton pro6;
     private javax.swing.JButton pro7;
     private javax.swing.JButton pro8;
-    private javax.swing.JSpinner spinnetcant;
+    public javax.swing.JSpinner spinnetcant;
     private javax.swing.JTable tblPersonas2;
-    private javax.swing.JTable tbl_factura;
+    public javax.swing.JTable tbl_factura;
     private javax.swing.JLabel tituloProductos;
     private javax.swing.JTextField txtBuscarPersoD;
-    private javax.swing.JTextField txt_apellidos;
-    private javax.swing.JTextField txt_buscar;
-    private javax.swing.JTextField txt_cedula;
-    private javax.swing.JTextField txt_idproducto;
-    private javax.swing.JTextField txt_iva;
-    private javax.swing.JTextField txt_nombres;
-    private javax.swing.JTextField txt_precio;
-    private javax.swing.JTextField txt_producto;
-    private javax.swing.JTextField txt_subtotal;
-    private javax.swing.JTextField txt_telefono;
-    private javax.swing.JTextField txt_total;
+    public javax.swing.JTextField txt_apellidos;
+    public javax.swing.JTextField txt_cedula;
+    public javax.swing.JTextField txt_idproducto;
+    public javax.swing.JTextField txt_iva;
+    public javax.swing.JTextField txt_nombres;
+    public javax.swing.JTextField txt_subtotal;
+    public javax.swing.JTextField txt_telefono;
+    public javax.swing.JTextField txt_total;
     // End of variables declaration//GEN-END:variables
 }

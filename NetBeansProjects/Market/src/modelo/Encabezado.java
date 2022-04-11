@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class Encabezado {
 
@@ -8,7 +9,11 @@ public class Encabezado {
     private String cedula;
     private Date fechaEncabezado;
 
-    public Encabezado() {
+   
+    public Encabezado(String cedula, Date fechaEncabezado) {
+        this.codigoEncabezado = "FACT-" +UUID.randomUUID().toString().substring(0, 3);
+        this.cedula = cedula;
+        this.fechaEncabezado = fechaEncabezado;
     }
 
     public Encabezado(String codigoEncabezado, String cedula, Date fechaEncabezado) {
@@ -17,6 +22,7 @@ public class Encabezado {
         this.fechaEncabezado = fechaEncabezado;
     }
 
+    
     
     public String getCodigoEncabezado() {
         return codigoEncabezado;

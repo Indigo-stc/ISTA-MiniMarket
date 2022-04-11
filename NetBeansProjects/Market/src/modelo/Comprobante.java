@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.UUID;
+
 public class Comprobante {
     
     private String idComprobante;
@@ -11,7 +13,15 @@ public class Comprobante {
     private Double Total;
     private String codigoEncabezado;
 
-    public Comprobante() {
+    public Comprobante(String productoID, int cantidadProducto, Double precio, Double subTotal, Double IVA, Double Total, String codigoEncabezado) {
+        this.idComprobante = "COMP-" +UUID.randomUUID().toString().substring(0, 3);
+        this.productoID = productoID;
+        this.cantidadProducto = cantidadProducto;
+        this.precio = precio;
+        this.subTotal = subTotal;
+        this.IVA = IVA;
+        this.Total = Total;
+        this.codigoEncabezado = codigoEncabezado;
     }
 
     public Comprobante(String idComprobante, String productoID, int cantidadProducto, Double precio, Double subTotal, Double IVA, Double Total, String codigoEncabezado) {
@@ -24,10 +34,6 @@ public class Comprobante {
         this.Total = Total;
         this.codigoEncabezado = codigoEncabezado;
     }
-
-    
-
-    
 
     public String getIdComprobante() {
         return idComprobante;

@@ -47,8 +47,7 @@ public class IProductoDAO implements ProductoDAO {
     @Override
     public void update(Producto objeto) {}
 
-    @Override
-    public void pk(String id) {}
+   
 
 //    @Override
 //    public ArrayList<Object> buscar(String search) {
@@ -113,6 +112,14 @@ public class IProductoDAO implements ProductoDAO {
         Conexion con = new Conexion();
         ResultSet res = con.selectConsulta(stm);
         return res;
+    }
+
+    @Override
+    public  ResultSet pk(String id) {
+        Conexion con = new Conexion();
+        String sql = "select * from productos where producto_id = '"+id+"'";
+        ResultSet rs = con.selectConsulta(sql);
+        return rs;
     }
 
 }

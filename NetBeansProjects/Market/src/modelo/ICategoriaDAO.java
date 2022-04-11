@@ -20,7 +20,10 @@ public class ICategoriaDAO implements DDL<Categoria>{
     public void update(Categoria objeto) {}
 
     @Override
-    public void pk(String id) {}
+    public ResultSet pk(String id) {
+        return null;
+    
+    }
 
     @Override
     public ArrayList<Categoria> registros() {

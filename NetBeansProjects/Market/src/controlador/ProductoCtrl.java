@@ -225,7 +225,7 @@ public class ProductoCtrl implements FocusListener, KeyListener, MouseListener,
                 }
             });
 
-            viewPdt.tblProd.setDefaultRenderer(Object.class, new Render());
+//            viewPdt.tblProd.setDefaultRenderer(Object.class, new Render());
         }
     }
 
@@ -446,9 +446,9 @@ public class ProductoCtrl implements FocusListener, KeyListener, MouseListener,
     }
 }
 
-class Render extends DefaultTableCellRenderer {
+/*class Render extends DefaultTableCellRenderer {
 
-    @Override
+   @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         switch (value) {
             case JComboBox cb -> {
@@ -463,7 +463,7 @@ class Render extends DefaultTableCellRenderer {
         return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
-}
+}*/
 
 //class test {
 //    public static void main(String[] args) {

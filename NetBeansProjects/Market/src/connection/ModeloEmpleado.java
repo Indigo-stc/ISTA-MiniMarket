@@ -150,5 +150,13 @@ public class ModeloEmpleado implements Crud<Empleado> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
   
-
+public ResultSet login (String usuario,String contraseña){
+    String s="select*from empleados join roles on empleados.rol_id=roles.rol_id where dni= '"+usuario+"' and contraseña='"+contraseña+"' ; ";
+    
+    Conexion c=new Conexion();
+     ResultSet r = con.selectConsulta(s);
+        return r;
+     
+   
+}
 }

@@ -17,10 +17,19 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.Empleado;
 import connection.IProveedorDAO;
+import connection.ModeloCliente;
 import modelo.MensajeFantasma;
 import connection.ModeloEmpleado;
 import modelo.Proveedor;
 import connection.RolDao;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import modelo.Cliente;
+import modelo.Persona;
 import modelo.Rol;
 import vista.PanelEmpleado;
 //import sun.security.rsa.RSAUtil;
@@ -74,53 +83,130 @@ public class ControladorE implements KeyListener {
     }
 
     public void Registrar() {
-        if (validarCedulaRepetida(vista.getTxtCedula().getText()) == true) {
+        
+        if (!(vista.getTxtCedula().getText().isEmpty() || vista.getTxtNombre().getText().isEmpty()
+                || vista.getTxtApellido().getText().isEmpty() || vista.getCombo_Rol().getSelectedItem().equals("Seleccione")
+                || vista.getDateFecha().getDate() == null || vista.getTxtSalario().getText().isEmpty() || vista.getTxtPhone().getText().isEmpty()
+                || vista.getTxtCorreo().getText().isEmpty() || vista.getTxtDireccion().getText().isEmpty()
+                || vista.getTxtPassword().getText().isEmpty())) {
+            if (validarCedula(vista.getTxtCedula().getText()) == true) {
 
-            RolDao rol = new RolDao();
-            int rol_iid = rol.Ff(vista.getCombo_Rol().getSelectedItem().toString());
-            Empleado empl = new Empleado(Double.valueOf(vista.getTxtSalario().getText()), vista.getTxtPassword().getText(),
-                    rol_iid, vista.getTxtCedula().getText(), vista.getTxtNombre().getText(), vista.getTxtApellido().getText(),
-                    vista.getDateFecha().getDate(), vista.getTxtPhone().getText(), vista.getTxtCorreo().getText(), vista.getTxtDireccion().getText());
-            if (modelo.insert(empl)) {
-                JOptionPane.showMessageDialog(null, "Registro en la base de Datos");
+                if ((vista.getTxtNombre().getText().matches("^[A-Z].{3,25}$"))) {
 
-                cargaLista();
-                Limpiar();
-            } else {
-                System.out.println("No se creo Empleado");
+                    if ((vista.getTxtApellido().getText().matches("^[A-Z].{3,25}$"))) {
+
+                        if ((vista.getTxtSalario().getText().matches("[0-9]{3,4}"))) {
+
+                            if ((vista.getTxtPhone().getText().matches("^\\d{10}$"))) {
+
+                                if ((vista.getTxtCorreo().getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                                        + "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*"
+                                        + "(\\.[A-Za-z]{2,})$"))) {
+
+                                    if ((vista.getTxtDireccion().getText().matches("^[A-Za-z].{3,25}$"))) {
+
+                                        if ((vista.getTxtPassword().getText().matches("^(?=.*[0-9])"
+                                                + "(?=.*[a-z])(?=.*[A-Z])"
+                                                + "(?=.*[@#$%^&+=])"
+                                                + "(?=\\S+$).{8,20}$"))) {
+                                            if (validarCedula(vista.getTxtCedula().getText()) == true) {
+
+                                                int enviar = JOptionPane.showConfirmDialog(vista, "ESTA SEGURO DE GUARDAR ESTE DATO", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                                                if (enviar == JOptionPane.YES_NO_OPTION) {
+                                                    RolDao rol = new RolDao();
+                                                    int rol_iid = rol.Ff(vista.getCombo_Rol().getSelectedItem().toString());
+                                                    Empleado empl = new Empleado(Double.valueOf(vista.getTxtSalario().getText()), vista.getTxtPassword().getText(),
+                                                            rol_iid, vista.getTxtCedula().getText(), vista.getTxtNombre().getText(), vista.getTxtApellido().getText(),
+                                                            vista.getDateFecha().getDate(), vista.getTxtPhone().getText(), vista.getTxtCorreo().getText(), vista.getTxtDireccion().getText());
+                                                    if (modelo.insert(empl)) {
+                                                        JOptionPane.showMessageDialog(vista, "SE LOGRO GUARDAR EL DATO CON EXITO");
+                                                        cargaLista();
+                                                        Limpiar();
+                                                    } else {
+                                                        JOptionPane.showMessageDialog(vista, "NO SE LOGRO GUARDAR EL REGISTRO");
+
+                                                    }
+                                                }
+                                            }
+
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "Su contraseña debe de tener 1 letra mayuscula,1 letra minuscula,"
+                                                    + "1 numero, 1 caracter especial, minimo 8 caracteres");
+                                            JOptionPane.showMessageDialog(null, "Ejemplo:Geeks@portal20");
+
+                                        }
+
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "La Direccion debe de tener mas de 3 caracteres");
+
+                                    }
+
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Ejemplo de Correo: Manuelita7@hotmail.com");
+
+                                }
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "El numero de telefono debe de tener 10 digitos");
+
+                            }
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El Salario no debe decer mayor o menor a 3 digitos");
+
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Su Apellido debe de tener mas de 3 caracteres");
+
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Su Nombre debe de tener mas de 4 caracteres");
+
+                }
 
             }
-
+        } else {
+            Validacione_Campos();
         }
 
     }
 
     public void Modificar() {
-        Empleado empleado = new Empleado();
-        RolDao rol = new RolDao();
-        int rol_iid = rol.Ff(vista.getCombo_Rol().getSelectedItem().toString());
-        empleado.setNombre(vista.getTxtNombre().getText());
-        empleado.setApellido(vista.getTxtApellido().getText());
-        empleado.setFecha_nacimiento(vista.getDateFecha().getDate());
-        empleado.setNumero_telefono(vista.getTxtPhone().getText());
-        empleado.setCorreo(vista.getTxtCorreo().getText());
-        empleado.setDireccion(vista.getTxtDireccion().getText());
-        empleado.setSalario(Double.valueOf(vista.getTxtSalario().getText()));
-        empleado.setRol_id(rol_iid);
+        DefaultTableModel tblPersonas = (DefaultTableModel) vista.getTablaEmpleado().getModel();
+        int fila = vista.getTablaEmpleado().getSelectedRow();
+        if (fila != -1) {
+            Empleado empleado = new Empleado();
+            RolDao rol = new RolDao();
+            int rol_iid = rol.Ff(vista.getCombo_Rol().getSelectedItem().toString());
+            empleado.setNombre(vista.getTxtNombre().getText());
+            empleado.setApellido(vista.getTxtApellido().getText());
+            empleado.setFecha_nacimiento(vista.getDateFecha().getDate());
+            empleado.setNumero_telefono(vista.getTxtPhone().getText());
+            empleado.setCorreo(vista.getTxtCorreo().getText());
+            empleado.setDireccion(vista.getTxtDireccion().getText());
+            empleado.setSalario(Double.valueOf(vista.getTxtSalario().getText()));
+            empleado.setRol_id(rol_iid);
 
-        int resultado = JOptionPane.showConfirmDialog(vista, "ESTA SEGURO QUE LOS DATOS INGRESADOS SON CORRECTOS", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (resultado == JOptionPane.YES_NO_OPTION) {
-            if (modelo.ModificarT(empleado, vista.getTxtCedula().getText())) {
-                JOptionPane.showMessageDialog(vista, "SE LOGRO GRABAR EL DATO EN LA BDD");
-                Limpiar();
-                cargaLista();
-            } else {
-                JOptionPane.showMessageDialog(vista, "VALIENDO GASVER X¨D");
+            int resultado = JOptionPane.showConfirmDialog(vista, "ESTA SEGURO QUE LOS DATOS INGRESADOS SON CORRECTOS", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (resultado == JOptionPane.YES_NO_OPTION) {
+                if (modelo.ModificarT(empleado, vista.getTxtCedula().getText())) {
+                    JOptionPane.showMessageDialog(vista, "SE LOGRO GRABAR EL DATO EN LA BDD");
+                    Limpiar();
+                    cargaLista();
+                    vista.getTxtCedula().setEnabled(true);
+                    vista.getTxtPassword().setEnabled(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(vista, "NO SE LOGRO GRABAR EL DATO EN LA BDD");
+                }
             }
+        } else {
+            JOptionPane.showMessageDialog(vista, "DE PRIMERO CLICK ENCIMA EN ALGUNA PERSONA", "AVISO", 2);
+
         }
 
     }
-
 
     public void Eliminar() {
         DefaultTableModel tblPersonas = (DefaultTableModel) vista.getTablaEmpleado().getModel();
@@ -134,6 +220,9 @@ public class ControladorE implements KeyListener {
                     JOptionPane.showMessageDialog(vista, "SE LOGRO ELIMINAR DE LA BDD");
                     cargaLista();
                     Limpiar();
+                    vista.getTxtCedula().setEnabled(true);
+                    vista.getTxtPassword().setEnabled(true);
+
                 } else {
                     JOptionPane.showMessageDialog(vista, "hubo un error");
                 }
@@ -180,6 +269,8 @@ public class ControladorE implements KeyListener {
         vista.getTxtDireccion().setText("");
         vista.getCombo_Rol().setSelectedItem("Seleccione");
         ((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).setText(null);
+        vista.getLb4().setText("");
+
     }
 
     public void IncioControl() {
@@ -189,9 +280,14 @@ public class ControladorE implements KeyListener {
         vista.getBtnEliminar().addActionListener(l -> Eliminar());
 //        vista.getBtnBuscar().addActionListener(l -> Buscar());
         vista.getTxtCedula().addKeyListener(this);
+        vista.getDateFecha().addPropertyChangeListener(l -> ValidarCampoJcalendar());
+        vista.getCombo_Rol().addActionListener(l -> ValidacionDeCombobox());
         vista.getTxtNombre().addKeyListener(this);
         vista.getTxtApellido().addKeyListener(this);
         vista.getTxtPhone().addKeyListener(this);
+        vista.getTxtSalario().addKeyListener(this);
+        vista.getTxtDireccion().addKeyListener(this);
+        vista.getTxtPassword().addKeyListener(this);
         vista.getTxtCorreo().addKeyListener(this);
         vista.getTxtBuscar().addKeyListener(this);
         vista.getTablaEmpleado().addMouseListener(new MouseAdapter() {
@@ -208,31 +304,71 @@ public class ControladorE implements KeyListener {
                     vista.getCombo_Rol().setSelectedItem(vista.getTablaEmpleado().getValueAt(tabla, 7).toString());
                     vista.getTxtSalario().setText(vista.getTablaEmpleado().getValueAt(tabla, 9).toString());
                     vista.getTxtDireccion().setText(vista.getTablaEmpleado().getValueAt(tabla, 10).toString());
-//                    vista.getTxtPassword().setText(vista.getTablaEmpleado().getValueAt(tabla, 11).toString());
                     vista.getTxtCedula().setEnabled(false);
+                    vista.getTxtPassword().setEnabled(false);
+                    vista.getTxtPassword().setToolTipText("No se puede utilizar este Campo.!");
+                    vista.getTxtPassword().getToolTipText();
+                    vista.getTxtPassword().setBackground(Color.BLACK);
+                    Campos();
                 }
             }
         });
 
     }
 
-    private boolean validarCedulaRepetida(String cedula) {
+// Validaciones de Campos y Validacion de Cedula.?
+    private boolean validarCedula(String cedula) {
+        //Validar Cedula Duplicada//
         List<Empleado> empl = modelo.LeerT();
 
         for (int i = 0; i < empl.size(); i++) {
+
             if (empl.get(i).getCedula().equals(cedula)) {
                 JOptionPane.showMessageDialog(vista, "Esta cedula pertenece a una persona que ya ha sido registrada", "Advertencia!", 2);
                 return false;
             }
         }
-        if (vista.getTxtCedula().getText().matches("^\\d{10}")) {
-            return true;
 
-        } else {
-            JOptionPane.showMessageDialog(null, "La cedula tiene 10 digitos");
-            return false;
+        //Validar Cedula Ecuatoriana//
+        boolean cedulaCorrecta = false;
 
+        try {
+
+            if (cedula.length() == 10) {
+                int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
+                if (tercerDigito < 6) {
+                    int[] coefValCedula = {2, 1, 2, 1, 2, 1, 2, 1, 2};
+                    int verificador = Integer.parseInt(cedula.substring(9, 10));
+                    int suma = 0;
+                    int digito = 0;
+                    for (int i = 0; i < (cedula.length() - 1); i++) {
+                        digito = Integer.parseInt(cedula.substring(i, i + 1)) * coefValCedula[i];
+                        suma += ((digito % 10) + (digito / 10));
+                    }
+                    if ((suma % 10 == 0) && (suma % 10 == verificador)) {
+                        cedulaCorrecta = true;
+                    } else if ((10 - (suma % 10)) == verificador) {
+                        cedulaCorrecta = true;
+                    } else {
+                        cedulaCorrecta = false;
+                    }
+                } else {
+                    cedulaCorrecta = false;
+                }
+            } else {
+                cedulaCorrecta = false;
+            }
+        } catch (NumberFormatException nfe) {
+            cedulaCorrecta = false;
+        } catch (Exception err) {
+            JOptionPane.showMessageDialog(null, "Una excepcion ocurrio en el proceso de validadcion");
+            cedulaCorrecta = false;
         }
+
+        if (!cedulaCorrecta) {
+            JOptionPane.showMessageDialog(null, "La Cédula ingresada es Incorrecta");
+        }
+        return cedulaCorrecta;
 
     }
 
@@ -243,6 +379,116 @@ public class ControladorE implements KeyListener {
             String[] rolDatos = {ab.getEtiqueta()};
             vista.getCombo_Rol().addItem(rolDatos[0]);
         });
+
+    }
+
+    public void ValidacionDeCombobox() {
+        if (vista.getCombo_Rol().getSelectedIndex() > -1) {
+            String as = vista.getCombo_Rol().getSelectedItem().toString();
+
+            if (as.equals("Seleccione")) {
+                vista.getLb4().setText("Campos Requeridos.!");
+
+            } else {
+                vista.getLb4().setText("");
+
+            }
+        }
+    }
+
+    public void ValidarCampoJcalendar() {
+        if (vista.getDateFecha().getDate() == null) {
+            vista.getLb5().setText("");
+
+        } else {
+            vista.getLb5().setText("");
+        }
+
+    }
+
+    public void Campos() {
+        vista.getLb1().setText("");
+        vista.getLb2().setText("");
+        vista.getLb3().setText("");
+        vista.getLb4().setText("");
+        vista.getLb5().setText("");
+        vista.getLb6().setText("");
+        vista.getLb7().setText("");
+        vista.getLb8().setText("");
+        vista.getLb9().setText("");
+        vista.getLb10().setText("");
+
+    }
+
+    public void Validacione_Campos() {
+
+        if (!vista.getTxtCedula().getText().isEmpty()) {
+            vista.getLb1().setText("");
+        } else {
+            vista.getLb1().setText("Campos Requeridos.!");
+        }
+
+        if (!vista.getTxtNombre().getText().isEmpty()) {
+            vista.getLb2().setText("");
+
+        } else {
+            vista.getLb2().setText("Campos Requeridos.!");
+        }
+
+        if (!vista.getTxtApellido().getText().isEmpty()) {
+            vista.getLb3().setText("");
+
+        } else {
+            vista.getLb3().setText("Campos Requeridos.!");
+
+        }
+
+        if (!vista.getCombo_Rol().getSelectedItem().equals("Seleccione")) {
+            vista.getLb4().setText("");
+        } else {
+            vista.getLb4().setText("Campos Requeridos.!");
+
+        }
+        if (vista.getDateFecha().getDate() == null) {
+            vista.getLb5().setText("Campos Requeriidos.!");
+        } else {
+            vista.getLb5().setText("");
+
+        }
+        if (!vista.getTxtSalario().getText().isEmpty()) {
+            vista.getLb6().setText("");
+        } else {
+            vista.getLb6().setText("Campos Requeridos.!");
+
+        }
+
+        if (!vista.getTxtPhone().getText().isEmpty()) {
+            vista.getLb7().setText("");
+        } else {
+            vista.getLb7().setText("Campos Requeridos.!");
+
+        }
+
+        if (!vista.getTxtCorreo().getText().isEmpty()) {
+            vista.getLb8().setText("");
+        } else {
+            vista.getLb8().setText("Campos Requeridos.!");
+
+        }
+
+        if (!vista.getTxtDireccion().getText().isEmpty()) {
+            vista.getLb9().setText("");
+        } else {
+            vista.getLb9().setText("Campos Requeridos.!");
+
+        }
+
+        if (!vista.getTxtPassword().getText().isEmpty()) {
+            vista.getLb10().setText("");
+        } else {
+            vista.getLb10().setText("Campos Requeridos.!");
+
+        }
 
     }
 
@@ -270,13 +516,7 @@ public class ControladorE implements KeyListener {
                 e.consume();
             }
         }
-        if (e.getSource() == vista.getTxtCorreo()) {
-            char r = e.getKeyChar();
 
-            if (((Character.isDigit(r)))) {
-                e.consume();
-            }
-        }
         if (e.getSource() == vista.getTxtPhone()) {
             char c = e.getKeyChar();
             if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)
@@ -299,5 +539,73 @@ public class ControladorE implements KeyListener {
             Buscar();
 
         }
+
+        if (e.getSource() == vista.getTxtCedula()) {
+            if (!vista.getTxtCedula().getText().trim().equals("")) {
+                vista.getLb1().setText("");
+            } else {
+                vista.getLb1().setText("Campos Requeridos.!");
+            }
+        }
+        if (e.getSource() == vista.getTxtNombre()) {
+            if (!vista.getTxtNombre().getText().trim().equals("")) {
+                vista.getLb2().setText("");
+            } else {
+                vista.getLb2().setText("Campos Requeridos.!");
+            }
+
+        }
+        if (e.getSource() == vista.getTxtApellido()) {
+            if (!vista.getTxtApellido().getText().trim().equals("")) {
+                vista.getLb3().setText("");
+            } else {
+                vista.getLb3().setText("Campos Requeridos.!");
+            }
+
+        }
+
+        if (e.getSource() == vista.getTxtSalario()) {
+            if (!vista.getTxtSalario().getText().trim().equals("")) {
+                vista.getLb6().setText("");
+            } else {
+                vista.getLb6().setText("Campos Requeridos.!");
+            }
+
+        }
+        if (e.getSource() == vista.getTxtPhone()) {
+            if (!vista.getTxtPhone().getText().trim().equals("")) {
+                vista.getLb7().setText("");
+            } else {
+                vista.getLb7().setText("Campos Requeridos.!");
+            }
+
+        }
+        if (e.getSource() == vista.getTxtCorreo()) {
+            if (!vista.getTxtCorreo().getText().trim().equals("")) {
+                vista.getLb8().setText("");
+            } else {
+                vista.getLb8().setText("Campos Requeridos.!");
+            }
+
+        }
+        if (e.getSource() == vista.getTxtDireccion()) {
+            if (!vista.getTxtDireccion().getText().trim().equals("")) {
+                vista.getLb9().setText("");
+            } else {
+                vista.getLb9().setText("Campos Requeridos.!");
+            }
+
+        }
+
+        if (e.getSource() == vista.getTxtPassword()) {
+            if (!vista.getTxtPassword().getText().trim().equals("")) {
+                vista.getLb10().setText("");
+            } else {
+                vista.getLb10().setText("Campos Requeridos.!");
+            }
+
+        }
+
     }
+
 }

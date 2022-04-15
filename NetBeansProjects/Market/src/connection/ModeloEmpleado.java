@@ -91,7 +91,7 @@ public class ModeloEmpleado implements Crud<Empleado> {
                     + "p.birth,p.telefono,p.email,r.etiqueta,\n"
                     + "                    e.rol_id,e.salarios,p.direccion,\n"
                     + "                    e.contraseña from personas p, empleados e, roles r where p.dni=e.dni and\n"
-                    + "                    e.rol_id=r.rol_id and p.dni like lower('%"+codigo+"%');";
+                    + "                    e.rol_id=r.rol_id and p.dni like lower('%" + codigo + "%');";
             ResultSet rs = con.selectConsulta(sql);
 
             List<Empleado> em = new ArrayList<>();
@@ -136,20 +136,19 @@ public class ModeloEmpleado implements Crud<Empleado> {
     }
 
     @Override
-    public ArrayList<Empleado> registros() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public ResultSet pk(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException(""); 
+
     }
 
     @Override
     public void update(Empleado objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException(""); 
     }
 
-  
+    @Override
+    public ArrayList<Empleado> registros() {
+        throw new UnsupportedOperationException(""); 
+    }
 
 }

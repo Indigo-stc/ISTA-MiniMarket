@@ -16,10 +16,6 @@ import connection.ModeloCliente;
 import connection.ModeloEmpleado;
 import vista.PanelCliente;
 
-/**
- *
- * @author 59399
- */
 public class ControladorC implements KeyListener {
 
     ModeloCliente modelo = new ModeloCliente();
@@ -127,7 +123,6 @@ public class ControladorC implements KeyListener {
     }
 
     public void Limpiar() {
-
         vista.getTxtCedula().setText("");
         vista.getTxtNombre().setText("");
         vista.getTxtApellido().setText("");
@@ -140,7 +135,6 @@ public class ControladorC implements KeyListener {
 
     private boolean validarCedulaRepetida(String cedula) {
         List<Cliente> clie = modelo.LeerT();
-
         for (int i = 0; i < clie.size(); i++) {
             if (clie.get(i).getCedula().equals(cedula)) {
                 JOptionPane.showMessageDialog(vista, "Esta cedula pertenece a una persona que ya ha sido registrada", "Advertencia!", 2);
@@ -155,7 +149,6 @@ public class ControladorC implements KeyListener {
             return false;
 
         }
-
     }
 
     public void IncioControl() {
@@ -206,7 +199,6 @@ public class ControladorC implements KeyListener {
         }
         if (e.getSource() == vista.getTxtApellido()) {
             char r = e.getKeyChar();
-
             if (((Character.isDigit(r)))) {
                 e.consume();
             }
@@ -224,9 +216,7 @@ public class ControladorC implements KeyListener {
                     && (c != '.')) {
                 e.consume();
             }
-
         }
-
     }
 
     @Override

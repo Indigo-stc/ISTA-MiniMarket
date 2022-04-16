@@ -1,30 +1,33 @@
 package controlador;
 
-import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
-import javax.swing.SwingUtilities;
-import connection.ModeloCliente;
-import vista.Factura;
 import vista.MenuPricpal;
-import vista.PanelCliente;
-import vista.PanelEmpleado;
-import vista.PanelFactura;
-import vista.PanelProducto;
 import vista.PanelProveedor;
 
-/**
- *
- * @author 59399
- */
 public class ControladorM {
-//
 
-    private MenuPricpal vista;
+    private MenuPricpal vista = new MenuPricpal();
 
     public ControladorM() {
+        this.vista = vista;
+        Vista();
+        InicioControl();
     }
 
-    public ControladorM(MenuPricpal vista) {
+    public ControladorM(String etiqueta) {
+        if(etiqueta.equalsIgnoreCase("Administrador")){
+            vista.getBtnCambia().setEnabled(true);
+            vista.getBtnCliente().setEnabled(true); 
+            vista.getBtnFactura().setEnabled(true);
+            vista.getBtnProducto().setEnabled(true);
+            vista.getBtnProveedor().setEnabled(true);
+            vista.getBtnReportes().setEnabled(true);
+            vista.getBtnSalir().setEnabled(true);       
+        } else if(etiqueta.equalsIgnoreCase( "Cajero")){
+            vista.getBtnCliente().setEnabled(true);
+            vista.getBtnProducto().setEnabled(true);
+            vista.getBtnFactura().setEnabled(true);
+        }
         this.vista = vista;
         Vista();
         InicioControl();
@@ -65,7 +68,7 @@ public class ControladorM {
     }
 
     public void Producto() {
-        ProductoCtrl panelPdt = new ProductoCtrl();
+        ProductCtrl panelPdt = new ProductCtrl();
         vista.getPANELCAR().removeAll();
         vista.getPANELCAR().add(panelPdt.viewPdt);
         vista.getPANELCAR().repaint();
@@ -87,7 +90,11 @@ public class ControladorM {
         vista.getPANELCAR().add(controler.viewFact);
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
-
     }
+}   
 
+class Test {
+    public static void main(String[] args) {
+        ControladorM c = new ControladorM();
+    }
 }

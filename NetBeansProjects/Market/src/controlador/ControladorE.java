@@ -38,29 +38,12 @@ public class ControladorE implements KeyListener {
     PanelEmpleado vista = new PanelEmpleado();
 
     public ControladorE() {
-
         cargaLista();
         cbRoles();
         IncioControl();
         TextFantasma();
-
     }
 
-//    public void MODELO() {
-//        tabla_modelo.addColumn("Cedula");
-//        tabla_modelo.addColumn("Codigo");
-//        tabla_modelo.addColumn("Nombre");
-//        tabla_modelo.addColumn("Apellido");
-//        tabla_modelo.addColumn("Fecha_N");
-//        tabla_modelo.addColumn("Phone");
-//        tabla_modelo.addColumn("Correo");
-//        tabla_modelo.addColumn("Rol");
-//        tabla_modelo.addColumn("Salario");
-//        tabla_modelo.addColumn("Direccion");
-//        tabla_modelo.addColumn("Password");
-//        vista.getTablaEmpleado().setModel(tabla_modelo);
-//    }
-//
     public void TextFantasma() {
         MensajeFantasma m1 = new MensajeFantasma("Ditgite la Cedula", vista.getTxtCedula());
         MensajeFantasma m2 = new MensajeFantasma("Ditgite el Nombre ", vista.getTxtNombre());
@@ -169,7 +152,6 @@ public class ControladorE implements KeyListener {
     }
 
     public void Limpiar() {
-
         vista.getTxtCedula().setText("");
         vista.getTxtNombre().setText("");
         vista.getTxtApellido().setText("");

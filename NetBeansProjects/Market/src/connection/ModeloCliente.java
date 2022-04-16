@@ -17,7 +17,7 @@ public class ModeloCliente implements Crud<Cliente> {
     public List<Cliente> LeerT() {
         try {
             String sqlC = "select p.dni,c.cliente_id,p.nombre,p.apellido,p.birth,p.telefono,p.email,p.direccion from personas p,\n"
-                    + "clientes c where p.dni=c.dni;";
+                    + "clientes c where p.dni=c.dni and c.activo=true;";
             ResultSet rs = con.selectConsulta(sqlC);
             List<Cliente> cli = new ArrayList<>();
             while (rs.next()) {
@@ -42,22 +42,20 @@ public class ModeloCliente implements Crud<Cliente> {
 
     @Override
     public boolean delete(String codigo) {
-        String sql1 = "DELETE FROM public.personas\n"
-                + "	WHERE dni='" + codigo + "';";
 
-        String sql2 = "DELETE FROM public.clientes\n"
-                + "	WHERE dni='" + codigo + "';";
+        String sqlK="UPDATE public.clientes\n" +
+"	SET activo=false\n" +
+"	WHERE dni='"+codigo+"';";
 
-        String sqlC = sql2 + sql1;
-        return con.insertUpdateDelete(sqlC);
+        return con.insertUpdateDelete(sqlK);
     }
 
     @Override
     public List<Cliente> Buscar(String codigo) {
         try {
 
-            String sql = "select p.dni,c.cliente_id,p.nombre,p.apellido,p.birth,p.telefono,p.email,p.direccion from personas p,\n"
-                    + "clientes c where p.dni=c.dni and p.dni like lower('%" + codigo + "%');";
+            String sql = "select p.dni,c.cliente_id,p.nombre,p.apellido,p.birth,p.telefono,p.email,p.direccion from personas p,\n" +
+"	clientes c where p.dni=c.dni and p.dni like lower('%"+codigo+"%' and c.activo=true );";
             ResultSet rs = con.selectConsulta(sql);
             List<Cliente> cl = new ArrayList<>();
             while (rs.next()) {
@@ -92,8 +90,8 @@ public class ModeloCliente implements Crud<Cliente> {
                 + "', '" + cl.getDireccion() + "', '" + cl.getCorreo() + "');";
 
         String sqlC2 = "INSERT INTO public.clientes(\n"
-                + "	cliente_id, dni)\n"
-                + "	VALUES ('" + cl.getIdCliente() + "', '" + cl.getCedula() + "');";
+                + "	cliente_id, dni, activo)\n"
+                + "	VALUES ('" + cl.getIdCliente() + "', '" + cl.getCedula() + "',true);";
         String sql = sqlC1 + sqlC2;
         return con.insertUpdateDelete(sql);
     }
@@ -112,16 +110,16 @@ public class ModeloCliente implements Crud<Cliente> {
 
     @Override
     public ArrayList<Cliente> registros() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException(""); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public ResultSet pk(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException(""); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void update(Cliente objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException(""); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

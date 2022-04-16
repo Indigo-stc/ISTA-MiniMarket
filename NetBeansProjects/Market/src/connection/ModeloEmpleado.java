@@ -122,10 +122,10 @@ public class ModeloEmpleado implements Crud<Empleado> {
 
 //    @Override
     public boolean ModificarT(Empleado empl, String codigo) {
-        long form = empl.getFecha_nacimiento().getTime();
-        java.sql.Date fecha = new java.sql.Date(form);
+//        long form = empl.getFecha_nacimiento().getTime();
+//        java.sql.Date fecha = new java.sql.Date(form);
         String sql1 = "UPDATE public.personas\n"
-                + "	SET  nombre='" + empl.getNombre() + "', apellido='" + empl.getApellido() + "',  birth='" + fecha + "', telefono='" + empl.getNumero_telefono()
+                + "	SET  nombre='" + empl.getNombre() + "', apellido='" + empl.getApellido() + "', telefono='" + empl.getNumero_telefono()
                 + "', direccion='" + empl.getDireccion() + "', email='" + empl.getCorreo() + "'\n"
                 + "	WHERE dni='" + codigo + "';";
         String sql2 = "UPDATE public.empleados\n"

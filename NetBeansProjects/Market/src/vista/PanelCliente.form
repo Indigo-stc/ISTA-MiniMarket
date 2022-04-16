@@ -117,57 +117,52 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="DateFecha" pref="190" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                              <Component id="DateFecha" min="-2" pref="187" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="2" attributes="0">
-                                          <Component id="txtCedula" alignment="2" min="-2" pref="208" max="-2" attributes="0"/>
-                                          <Component id="txtNombre" alignment="2" min="-2" pref="206" max="-2" attributes="0"/>
-                                          <Component id="txtApellido" alignment="2" min="-2" pref="203" max="-2" attributes="0"/>
-                                          <Component id="txtPhone" alignment="2" min="-2" pref="219" max="-2" attributes="0"/>
-                                          <Component id="txtDireccion" alignment="2" min="-2" pref="224" max="-2" attributes="0"/>
-                                          <Component id="txtCorreo" alignment="2" min="-2" pref="218" max="-2" attributes="0"/>
-                                          <Component id="lb7" alignment="2" min="-2" pref="88" max="-2" attributes="0"/>
-                                          <Component id="lb5" alignment="2" min="-2" pref="88" max="-2" attributes="0"/>
-                                          <Component id="lb4" alignment="2" min="-2" pref="88" max="-2" attributes="0"/>
-                                          <Component id="lb3" alignment="2" min="-2" pref="88" max="-2" attributes="0"/>
-                                          <Component id="lb2" alignment="2" min="-2" pref="88" max="-2" attributes="0"/>
-                                          <Component id="lb1" alignment="2" min="-2" pref="88" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="lb6" min="-2" pref="88" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="btnLimpiar" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="btnRegistrar" min="-2" pref="100" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                          <Component id="btnEliminar" min="-2" pref="85" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                          <Component id="btnModificar" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="2" attributes="0">
+                                  <Component id="txtCedula" alignment="2" min="-2" pref="208" max="-2" attributes="0"/>
+                                  <Component id="txtNombre" alignment="2" min="-2" pref="206" max="-2" attributes="0"/>
+                                  <Component id="txtApellido" alignment="2" min="-2" pref="203" max="-2" attributes="0"/>
+                                  <Component id="txtPhone" alignment="2" min="-2" pref="219" max="-2" attributes="0"/>
+                                  <Component id="txtDireccion" alignment="2" min="-2" pref="224" max="-2" attributes="0"/>
+                                  <Component id="txtCorreo" alignment="2" min="-2" pref="218" max="-2" attributes="0"/>
+                                  <Component id="lb7" alignment="2" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="lb5" alignment="2" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="lb4" alignment="2" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="lb3" alignment="2" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="lb2" alignment="2" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="lb1" alignment="2" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lb6" min="-2" pref="88" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="btnLimpiar" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="btnRegistrar" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  <Component id="btnEliminar" min="-2" pref="85" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="btnModificar" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

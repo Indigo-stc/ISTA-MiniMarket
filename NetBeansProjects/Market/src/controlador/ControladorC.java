@@ -60,65 +60,66 @@ public class ControladorC implements KeyListener {
                 || vista.getDateFecha().getDate() == null || vista.getTxtPhone().getText().isEmpty()
                 || vista.getTxtCorreo().getText().isEmpty() || vista.getTxtDireccion().getText().isEmpty())) {
             if (validarCedula(vista.getTxtCedula().getText()) == true) {
+                if (CedulaE(vista.getTxtCedula().getText()) == true) {
+//
+//                    if ((vista.getTxtNombre().getText().matches("^[A-Za-z].{3,25}$"))) {
+//
+//                        if ((vista.getTxtApellido().getText().matches("^[A-Za-z].{3,25}$"))) {
+//
+//                            if ((vista.getTxtPhone().getText().matches("^\\d{10}$"))) {
+//
+//                                if ((vista.getTxtCorreo().getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+//                                        + "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*"
+//                                        + "(\\.[A-Za-z]{2,})$"))) {
+//
+//                                    if ((vista.getTxtDireccion().getText().matches("^[A-Za-z].{3,25}$"))) {
 
-                if ((vista.getTxtNombre().getText().matches("^[A-Za-z].{3,25}$"))) {
+                                        int enviar = JOptionPane.showConfirmDialog(vista, "ESTA SEGURO DE GUARDAR ESTE DATO", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                                        if (enviar == JOptionPane.YES_NO_OPTION) {
+                                            Cliente cl = new Cliente(vista.getTxtCedula().getText(), vista.getTxtNombre().getText(),
+                                                    vista.getTxtApellido().getText(), vista.getDateFecha().getDate(),
+                                                    vista.getTxtPhone().getText(), vista.getTxtCorreo().getText(), vista.getTxtDireccion().getText());
+                                            ModeloCliente md = new ModeloCliente();
+                                            if (md.insert(cl)) {
+                                                JOptionPane.showMessageDialog(vista, "SE LOGRO GUARDAR EL DATO CON EXITO");
+                                                cargaLista();
+                                                Limpiar();
+                                            } else {
+                                                JOptionPane.showMessageDialog(vista, "NO SE LOGRO GUARDAR EL REGISTRO");
 
-                    if ((vista.getTxtApellido().getText().matches("^[A-Za-z].{3,25}$"))) {
-
-                        if ((vista.getTxtPhone().getText().matches("^\\d{10}$"))) {
-
-                            if ((vista.getTxtCorreo().getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                                    + "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*"
-                                    + "(\\.[A-Za-z]{2,})$"))) {
-
-                                if ((vista.getTxtDireccion().getText().matches("^[A-Za-z].{3,25}$"))) {
-
-                                    int enviar = JOptionPane.showConfirmDialog(vista, "ESTA SEGURO DE GUARDAR ESTE DATO", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                                    if (enviar == JOptionPane.YES_NO_OPTION) {
-                                        Cliente cl = new Cliente(vista.getTxtCedula().getText(), vista.getTxtNombre().getText(),
-                                                vista.getTxtApellido().getText(), vista.getDateFecha().getDate(),
-                                                vista.getTxtPhone().getText(), vista.getTxtCorreo().getText(), vista.getTxtDireccion().getText());
-                                        ModeloCliente md = new ModeloCliente();
-                                        if (md.insert(cl)) {
-                                            JOptionPane.showMessageDialog(vista, "SE LOGRO GUARDAR EL DATO CON EXITO");
-                                            cargaLista();
-                                            Limpiar();
-                                        } else {
-                                            JOptionPane.showMessageDialog(vista, "NO SE LOGRO GUARDAR EL REGISTRO");
-
+                                            }
                                         }
-                                    }
 
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "La Direccion debe de tener mas de 3 caracteres");
+//                                    } else {
+//                                        JOptionPane.showMessageDialog(null, "La Direccion debe de tener mas de 3 caracteres");
+//
+//                                    }
+//
+//                                } else {
+//                                    JOptionPane.showMessageDialog(null, "Ejemplo de Correo: Manuelita7@hotmail.com");
+//
+//                                }
+//
+//                            } else {
+//                                JOptionPane.showMessageDialog(null, "El numero de telefono debe de tener 10 digitos");
+//
+//                            }
 
-                                }
-
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Ejemplo de Correo: Manuelita7@hotmail.com");
-
-                            }
-
-                        } else {
-                            JOptionPane.showMessageDialog(null, "El numero de telefono debe de tener 10 digitos");
-
-                        }
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Su Apellido debe de tener mas de 3 caracteres");
-
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Su Nombre debe de tener mas de 3 caracteres");
-
+//                        } else {
+//                            JOptionPane.showMessageDialog(null, "Su Apellido debe de tener mas de 3 caracteres");
+//
+//                        }
+//                    } else {
+//                        JOptionPane.showMessageDialog(null, "Su Nombre debe de tener mas de 3 caracteres");
+//
+//                    }
                 }
 
             }
-
         } else {
+            Validacione_Campos();
 
         }
-        Validacione_Campos();
 
     }
 
@@ -131,18 +132,17 @@ public class ControladorC implements KeyListener {
                     || vista.getTxtApellido().getText().isEmpty()
                     || vista.getTxtPhone().getText().isEmpty()
                     || vista.getTxtCorreo().getText().isEmpty() || vista.getTxtDireccion().getText().isEmpty())) {
-                if ((vista.getTxtNombre().getText().matches("^[A-Za-z].{3,25}$"))) {
+//                if ((vista.getTxtNombre().getText().matches("^[A-Za-z].{3,25}$"))) {
 
-                    if ((vista.getTxtApellido().getText().matches("^[A-Za-z].{3,25}$"))) {
+//                    if ((vista.getTxtApellido().getText().matches("^[A-Za-z].{3,25}$"))) {
 
-                        if ((vista.getTxtPhone().getText().matches("^\\d{10}$"))) {
+//                        if ((vista.getTxtPhone().getText().matches("^\\d{10}$"))) {
 
-                            if ((vista.getTxtCorreo().getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                                    + "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*"
-                                    + "(\\.[A-Za-z]{2,})$"))) {
+//                            if ((vista.getTxtCorreo().getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+//                                    + "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*"
+//                                    + "(\\.[A-Za-z]{2,})$"))) {
 
-                                if ((vista.getTxtDireccion().getText().matches("^[A-Za-z].{3,25}$"))) {
-
+//                                if ((vista.getTxtDireccion().getText().matches("^[A-Za-z].{3,25}$"))) {
                                     Cliente mdc = new Cliente();
                                     mdc.setNombre(vista.getTxtNombre().getText());
                                     mdc.setApellido(vista.getTxtApellido().getText());
@@ -157,41 +157,42 @@ public class ControladorC implements KeyListener {
                                             cargaLista();
                                             Limpiar();
                                             vista.getTxtCedula().setEnabled(true);
+                                            vista.getDateFecha().setEnabled(true);
 
                                         } else {
                                             JOptionPane.showMessageDialog(vista, "NO SE LOGRO GRABAR EL REGISTRO");
                                         }
                                     }
 
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "La Direccion debe de tener mas de 3 caracteres");
+//                                } else {
+//                                    JOptionPane.showMessageDialog(null, "La Direccion debe de tener mas de 3 caracteres");
+//
+//                                }
 
-                                }
+//                            } else {
+//                                JOptionPane.showMessageDialog(null, "Ejemplo de Correo: Manuelita7@hotmail.com");
+//
+//                            }
 
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Ejemplo de Correo: Manuelita7@hotmail.com");
+//                        } else {
+//                            JOptionPane.showMessageDialog(null, "El numero de telefono debe de tener 10 digitos");
+//
+//                        }
 
-                            }
-
-                        } else {
-                            JOptionPane.showMessageDialog(null, "El numero de telefono debe de tener 10 digitos");
-
-                        }
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Su Apellido debe de tener mas de 3 caracteres");
-
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Su Nombre debe de tener mas de 3 caracteres");
-
-                }
+//                    } else {
+//                        JOptionPane.showMessageDialog(null, "Su Apellido debe de tener mas de 3 caracteres");
+//
+//                    }
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Su Nombre debe de tener mas de 3 caracteres");
+//
+//                }
             } else {
-                Validacione_Campos();
+//                Validacione_Campos();
             }
 
         } else {
-            JOptionPane.showMessageDialog(vista, "DE PRIMERO CLICK ENCIMA EN ALGUNA PERSONA", "AVISO", 2);
+            JOptionPane.showMessageDialog(vista, "DE PRIMERO CLICK ENCIMA EN ALGUN CLIENTE Y LUEGO MODIFICAR", "AVISO", 2);
 
         }
 
@@ -222,13 +223,14 @@ public class ControladorC implements KeyListener {
                     cargaLista();
                     Limpiar();
                     vista.getTxtCedula().setEnabled(true);
+                    vista.getDateFecha().setEnabled(true);
 
                 } else {
                     JOptionPane.showMessageDialog(vista, "hubo un error");
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(vista, "DE PRIMERO CLICK ENCIMA EN ALGUNA PERSONA Y LUEGO EN ELIMINAR", "AVISO", 2);
+            JOptionPane.showMessageDialog(vista, "DE PRIMERO CLICK ENCIMA EN ALGUN CLIENTE Y LUEGO EN ELIMINAR", "AVISO", 2);
         }
     }
 
@@ -242,10 +244,16 @@ public class ControladorC implements KeyListener {
         vista.getTxtPhone().setText("");
         vista.getTxtDireccion().setText("");
         ((JTextField) vista.getDateFecha().getDateEditor().getUiComponent()).setText(null);
+        vista.getTxtCedula().setEnabled(true);
+        vista.getDateFecha().setEnabled(true);
+
+        Campos();
 
     }
 
-    private boolean validarCedula(String cedula) {
+    public boolean CedulaE(String cedula) {
+        
+        
         List<Cliente> clie = modelo.LeerT();
 
         for (int i = 0; i < clie.size(); i++) {
@@ -254,6 +262,23 @@ public class ControladorC implements KeyListener {
                 return false;
             }
         }
+        
+        ModeloEmpleado mdEmpleado = new ModeloEmpleado();
+        List<Empleado> empl = mdEmpleado.LeerT();
+        for (int i = 0; i < empl.size(); i++) {
+            if (empl.get(i).getCedula().equals(cedula)) {
+                JOptionPane.showMessageDialog(vista, "POR RESTRINCION DE LA EMPRESA EL EMPLEADO NO PUEDE SER REGISTRADO EN ESTE FORMULARIO", "Advertencia!", 2);
+
+                return false;
+            }
+
+        }
+        return true;
+    }
+
+    private boolean validarCedula(String cedula) {
+
+        
         //Validar Cedula Ecuatoriana//
         boolean cedulaCorrecta = false;
 
@@ -322,6 +347,7 @@ public class ControladorC implements KeyListener {
                     vista.getTxtCorreo().setText(vista.getTablaCliente().getValueAt(tabla, 6).toString());
                     vista.getTxtDireccion().setText(vista.getTablaCliente().getValueAt(tabla, 7).toString());
                     vista.getTxtCedula().setEnabled(false);
+                    vista.getDateFecha().setEnabled(false);
                     Campos();
 
                 }
@@ -330,7 +356,7 @@ public class ControladorC implements KeyListener {
 
     }
 
-    //Validaciones
+
     public void Campos() {
         vista.getLb1().setText("");
         vista.getLb2().setText("");
@@ -351,6 +377,8 @@ public class ControladorC implements KeyListener {
         }
 
     }
+
+   
 
     public void Validacione_Campos() {
 
@@ -453,6 +481,7 @@ public class ControladorC implements KeyListener {
             Buscar();
 
         }
+
         if (e.getSource() == vista.getTxtCedula()) {
             if (!vista.getTxtCedula().getText().trim().equals("")) {
                 vista.getLb1().setText("");
@@ -460,6 +489,7 @@ public class ControladorC implements KeyListener {
                 vista.getLb1().setText("Campos Requeridos.!");
             }
         }
+
         if (e.getSource() == vista.getTxtNombre()) {
             if (!vista.getTxtNombre().getText().trim().equals("")) {
                 vista.getLb2().setText("");

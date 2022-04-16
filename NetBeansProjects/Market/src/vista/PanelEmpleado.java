@@ -141,6 +141,8 @@ public class PanelEmpleado extends javax.swing.JPanel {
 
         txtCorreo.setMinimumSize(new java.awt.Dimension(70, 22));
 
+        DateFecha.setToolTipText("");
+
         Combo_Rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
 
         btnAceptar.setText("ACEPTAR");

@@ -17,12 +17,12 @@ public class Conexion {
     private java.sql.Statement st;
     private ResultSet rs;
 
-    private String cadenaConexion = "jdbc:postgresql://ec2-18-215-96-22.compute-1.amazonaws.com:5432/dbovoaa0p6055l";
-    private String usuarioPG = "ygorrnpmhavwkp";
-    private String contrasenia = "e1362121236c8dadbcb5ef14e229d71e3dbe9aa62753e18688dd4bf25cd3bb8c";
-//    private String cadenaConexion = "jdbc:postgresql://localhost:5432/Proyecto_MK";
-//    private String usuarioPG = "postgres";
-//    private String contrasenia = "1234";
+//    private String cadenaConexion = "jdbc:postgresql://ec2-18-215-96-22.compute-1.amazonaws.com:5432/dbovoaa0p6055l";
+//    private String usuarioPG = "ygorrnpmhavwkp";
+//    private String contrasenia = "e1362121236c8dadbcb5ef14e229d71e3dbe9aa62753e18688dd4bf25cd3bb8c";
+    private String cadenaConexion = "jdbc:postgresql://localhost:5432/MiniMarket";
+    private String usuarioPG = "postgres";
+    private String contrasenia = "root";
 
     public  Conexion() {
 
@@ -55,9 +55,10 @@ public class Conexion {
         try {
             st = con.createStatement();
             rs = st.executeQuery(sql);
+            System.out.println(sql);
             return rs;
         } catch (SQLException e) {
-            System.out.println("EXE");
+            System.out.println(sql);
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
             return null;
         }
@@ -68,9 +69,10 @@ public class Conexion {
             st = con.createStatement();
             boolean rb = st.execute(sqla);
             st.close();
+            System.out.println(sqla);
             return true;
         } catch (SQLException ex) {
-            System.out.println("EXEPCION");
+            System.out.println(sqla);
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }

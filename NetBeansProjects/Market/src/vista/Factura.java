@@ -3,7 +3,6 @@ package vista;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -28,53 +27,45 @@ public class Factura extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         blEstado1 = new javax.swing.JLabel();
         btnAgregarPersoD = new javax.swing.JButton();
-        Titulo_fac = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         Titulo_factura = new javax.swing.JLabel();
-        lblnumfac = new javax.swing.JLabel();
-        lblfecha = new javax.swing.JLabel();
-        lblnumfacV = new javax.swing.JLabel();
         lblfechaV = new javax.swing.JLabel();
-        Datos_productos = new javax.swing.JPanel();
-        tituloProductos = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txt_idproducto = new javax.swing.JTextField();
-        spinnetcant = new javax.swing.JSpinner();
-        btn_agregar = new javax.swing.JButton();
-        btn_quitar = new javax.swing.JButton();
-        panelproductos = new javax.swing.JPanel();
-        pro1 = new javax.swing.JButton();
-        pro2 = new javax.swing.JButton();
-        pro3 = new javax.swing.JButton();
-        pro4 = new javax.swing.JButton();
-        pro5 = new javax.swing.JButton();
-        pro6 = new javax.swing.JButton();
-        pro7 = new javax.swing.JButton();
-        pro8 = new javax.swing.JButton();
-        CantidadProductos = new javax.swing.JLabel();
-        Datos_cliente = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        lblfecha = new javax.swing.JLabel();
+        lblnumfac = new javax.swing.JLabel();
+        lblnumfacV = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnConsumidorF = new javax.swing.JButton();
+        txt_telefono = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txt_apellidos = new javax.swing.JTextField();
+        txt_nombres = new javax.swing.JTextField();
+        txt_cedula = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        txt_cedula = new javax.swing.JTextField();
-        txt_nombres = new javax.swing.JTextField();
-        txt_apellidos = new javax.swing.JTextField();
-        txt_telefono = new javax.swing.JTextField();
-        txt_subtotal = new javax.swing.JTextField();
-        txt_total = new javax.swing.JTextField();
-        txt_iva = new javax.swing.JTextField();
-        btn_buscar = new javax.swing.JButton();
-        btn_guardar = new javax.swing.JButton();
-        btn_cancelar = new javax.swing.JButton();
-        btn_imprimir = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        lblvrfTelefono = new javax.swing.JLabel();
+        lblvrfcedula = new javax.swing.JLabel();
+        lblvrfnombre = new javax.swing.JLabel();
+        lblvrfapellido = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        tituloProductos = new javax.swing.JLabel();
+        txt_idproducto = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        spinnetcant = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_factura = new javax.swing.JTable();
-        btnConsumidorF = new javax.swing.JButton();
+        btn_imprimir = new javax.swing.JButton();
+        btn_cancelar = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txt_subtotal = new javax.swing.JTextField();
+        txt_iva = new javax.swing.JTextField();
+        txt_total = new javax.swing.JTextField();
+        btn_quitar = new javax.swing.JButton();
+        btn_agregar = new javax.swing.JButton();
 
         jLabel11.setText("Buscar");
 
@@ -155,220 +146,115 @@ public class Factura extends javax.swing.JPanel {
                 .addComponent(blEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        Titulo_factura.setText("FACTURA");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblnumfac.setText("N° FACT:");
-
-        lblfecha.setText("FECHA:");
+        Titulo_factura.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        Titulo_factura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Titulo_factura.setText("JACKS");
 
         lblfechaV.setText(" ");
 
-        javax.swing.GroupLayout Titulo_facLayout = new javax.swing.GroupLayout(Titulo_fac);
-        Titulo_fac.setLayout(Titulo_facLayout);
-        Titulo_facLayout.setHorizontalGroup(
-            Titulo_facLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Titulo_facLayout.createSequentialGroup()
-                .addGroup(Titulo_facLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Titulo_facLayout.createSequentialGroup()
-                        .addGap(378, 378, 378)
-                        .addComponent(Titulo_factura, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblnumfac, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Titulo_facLayout.createSequentialGroup()
-                        .addGap(560, 560, 560)
-                        .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        lblfecha.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblfecha.setText("FECHA:");
+
+        lblnumfac.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblnumfac.setText("N° FACT:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(lblnumfac, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(Titulo_facLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblnumfacV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblfechaV, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        Titulo_facLayout.setVerticalGroup(
-            Titulo_facLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Titulo_facLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Titulo_facLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Titulo_facLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(lblnumfacV, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Titulo_facLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Titulo_factura, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblnumfac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(lblnumfacV, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(Titulo_factura, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(Titulo_facLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblfechaV, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lblfechaV, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(Titulo_factura, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblnumfacV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblfechaV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblnumfac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        Datos_productos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 970, 80));
 
-        tituloProductos.setText("Productos");
-        Datos_productos.add(tituloProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 69, 26));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("ID Producto");
-        Datos_productos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 70, 25));
-
-        jLabel5.setText("Cantidad:");
-        Datos_productos.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 70, 30));
-        Datos_productos.add(txt_idproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 150, -1));
-        Datos_productos.add(spinnetcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 60, 30));
-
-        btn_agregar.setText("Agregar");
-        Datos_productos.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 90, 30));
-
-        btn_quitar.setText("Quitar");
-        btn_quitar.addActionListener(new java.awt.event.ActionListener() {
+        btnConsumidorF.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnConsumidorF.setText("Consumidor Final");
+        btnConsumidorF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_quitarActionPerformed(evt);
+                btnConsumidorFActionPerformed(evt);
             }
         });
-        Datos_productos.add(btn_quitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 90, 30));
+        jPanel2.add(btnConsumidorF, new org.netbeans.lib.awtextra.AbsoluteConstraints(794, 63, 167, 40));
+        jPanel2.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(586, 79, 190, -1));
 
-        panelproductos.setBackground(new java.awt.Color(235, 235, 246));
-
-        pro1.setBorder(null);
-        pro1.setContentAreaFilled(false);
-
-        pro2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        pro2.setContentAreaFilled(false);
-
-        pro3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        pro3.setContentAreaFilled(false);
-
-        pro4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        pro4.setContentAreaFilled(false);
-
-        pro5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        pro5.setContentAreaFilled(false);
-
-        pro6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        pro6.setContentAreaFilled(false);
-
-        pro7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        pro7.setContentAreaFilled(false);
-
-        pro8.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        pro8.setContentAreaFilled(false);
-
-        javax.swing.GroupLayout panelproductosLayout = new javax.swing.GroupLayout(panelproductos);
-        panelproductos.setLayout(panelproductosLayout);
-        panelproductosLayout.setHorizontalGroup(
-            panelproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelproductosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelproductosLayout.createSequentialGroup()
-                        .addComponent(pro1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pro2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pro3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pro4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelproductosLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(pro5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pro6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pro7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pro8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelproductosLayout.setVerticalGroup(
-            panelproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelproductosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pro1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pro2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pro3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pro4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelproductosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(pro5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelproductosLayout.createSequentialGroup()
-                        .addGroup(panelproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pro7, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pro8, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pro6, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
-        Datos_productos.add(panelproductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
-        Datos_productos.add(CantidadProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 90, 30));
-
-        Datos_cliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setText("Datos Cliente");
-        Datos_cliente.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 6, -1, -1));
-
-        jLabel7.setText("Cedula:");
-        Datos_cliente.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 53, 24));
-
-        jLabel8.setText("Nombres:");
-        Datos_cliente.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
-
-        jLabel9.setText("Apellidos:");
-        Datos_cliente.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
-
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel10.setText("Telefono:");
-        Datos_cliente.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
-
-        jLabel12.setText("Sub Total:");
-        Datos_cliente.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, -1, -1));
-
-        jLabel13.setText("IVA 12%:");
-        Datos_cliente.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, -1, -1));
-
-        jLabel14.setText("TOTAL:");
-        Datos_cliente.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, -1));
-        Datos_cliente.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 150, -1));
-        Datos_cliente.add(txt_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 150, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(646, 49, -1, -1));
 
         txt_apellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_apellidosActionPerformed(evt);
             }
         });
-        Datos_cliente.add(txt_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 150, -1));
-        Datos_cliente.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 150, -1));
+        jPanel2.add(txt_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 79, 180, -1));
+        jPanel2.add(txt_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 79, 180, -1));
+        jPanel2.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 79, 190, -1));
 
-        txt_subtotal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_subtotalActionPerformed(evt);
-            }
-        });
-        Datos_cliente.add(txt_subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 122, -1));
-        Datos_cliente.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 122, -1));
-        Datos_cliente.add(txt_iva, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 122, -1));
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel7.setText("Cedula:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 49, 53, 24));
 
-        btn_buscar.setText("Buscar");
-        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarActionPerformed(evt);
-            }
-        });
-        Datos_cliente.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel8.setText("Nombres:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 49, -1, -1));
 
-        btn_guardar.setText("Guardar");
-        Datos_cliente.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 80, -1));
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel9.setText("Apellidos:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 49, -1, -1));
 
-        btn_cancelar.setText("Cancelar");
-        Datos_cliente.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 80, -1));
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setText("Datos Cliente");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 18, 140, -1));
+        jPanel2.add(lblvrfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 170, 30));
+        jPanel2.add(lblvrfcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 170, 30));
+        jPanel2.add(lblvrfnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 170, 30));
+        jPanel2.add(lblvrfapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 160, 30));
 
-        btn_imprimir.setText("Imprimir");
-        btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_imprimirActionPerformed(evt);
-            }
-        });
-        Datos_cliente.add(btn_imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 80, -1));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 980, 150));
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tituloProductos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        tituloProductos.setText("Productos");
+        jPanel3.add(tituloProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 0, 110, 26));
+        jPanel3.add(txt_idproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 52, 360, -1));
+
+        jLabel2.setText("ID Producto");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 52, 70, 25));
+
+        jLabel5.setText("Cantidad:");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 52, 70, 30));
+        jPanel3.add(spinnetcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 52, 60, 30));
 
         tbl_factura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -380,60 +266,83 @@ public class Factura extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbl_factura);
 
-        Datos_cliente.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 420, 143));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 100, 570, 143));
 
-        btnConsumidorF.setText("Consumidor Final");
-        Datos_cliente.add(btnConsumidorF, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
+        btn_imprimir.setText("Imprimir");
+        btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_imprimirActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 275, 110, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(Datos_productos, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(Datos_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo_fac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo_fac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Datos_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Datos_productos, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 8, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        btn_cancelar.setText("Cancelar");
+        jPanel3.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 275, 110, 40));
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel14.setText("TOTAL:");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 203, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel13.setText("IVA 12%:");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 143, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel12.setText("Sub Total:");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 93, 90, -1));
+
+        txt_subtotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_subtotalActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txt_subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 93, 180, -1));
+        jPanel3.add(txt_iva, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 133, 180, 40));
+
+        txt_total.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_totalActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 193, 180, 50));
+
+        btn_quitar.setText("-");
+        btn_quitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_quitarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_quitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 90, 40));
+
+        btn_agregar.setText("+");
+        jPanel3.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(591, 127, 90, 40));
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1000, 340));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_quitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quitarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_quitarActionPerformed
 
-    private void txt_apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apellidosActionPerformed
+    private void btnConsumidorFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsumidorFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_apellidosActionPerformed
+    }//GEN-LAST:event_btnConsumidorFActionPerformed
+
+    private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_imprimirActionPerformed
 
     private void txt_subtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_subtotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_subtotalActionPerformed
 
-    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+    private void txt_apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apellidosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_buscarActionPerformed
+    }//GEN-LAST:event_txt_apellidosActionPerformed
 
-    private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
+    private void txt_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_totalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_imprimirActionPerformed
+    }//GEN-LAST:event_txt_totalActionPerformed
 
     public JLabel getBlEstado1() {
         return blEstado1;
@@ -467,14 +376,6 @@ public class Factura extends javax.swing.JPanel {
         this.btn_agregar = btn_agregar;
     }
 
-    public JButton getBtn_buscar() {
-        return btn_buscar;
-    }
-
-    public void setBtn_buscar(JButton btn_buscar) {
-        this.btn_buscar = btn_buscar;
-    }
-
     public JButton getBtn_cancelar() {
         return btn_cancelar;
     }
@@ -483,13 +384,6 @@ public class Factura extends javax.swing.JPanel {
         this.btn_cancelar = btn_cancelar;
     }
 
-    public JButton getBtn_guardar() {
-        return btn_guardar;
-    }
-
-    public void setBtn_guardar(JButton btn_guardar) {
-        this.btn_guardar = btn_guardar;
-    }
 
     public JButton getBtn_imprimir() {
         return btn_imprimir;
@@ -546,70 +440,6 @@ public class Factura extends javax.swing.JPanel {
 
     public void setLblnumfacV(JLabel lblnumfacV) {
         this.lblnumfacV = lblnumfacV;
-    }
-
-    public JButton getPro1() {
-        return pro1;
-    }
-
-    public void setPro1(JButton pro1) {
-        this.pro1 = pro1;
-    }
-
-    public JButton getPro2() {
-        return pro2;
-    }
-
-    public void setPro2(JButton pro2) {
-        this.pro2 = pro2;
-    }
-
-    public JButton getPro3() {
-        return pro3;
-    }
-
-    public void setPro3(JButton pro3) {
-        this.pro3 = pro3;
-    }
-
-    public JButton getPro4() {
-        return pro4;
-    }
-
-    public void setPro4(JButton pro4) {
-        this.pro4 = pro4;
-    }
-
-    public JButton getPro5() {
-        return pro5;
-    }
-
-    public void setPro5(JButton pro5) {
-        this.pro5 = pro5;
-    }
-
-    public JButton getPro6() {
-        return pro6;
-    }
-
-    public void setPro6(JButton pro6) {
-        this.pro6 = pro6;
-    }
-
-    public JButton getPro7() {
-        return pro7;
-    }
-
-    public void setPro7(JButton pro7) {
-        this.pro7 = pro7;
-    }
-
-    public JButton getPro8() {
-        return pro8;
-    }
-
-    public void setPro8(JButton pro8) {
-        this.pro8 = pro8;
     }
 
     public JTable getTblPersonas2() {
@@ -717,32 +547,19 @@ public class Factura extends javax.swing.JPanel {
         this.spinnetcant = spinnetcant;
     }
 
-    public JLabel getCantidadProductos() {
-        return CantidadProductos;
-    }
-
-    public void setCantidadProductos(JLabel CantidadProductos) {
-        this.CantidadProductos = CantidadProductos;
-    }
 
     
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CantidadProductos;
-    private javax.swing.JPanel Datos_cliente;
-    private javax.swing.JPanel Datos_productos;
-    private javax.swing.JPanel Titulo_fac;
     private javax.swing.JLabel Titulo_factura;
     private javax.swing.JLabel blEstado1;
     private javax.swing.JButton btnActualizar1;
     private javax.swing.JButton btnAgregarPersoD;
     public javax.swing.JButton btnConsumidorF;
     public javax.swing.JButton btn_agregar;
-    public javax.swing.JButton btn_buscar;
     public javax.swing.JButton btn_cancelar;
-    public javax.swing.JButton btn_guardar;
     public javax.swing.JButton btn_imprimir;
     public javax.swing.JButton btn_quitar;
     private javax.swing.JDialog dlgPersona;
@@ -758,22 +575,20 @@ public class Factura extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblfecha;
-    private javax.swing.JLabel lblfechaV;
+    public javax.swing.JLabel lblfechaV;
     private javax.swing.JLabel lblnumfac;
-    private javax.swing.JLabel lblnumfacV;
-    private javax.swing.JPanel panelproductos;
-    private javax.swing.JButton pro1;
-    private javax.swing.JButton pro2;
-    private javax.swing.JButton pro3;
-    private javax.swing.JButton pro4;
-    private javax.swing.JButton pro5;
-    private javax.swing.JButton pro6;
-    private javax.swing.JButton pro7;
-    private javax.swing.JButton pro8;
+    public javax.swing.JLabel lblnumfacV;
+    public javax.swing.JLabel lblvrfTelefono;
+    public javax.swing.JLabel lblvrfapellido;
+    public javax.swing.JLabel lblvrfcedula;
+    public javax.swing.JLabel lblvrfnombre;
     public javax.swing.JSpinner spinnetcant;
     private javax.swing.JTable tblPersonas2;
     public javax.swing.JTable tbl_factura;

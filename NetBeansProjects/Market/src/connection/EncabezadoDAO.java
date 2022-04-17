@@ -3,22 +3,15 @@ package connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Cliente;
 import modelo.Encabezado;
 
-public class EncabezadoDAO extends Encabezado {
+public class EncabezadoDAO implements Crud{
 
     Conexion con = new Conexion(); // intancia de la clase conexionpg
-
-    
-
-    public EncabezadoDAO(String codigoEncabezado, String cedula, Date fechaEncabezado) {
-        super(codigoEncabezado, cedula, fechaEncabezado);
-    }
-
     public int idEncabezado_Factura() {
 
         String num = null;
@@ -39,43 +32,44 @@ public class EncabezadoDAO extends Encabezado {
         }
     }
 
-//    public List<Encabezado> listar(String buscar) {
-//        try {
-//            List<Encabezado> lista = new ArrayList<Encabezado>(); // creacion de la lista (es un array list)
-//
-//            String sql = "select * from detallefactura";
-//            ResultSet rs = con.selectConsulta(sql);
-//            while (rs.next()) {
-//                Encabezado encabezadoF = new Encabezado();
-//                encabezadoF.setCodigoEncabezado(rs.getString("encabezado_id"));
-//                encabezadoF.setCedula(rs.getString("dni"));
-//                encabezadoF.setFechaEncabezado(rs.getDate("fecha"));
-//                
-//                lista.add(encabezadoF);
-//            }
-//            rs.close();
-//            return lista;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(EncabezadoDAO.class.getName()).log(Level.SEVERE, null, ex);
-//            return null;
-//        }
-//    }
 
-    public Boolean crearDetalleFactura() {
+    public boolean encabezadoinsert(Encabezado enca) {
+        long form = enca.getFechaEncabezado().getTime();
+                        java.sql.Date time = new java.sql.Date(form);
         String sql;
-
-        sql = "INSERT INTO encabezados(encabezado_id, dni, fecha)";
-        sql += "VALUES('" + getCodigoEncabezado() + "' , '" + getCedula() + "' , '" + getFechaEncabezado() + "')";
-
+        sql = "INSERT INTO encabezados(encabezado_id, cliente_id, fecha)";
+        sql += "VALUES('" + enca.getCodigoEncabezado() + "' , '" + enca.getCedula() + "' , '" + time + "')";
         return con.insertUpdateDelete(sql);
     }
-
-    public boolean editardetallef() {
-        String sql = "UPDATE encabezados SET encabezado_id = '" + getCodigoEncabezado() + "',dni = '" 
-                + getCedula() + "'" + ", fecha = '" + getFechaEncabezado() + " '";
-
-        return con.insertUpdateDelete(sql);
+    
+    public Cliente clienteEnca(String dni){
+    
+        String sql;
+        Cliente clie = null;
+        sql = "select cliente_id, clientes.dni, nombre, apellido, birth, telefono, direccion, email "
+                + "from clientes, personas "
+                + "where activo = TRUE and clientes.dni = personas.dni and clientes.dni = '"+ dni +"'";
+        ResultSet rs = con.selectConsulta(sql);
+        try {
+            if(rs.next()){
+                clie = new Cliente(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5),
+                        rs.getString(6), rs.getString(7), rs.getString(8));
+                return clie;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EncabezadoDAO.class.getName()).log(Level.SEVERE, null, ex); 
+            return clie;
+            
+        }
+        return null;
     }
+
+//    public boolean editardetallef() {
+//        String sql = "UPDATE encabezados SET encabezado_id = '" + getCodigoEncabezado() + "',dni = '" 
+//                + getCedula() + "'" + ", fecha = '" + getFechaEncabezado() + " '";
+//
+//        return con.insertUpdateDelete(sql);
+//    }
 
     public boolean eliminarfactura(String id) {
         String sql = "DELETE FROM encabezados WHERE encabezado_id = '" + id + "'";
@@ -121,4 +115,39 @@ public class EncabezadoDAO extends Encabezado {
 //            return false;
 //        }
 //    }
+
+    @Override
+    public boolean insert(Object kl) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List LeerT() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean delete(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean update(Object objeto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List Buscar(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList registros() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ResultSet pk(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

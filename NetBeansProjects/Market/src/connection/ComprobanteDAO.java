@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Comprobante;
 
 public class ComprobanteDAO implements Crud {
 
@@ -95,14 +96,29 @@ public class ComprobanteDAO implements Crud {
 //        }
 //    }
 
+    public boolean insertarCompro(Comprobante obj){
+        Conexion con = new Conexion();
+        String sql;
+        sql = "INSERT INTO comprobante(id_comprobante, producto_id, cantidad, subtotal, total, iva, encabezado_id)";
+        sql += "VALUES ('" + obj.getIdComprobante() + "', '" + obj.getProductoID() + "', '" + obj.getCantidadProducto() + "', '" 
+                + obj.getSubTotal() + "', '" + obj.getTotal() + "', '" + obj.getIVA() + "', '" + obj.getCodigoEncabezado() + "')";
+        
+        if(con.insertUpdateDelete(sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     @Override
     public boolean insert(Object objeto) {
-     String sql;
-        
-//        sql = "INSERT INTO comprobante(id_comprobante, producto_id, cantidad, subtotal, total, iva, encabezado_id)";
-//        sql += "VALUES('" + getIdComprobante() + "' , '" + getProductoID() + "' , '" + getCantidadProducto() + "' , '" 
-//                + getSubTotal() + "', '" + getTotal() + "', '" + getCodigoEncabezado() + "')";
         return false;
+//     String sql;
+//        
+//        sql = "INSERT INTO comprobante(id_comprobante, producto_id, cantidad, subtotal, total, iva, encabezado_id)";
+//        sql += "VALUES('" + get+ "' , '" + getProductoID() + "' , '" + getCantidadProducto() + "' , '" 
+//                + getSubTotal() + "', '" + getTotal() + "', '" + getCodigoEncabezado() + "')";
+//        return false;
     }
 
 

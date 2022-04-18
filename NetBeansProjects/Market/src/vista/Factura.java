@@ -11,6 +11,7 @@ public class Factura extends javax.swing.JPanel {
 
     public Factura() {
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -27,28 +28,8 @@ public class Factura extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         blEstado1 = new javax.swing.JLabel();
         btnAgregarPersoD = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        Titulo_factura = new javax.swing.JLabel();
-        lblfechaV = new javax.swing.JLabel();
-        lblfecha = new javax.swing.JLabel();
-        lblnumfac = new javax.swing.JLabel();
-        lblnumfacV = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        btnConsumidorF = new javax.swing.JButton();
-        txt_telefono = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        txt_apellidos = new javax.swing.JTextField();
-        txt_nombres = new javax.swing.JTextField();
-        txt_cedula = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        lblvrfTelefono = new javax.swing.JLabel();
-        lblvrfcedula = new javax.swing.JLabel();
-        lblvrfnombre = new javax.swing.JLabel();
-        lblvrfapellido = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        xd = new javax.swing.JPanel();
+        panelfactura = new javax.swing.JPanel();
         tituloProductos = new javax.swing.JLabel();
         txt_idproducto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -66,6 +47,25 @@ public class Factura extends javax.swing.JPanel {
         txt_total = new javax.swing.JTextField();
         btn_quitar = new javax.swing.JButton();
         btn_agregar = new javax.swing.JButton();
+        txt_apellidos = new javax.swing.JTextField();
+        lblvrfapellido = new javax.swing.JLabel();
+        lblvrfnombre = new javax.swing.JLabel();
+        txt_nombres = new javax.swing.JTextField();
+        txt_cedula = new javax.swing.JTextField();
+        lblvrfcedula = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txt_telefono = new javax.swing.JTextField();
+        lblvrfTelefono = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        btnConsumidorF = new javax.swing.JButton();
+        Titulo_factura = new javax.swing.JLabel();
+        lblnumfac = new javax.swing.JLabel();
+        lblnumfacV = new javax.swing.JLabel();
+        lblfecha = new javax.swing.JLabel();
+        lblfechaV = new javax.swing.JLabel();
 
         jLabel11.setText("Buscar");
 
@@ -148,113 +148,21 @@ public class Factura extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Titulo_factura.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        Titulo_factura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo_factura.setText("JACKS");
+        xd.setLayout(new java.awt.CardLayout());
 
-        lblfechaV.setText(" ");
-
-        lblfecha.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblfecha.setText("FECHA:");
-
-        lblnumfac.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lblnumfac.setText("N° FACT:");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(lblnumfac, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblnumfacV, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
-                .addComponent(Titulo_factura, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblfechaV, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(Titulo_factura, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblnumfacV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblfechaV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblnumfac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 970, 80));
-
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnConsumidorF.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnConsumidorF.setText("Consumidor Final");
-        btnConsumidorF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsumidorFActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnConsumidorF, new org.netbeans.lib.awtextra.AbsoluteConstraints(794, 63, 167, 40));
-        jPanel2.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(586, 79, 190, -1));
-
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel10.setText("Telefono:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(646, 49, -1, -1));
-
-        txt_apellidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_apellidosActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txt_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 79, 180, -1));
-        jPanel2.add(txt_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 79, 180, -1));
-        jPanel2.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 79, 190, -1));
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel7.setText("Cedula:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 49, 53, 24));
-
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel8.setText("Nombres:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 49, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel9.setText("Apellidos:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 49, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setText("Datos Cliente");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 18, 140, -1));
-        jPanel2.add(lblvrfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 170, 30));
-        jPanel2.add(lblvrfcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 170, 30));
-        jPanel2.add(lblvrfnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 170, 30));
-        jPanel2.add(lblvrfapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 160, 30));
-
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 980, 150));
-
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelfactura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tituloProductos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        tituloProductos.setText("Productos");
-        jPanel3.add(tituloProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 0, 110, 26));
-        jPanel3.add(txt_idproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 52, 360, -1));
+        tituloProductos.setText("PRODUCTOS");
+        panelfactura.add(tituloProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 110, 26));
+        panelfactura.add(txt_idproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 360, -1));
 
-        jLabel2.setText("ID Producto");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 52, 70, 25));
+        jLabel2.setText("ID PRODUCTO");
+        panelfactura.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 90, 25));
 
-        jLabel5.setText("Cantidad:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 52, 70, 30));
-        jPanel3.add(spinnetcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 52, 60, 30));
+        jLabel5.setText("CANTIDAD");
+        panelfactura.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 80, 30));
+        panelfactura.add(spinnetcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, 60, 30));
 
         tbl_factura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -266,45 +174,45 @@ public class Factura extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbl_factura);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 100, 570, 143));
+        panelfactura.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 620, 143));
 
-        btn_imprimir.setText("Imprimir");
+        btn_imprimir.setText("IMPRIMIR");
         btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_imprimirActionPerformed(evt);
             }
         });
-        jPanel3.add(btn_imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 275, 110, 40));
+        panelfactura.add(btn_imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 110, 40));
 
-        btn_cancelar.setText("Cancelar");
-        jPanel3.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, 275, 110, 40));
+        btn_cancelar.setText("CANCELAR");
+        panelfactura.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 520, 110, 40));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel14.setText("TOTAL:");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 203, -1, -1));
+        jLabel14.setText("TOTAL");
+        panelfactura.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 450, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel13.setText("IVA 12%:");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 143, -1, -1));
+        jLabel13.setText("IVA 12%");
+        panelfactura.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel12.setText("Sub Total:");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 93, 90, -1));
+        jLabel12.setText("SUB TOTAL");
+        panelfactura.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 340, 90, -1));
 
         txt_subtotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_subtotalActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 93, 180, -1));
-        jPanel3.add(txt_iva, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 133, 180, 40));
+        panelfactura.add(txt_subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 340, 180, -1));
+        panelfactura.add(txt_iva, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 380, 180, 40));
 
         txt_total.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_totalActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 193, 180, 50));
+        panelfactura.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 440, 180, 50));
 
         btn_quitar.setText("-");
         btn_quitar.addActionListener(new java.awt.event.ActionListener() {
@@ -312,12 +220,74 @@ public class Factura extends javax.swing.JPanel {
                 btn_quitarActionPerformed(evt);
             }
         });
-        jPanel3.add(btn_quitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 90, 40));
+        panelfactura.add(btn_quitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 90, 40));
 
         btn_agregar.setText("+");
-        jPanel3.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(591, 127, 90, 40));
+        panelfactura.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 360, 90, 40));
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1000, 340));
+        txt_apellidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_apellidosActionPerformed(evt);
+            }
+        });
+        panelfactura.add(txt_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 180, -1));
+        panelfactura.add(lblvrfapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 160, 30));
+        panelfactura.add(lblvrfnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 170, 30));
+        panelfactura.add(txt_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 180, -1));
+        panelfactura.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 190, -1));
+        panelfactura.add(lblvrfcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 170, 30));
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel7.setText("CÉDULA");
+        panelfactura.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 70, 24));
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel8.setText("NOMBRES");
+        panelfactura.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 80, -1));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel9.setText("APELLIDOS");
+        panelfactura.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 90, -1));
+        panelfactura.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 190, -1));
+        panelfactura.add(lblvrfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 170, 30));
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel10.setText("TELÉFONO");
+        panelfactura.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 90, -1));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setText("DATOS CLIENTE");
+        panelfactura.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 140, -1));
+
+        btnConsumidorF.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnConsumidorF.setText("CONSUMIDOR FINAL");
+        btnConsumidorF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsumidorFActionPerformed(evt);
+            }
+        });
+        panelfactura.add(btnConsumidorF, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 160, 180, 40));
+
+        Titulo_factura.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        Titulo_factura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Titulo_factura.setText("FACTURACIÓN");
+        panelfactura.add(Titulo_factura, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 209, 40));
+
+        lblnumfac.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblnumfac.setText("N° FACT:");
+        panelfactura.add(lblnumfac, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 80, 20));
+        panelfactura.add(lblnumfacV, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 160, 30));
+
+        lblfecha.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblfecha.setText("FECHA:");
+        panelfactura.add(lblfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 70, 30));
+
+        lblfechaV.setText(" ");
+        panelfactura.add(lblfechaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 200, 30));
+
+        xd.add(panelfactura, "card4");
+
+        add(xd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1130, 590));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_quitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quitarActionPerformed
@@ -575,9 +545,6 @@ public class Factura extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -589,6 +556,7 @@ public class Factura extends javax.swing.JPanel {
     public javax.swing.JLabel lblvrfapellido;
     public javax.swing.JLabel lblvrfcedula;
     public javax.swing.JLabel lblvrfnombre;
+    public javax.swing.JPanel panelfactura;
     public javax.swing.JSpinner spinnetcant;
     private javax.swing.JTable tblPersonas2;
     public javax.swing.JTable tbl_factura;
@@ -602,5 +570,6 @@ public class Factura extends javax.swing.JPanel {
     public javax.swing.JTextField txt_subtotal;
     public javax.swing.JTextField txt_telefono;
     public javax.swing.JTextField txt_total;
+    public javax.swing.JPanel xd;
     // End of variables declaration//GEN-END:variables
 }

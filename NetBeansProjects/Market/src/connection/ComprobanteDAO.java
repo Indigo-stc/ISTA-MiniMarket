@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Cliente;
 import modelo.Comprobante;
 
 public class ComprobanteDAO implements Crud {
@@ -31,6 +32,39 @@ public class ComprobanteDAO implements Crud {
         }
     }
     
+//    public String[][] pdfSalida(){
+//        
+//        String [] pdf = new String[9]; 
+//        String sql;
+//        Cliente clie = null;
+//        sql = """
+//              SELECT encabezados.encabezado_id,
+//              \tclientes.cliente_id,
+//              \tclientes.dni,
+//              \tpersonas.nombre ' 'personas.apellido Nombre_Apellido,
+//              \tcomprobante.producto_id,
+//              \tcomprobante.cantidad,
+//              \tencabezados.fecha,
+//              \tcomprobante.subtotalFROM comprobante
+//              \tINNER JOIN encabezados ON 
+//              \t comprobante.encabezado_id = encabezados.encabezado_id 
+//              \tINNER JOIN clientes ON 
+//              \t encabezados.cliente_id = clientes.cliente_id 
+//              \tINNER JOIN personas ON 
+//              \t clientes.dni = personas.dni""";
+//        ResultSet rs = con.selectConsulta(sql);
+//        try {
+//            if(rs.next()){
+//               pdf [0] = rs.get
+//                    
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(EncabezadoDAO.class.getName()).log(Level.SEVERE, null, ex); 
+//            return clie;
+//
+//        }
+//        return null;
+//    }
 //    public List<Comprobante> listar(String buscar) {
 //        try {
 //            List<Comprobante> lista = new ArrayList<Comprobante>(); // creacion de la lista (es un array list)

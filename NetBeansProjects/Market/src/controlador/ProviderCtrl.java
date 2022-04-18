@@ -66,33 +66,34 @@ public class ProviderCtrl implements MouseListener, ActionListener, KeyListener 
         }
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        int column = vp.tblBuscar.getColumnModel().getColumnIndexAtX(e.getX());
-        int row = e.getY() / vp.tblBuscar.getRowHeight();
-
-        if (row < vp.tblBuscar.getRowCount() && row >= 0
-                && column < vp.tblBuscar.getColumnCount() && column >= 0) {
-            Object value = vp.tblBuscar.getValueAt(row, column);
-            String id = vp.tblBuscar.getValueAt(row, 0).toString();
-            String name = vp.tblBuscar.getValueAt(row, 1).toString();
-            String phone = vp.tblBuscar.getValueAt(row, 2).toString();
-            String address = vp.tblBuscar.getValueAt(row, 3).toString();
-            Proveedor pvd = new Proveedor(id, name, phone, address);
-            IProveedorDAO sql = new IProveedorDAO();
-            if (value instanceof JButton jb) {
-                jb.doClick();
-                System.out.println(jb.getName());
-                if (jb.getName().equals("U")) {
-                    sql.update(pvd);
-                    tblBuscar(vp.tblBuscar, "");
-                } else if (jb.getName().equals("D")) {
-                    sql.delete(pvd.getProveedor_id());
-                    tblBuscar(vp.tblBuscar, "");
-                }
-            }
-        }
-    }
+//    @Override
+//    public void mouseClicked(MouseEvent e) {
+//        int column = vp.tblBuscar.getColumnModel().getColumnIndexAtX(e.getX());
+//        int row = e.getY() / vp.tblBuscar.getRowHeight();
+//
+//        if (row < vp.tblBuscar.getRowCount() && row >= 0
+//                && column < vp.tblBuscar.getColumnCount() && column >= 0) {
+//            Object value = vp.tblBuscar.getValueAt(row, column);
+//            String id = vp.tblBuscar.getValueAt(row, 0).toString();
+//            String name = vp.tblBuscar.getValueAt(row, 1).toString();
+//            String phone = vp.tblBuscar.getValueAt(row, 2).toString();
+//            String address = vp.tblBuscar.getValueAt(row, 3).toString();
+//            Proveedor pvd = new Proveedor(id, name, phone, address);
+//            IProveedorDAO sql = new IProveedorDAO();
+//            
+//            if (value instanceof JButton jb) {
+//                jb.doClick();
+//                System.out.println(jb.getName());
+//                if (jb.getName().equals("U")) {
+//                    sql.update(pvd);
+//                    tblBuscar(vp.tblBuscar, "");
+//                } else if (jb.getName().equals("D")) {
+//                    sql.delete(pvd.getProveedor_id());
+//                    tblBuscar(vp.tblBuscar, "");
+//                }
+//            }
+//        }
+//    }
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -156,6 +157,11 @@ public class ProviderCtrl implements MouseListener, ActionListener, KeyListener 
         vp.txtDir.setText(null);
         vp.txtNom.setText(null);
         vp.txtTlf.setText(null);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

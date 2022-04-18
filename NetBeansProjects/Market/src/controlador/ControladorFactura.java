@@ -1,5 +1,6 @@
 package controlador;
 
+import com.sun.tools.javac.Main;
 import connection.ComprobanteDAO;
 import connection.Conexion;
 import connection.EncabezadoDAO;
@@ -14,11 +15,17 @@ import modelo.Encabezado;
 import connection.IProductoDAO;
 import connection.ModeloCliente;
 import java.awt.Color;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,9 +38,15 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Producto;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -42,6 +55,8 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.postgresql.core.ConnectionFactory;
+import vista.MenuPricpal;
 import vista.PanelCliente;
 
 public class ControladorFactura implements ActionListener, FocusListener {
@@ -60,7 +75,7 @@ public class ControladorFactura implements ActionListener, FocusListener {
         viewFact.btn_agregar.addActionListener(this);
         viewFact.btn_cancelar.addActionListener(this);
         viewFact.btn_quitar.addActionListener(this);
-        viewFact.btnConsumidorF.addActionListener(this);
+        viewFact.btnConsumidorF.addActionListener(l -> abrirven());
         viewFact.btn_imprimir.addActionListener(this);
         viewFact.txt_cedula.addFocusListener(this);
         viewFact.lblfechaV.setText(fechaActual.format(fechaActualF));
@@ -72,47 +87,51 @@ public class ControladorFactura implements ActionListener, FocusListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == viewFact.btn_agregar) {
-            int cant = Integer.parseInt(viewFact.spinnetcant.getValue().toString());
             IProductoDAO DAOpro = new IProductoDAO();
             Producto rs = DAOpro.produ(viewFact.txt_idproducto.getText());
-            if (listafact.isEmpty()) {
-                if (viewFact.txt_idproducto.getText() != null) {
-                    System.out.println("entrando");
-                    Comprobante compro = new Comprobante(viewFact.txt_idproducto.getText(),
-                            cant,
-                            rs.getPrecio() * cant,
-                            rs.getPrecio() * cant * 0.12,
-                            rs.getPrecio() * cant * 1.12, "");
-                    listafact.add(compro);
-                    tblmodelfact();
-                    totales();
-                    limpiarProd();
-                }
-            } else {
-                for (Comprobante comprobante : listafact) {
-                    if (viewFact.txt_idproducto.getText().equals(comprobante.getProductoID())) {
-                        comprobante.setCantidadProducto(comprobante.getCantidadProducto() + cant);
-                        comprobante.setSubTotal(comprobante.getSubTotal() + rs.getPrecio() * comprobante.getCantidadProducto());
-                        comprobante.setIVA(comprobante.getIVA() + comprobante.getSubTotal() * 0.12 + comprobante.getIVA());
-                        comprobante.setTotal(comprobante.getTotal() + comprobante.getSubTotal() * 1.12 + comprobante.getTotal());
-                        tblmodelfact();
-                        limpiarProd();
-                        break;
-                    } else {
+            if (rs != null) {
+                int cant = Integer.parseInt(viewFact.spinnetcant.getValue().toString());
+                if (listafact.isEmpty()) {
+                    if (viewFact.txt_idproducto.getText() != null) {
+                        System.out.println("entrando");
                         Comprobante compro = new Comprobante(viewFact.txt_idproducto.getText(),
                                 cant,
                                 rs.getPrecio() * cant,
                                 rs.getPrecio() * cant * 0.12,
                                 rs.getPrecio() * cant * 1.12, "");
                         listafact.add(compro);
-                        totales();
                         tblmodelfact();
+                        totales();
                         limpiarProd();
-                        System.out.println(compro.getProductoID() + "valio!");
-                        break;
                     }
-                }
+                } else {
+                    for (Comprobante comprobante : listafact) {
+                        if (viewFact.txt_idproducto.getText().equals(comprobante.getProductoID())) {
+                            comprobante.setCantidadProducto(comprobante.getCantidadProducto() + cant);
+                            comprobante.setSubTotal(comprobante.getSubTotal() + rs.getPrecio() * comprobante.getCantidadProducto());
+                            comprobante.setIVA(comprobante.getIVA() + comprobante.getSubTotal() * 0.12 + comprobante.getIVA());
+                            comprobante.setTotal(comprobante.getTotal() + comprobante.getSubTotal() * 1.12 + comprobante.getTotal());
+                            tblmodelfact();
+                            limpiarProd();
+                            break;
+                        } else {
+                            Comprobante compro = new Comprobante(viewFact.txt_idproducto.getText(),
+                                    cant,
+                                    rs.getPrecio() * cant,
+                                    rs.getPrecio() * cant * 0.12,
+                                    rs.getPrecio() * cant * 1.12, "");
+                            listafact.add(compro);
+                            totales();
+                            tblmodelfact();
+                            limpiarProd();
+                            System.out.println(compro.getProductoID() + "valio!");
+                            break;
+                        }
+                    }
 
+                }
+            } else {
+                JOptionPane.showMessageDialog(viewFact, "Producto no existente");
             }
 
         } else if (e.getSource() == viewFact.btn_cancelar) {
@@ -122,10 +141,6 @@ public class ControladorFactura implements ActionListener, FocusListener {
         } else if (e.getSource() == viewFact.btn_quitar) {
             quitardetabla();
         } else if (e.getSource() == viewFact.btnConsumidorF) {
-
-        } else if (e.getSource() == viewFact.lblfechaV) {
-            LocalDate l = LocalDate.now();
-            viewFact.getLblfechaV().setText(l.toString());
 
         }
     }
@@ -268,21 +283,16 @@ public class ControladorFactura implements ActionListener, FocusListener {
         EncabezadoDAO conDao = new EncabezadoDAO();
         Encabezado enca = new Encabezado(cli.getIdCliente() == null ? "XXXXXXXXX" : cli.getIdCliente(), fechaAct);
         conDao.encabezadoinsert(enca);
-        if ("".equals(viewFact.txt_cedula.getText())
-                || "".equals(viewFact.txt_nombres.getText())
-                || "".equals(viewFact.txt_apellidos.getText())
-                || "".equals(viewFact.txt_telefono.getText())) {
-            JOptionPane.showMessageDialog(null, "Llenar campos Obligatorios");
-            verificacion();
-        }
-        for (Comprobante comprobante : listafact) {
-            comprobante.setCodigoEncabezado(enca.getCodigoEncabezado());
-            if (comDao.insertarCompro(comprobante)) {
+        verificacion();
+        for (int i = 0; i < listafact.size(); i++) {
+            listafact.get(i).setCodigoEncabezado(enca.getCodigoEncabezado());
+            if (comDao.insertarCompro(listafact.get(i))) {
                 System.out.println("Ingresaron");
                 Cancelar();
             }
         }
         JOptionPane.showMessageDialog(viewFact, "Ingresada exitosamente!");
+        ImprimirFactura(enca.getCodigoEncabezado());
         viewFact.lblnumfacV.setText(String.valueOf(contador + 1));
 
     }
@@ -297,7 +307,11 @@ public class ControladorFactura implements ActionListener, FocusListener {
         EncabezadoDAO encdao = new EncabezadoDAO();
         cli = encdao.clienteEnca(viewFact.txt_cedula.getText());
         if (cli == null) {
-            ControladorC ctrlC = new ControladorC();
+            ControladorC cliente = new ControladorC();
+            viewFact.xd.removeAll();
+            viewFact.xd.add(cliente.vista);
+            viewFact.xd.repaint();
+            viewFact.xd.revalidate();
         } else {
             viewFact.txt_nombres.setText(cli.getNombre());
             viewFact.txt_apellidos.setText(cli.getApellido());
@@ -329,11 +343,22 @@ public class ControladorFactura implements ActionListener, FocusListener {
         }
     }
 
+    public void abrirven() {
+
+        ControladorC cliente = new ControladorC();
+        MenuPricpal venta = new MenuPricpal();
+        venta.getPANELCAR().removeAll();
+        venta.getPANELCAR().add(cliente.vista);
+        venta.getPANELCAR().repaint();
+        venta.getPANELCAR().revalidate();
+
+    }
+
     //Imprimir Reporte Facturacion
     private void ReporteFactura() {
         Conexion con = new Conexion();
         try {
-            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/viewReportes/ReporteFactura.jasper"));
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/viewReportes/Factura.jasper"));
 
             JasperPrint jp = JasperFillManager.fillReport(jr, null, con.getCon());//cargando el reporte con los datos BD
 
@@ -345,7 +370,7 @@ public class ControladorFactura implements ActionListener, FocusListener {
         }
     }
 
-//    public void crearPDF() {
+//    public void crearPDF(Encabezado enca) {
 //        PDDocument doc = null;
 //        try {
 //            doc = new PDDocument();
@@ -374,15 +399,35 @@ public class ControladorFactura implements ActionListener, FocusListener {
 //                        + "F. Salida: " + prueba.getString(6) + "                                                             "
 //                        + "Tiempo: " + prueba.getString(7) + "min                                                             "
 //                        + "Precio final: " + prueba.getString(8) + "$";
-////                text = String.format(" %s %s%n %s %s%n %s %s%n %s %s%n %s %s%n %s %s%n %s %f%n %s %f%n", 
-////                        "TICKET SALIDA -->", prueba.getString(1),
-////                        "ID ingreso:", prueba.getString(2), "Cedula:", prueba.getString(3),
-////                        "Costo_Hora:", prueba.getString(4), "F. Ingreso:", prueba.getString(5),
-////                        "F. Salida:", prueba.getString(6), "Tiempo:", prueba.getDouble(7),
-////                        "Precio final:", prueba.getDouble(8));
+//
 //            }
 //        } catch (IOException ex) {
 //            Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
+
+    private void ImprimirFactura(String idEnca) {
+        Conexion conexion = new Conexion();
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/viewReportes/FACTURAPDF.jasper"));
+            Map<String, Object> parametros = new HashMap<>();
+            String cedula = viewFact.getTxt_cedula().getText();
+            parametros.put("Cedula", cedula);
+//            parametros.put("FECHA", viewFact.lblfechaV.getText());
+            // parametros.put("Cedula", viewFact.txt_cedula.getText());
+//            parametros.put("NOMBRE", viewFact.txt_nombres.getText());
+//            parametros.put("APELLIDO", viewFact.txt_apellidos.getText());
+//            parametros.put("TELÉFONO", viewFact.txt_telefono.getText());
+//            parametros.put("ID PRODUCTO", viewFact.txt_idproducto.getText());
+//            parametros.put("CANTIDAD", String.valueOf(viewFact.getSpinnetcant().getValue()));
+//            parametros.put("SUBTOTAL", viewFact.txt_subtotal.getText());
+//            parametros.put("IVA", viewFact.txt_iva.getText());
+//            parametros.put("TOTAL", viewFact.txt_total.getText());
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, conexion.getCon());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

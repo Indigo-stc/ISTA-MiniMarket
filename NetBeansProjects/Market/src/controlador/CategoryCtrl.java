@@ -84,10 +84,12 @@ public class CategoryCtrl implements ActionListener, KeyListener,
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {
+    }
 
     @Override
-    public void keyPressed(KeyEvent e) {}
+    public void keyPressed(KeyEvent e) {
+    }
 
     @Override
     public void keyReleased(KeyEvent e) {
@@ -96,40 +98,44 @@ public class CategoryCtrl implements ActionListener, KeyListener,
         }
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        if (e.getSource() == vc.tblBuscar) {
-            int column = vc.tblBuscar.getColumnModel().getColumnIndexAtX(e.getX());
-            int row = e.getY() / vc.tblBuscar.getRowHeight();
-
-            if (row < vc.tblBuscar.getRowCount() && row >= 0
-                    && column < vc.tblBuscar.getColumnCount() && column >= 0) {
-                Object value = vc.tblBuscar.getValueAt(row, column);
-                String id = vc.tblBuscar.getValueAt(row, 0).toString();
-                String name = vc.tblBuscar.getValueAt(row, 1).toString();
-                Categoria ctg = new Categoria(id, name);
-                ICategoriaDAO sql = new ICategoriaDAO();
-                if (value instanceof JButton jb) {
-                    jb.doClick();
-                    System.out.println(jb.getName());
-                    if (jb.getName().equals("U")) {
-                        sql.update(ctg);
-                        tblBuscar(vc.tblBuscar, "");
-                    } else if (jb.getName().equals("D")) {
-                        sql.delete(ctg.getCategoria_id());
-                        tblBuscar(vc.tblBuscar, "");
-                    }
-                }
-            }
-        }
-    }
+//    @Override
+//    public void mouseClicked(MouseEvent e) {
+//        if (e.getSource() == vc.tblBuscar) {
+//            int column = vc.tblBuscar.getColumnModel().getColumnIndexAtX(e.getX());
+//            int row = e.getY() / vc.tblBuscar.getRowHeight();
+//
+//            if (row < vc.tblBuscar.getRowCount() && row >= 0
+//                    && column < vc.tblBuscar.getColumnCount() && column >= 0) {
+//                Object value = vc.tblBuscar.getValueAt(row, column);
+//                String id = vc.tblBuscar.getValueAt(row, 0).toString();
+//                String name = vc.tblBuscar.getValueAt(row, 1).toString();
+//                Categoria ctg = new Categoria(id, name);
+//                ICategoriaDAO sql = new ICategoriaDAO();
+//                if (value instanceof JButton 
+//                    jb
+//                
+//                    ) {
+//                    jb.doClick();
+//                    System.out.println(jb.getName());
+//                    if (jb.getName().equals("U")) {
+//                        sql.update(ctg);
+//                        tblBuscar(vc.tblBuscar, "");
+//                    } else if (jb.getName().equals("D")) {
+//                        sql.delete(ctg.getCategoria_id());
+//                        tblBuscar(vc.tblBuscar, "");
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     @Override
     public void mousePressed(MouseEvent e) {
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {
+    }
 
     @Override
     public void mouseEntered(MouseEvent e) {
@@ -138,9 +144,15 @@ public class CategoryCtrl implements ActionListener, KeyListener,
     @Override
     public void mouseExited(MouseEvent e) {
     }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 
 class test {
+
     public static void main(String[] args) {
         CategoryCtrl pd = new CategoryCtrl();
     }

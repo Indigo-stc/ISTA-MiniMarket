@@ -10,7 +10,7 @@ public class ControladorM {
 
     public ControladorM() {
         this.vista = vista;
-        Vista();
+        Vista();        
         InicioControl();
     }
 

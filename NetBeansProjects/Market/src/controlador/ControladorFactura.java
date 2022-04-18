@@ -49,7 +49,7 @@ public class ControladorFactura implements ActionListener, FocusListener {
     Factura viewFact = new Factura();
     Cliente cli = null;
     Date fechaActualF = new Date();
-    DateFormat fechaActual = DateFormat.getDateInstance(DateFormat.SHORT);
+    DateFormat fechaActual = DateFormat.getDateInstance(DateFormat.MEDIUM);
     ArrayList<Comprobante> listafact = new ArrayList();
     int cantidad = 0;
     int contador = 1;

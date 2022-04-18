@@ -1,45 +1,27 @@
 package controlador;
 
-//import Clases.Empleado;
-//import Menu.Vista.MenuPricpal;
-//import Menu.Vista.PanelEmpleado;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.Empleado;
-import connection.IProveedorDAO;
 import connection.ModeloCliente;
 import modelo.MensajeFantasma;
 import connection.ModeloEmpleado;
-import modelo.Proveedor;
 import connection.RolDao;
-import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.MouseListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import modelo.Cliente;
 import modelo.Persona;
 import modelo.Rol;
 import vista.PanelEmpleado;
-//import sun.security.rsa.RSAUtil;
-//import sun.security.rsa.RSAUtil.KeyType;
 
-/**
- *
- * @author 59399
- */
-public class ControladorE implements KeyListener {
+public class ControladorE implements KeyListener, FocusListener {
 
     DefaultTableModel tabla_modelo = new DefaultTableModel();
 
@@ -83,93 +65,51 @@ public class ControladorE implements KeyListener {
     }
 
     public void Registrar() {
+        RolDao rol = new RolDao();
+        Persona per = modelo.existPer(vista.getTxtCedula().getText());
+        Empleado existe = modelo.existEmps(vista.getTxtCedula().getText());
 
-        if (!(vista.getTxtCedula().getText().isEmpty() || vista.getTxtNombre().getText().isEmpty()
-                || vista.getTxtApellido().getText().isEmpty() || vista.getCombo_Rol().getSelectedItem().equals("Seleccione")
-                || vista.getDateFecha().getDate() == null || vista.getTxtSalario().getText().isEmpty() || vista.getTxtPhone().getText().isEmpty()
-                || vista.getTxtCorreo().getText().isEmpty() || vista.getTxtDireccion().getText().isEmpty()
-                || vista.getTxtPassword().getText().isEmpty())) {
-            if (validarCedula(vista.getTxtCedula().getText()) == true) {
-                if (CedulaC(vista.getTxtCedula().getText()) == true) {
-
-                    if ((vista.getTxtNombre().getText().matches("^[A-Z].{3,25}$"))) {
-
-                        if ((vista.getTxtApellido().getText().matches("^[A-Z].{3,25}$"))) {
-
-                            if ((vista.getTxtSalario().getText().matches("[0-9]{3,4}"))) {
-
-                                if ((vista.getTxtPhone().getText().matches("^\\d{10}$"))) {
-
-                                    if ((vista.getTxtCorreo().getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                                            + "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*"
-                                            + "(\\.[A-Za-z]{2,})$"))) {
-
-                                        if ((vista.getTxtDireccion().getText().matches("^[A-Za-z].{3,25}$"))) {
-
-                                            if ((vista.getTxtPassword().getText().matches("^(?=.*[0-9])"
-                                                    + "(?=.*[a-z])(?=.*[A-Z])"
-                                                    + "(?=.*[@#$%^&+=])"
-                                                    + "(?=\\S+$).{8,20}$"))) {
-                                                if (validarCedula(vista.getTxtCedula().getText()) == true) {
-
-                                                    int enviar = JOptionPane.showConfirmDialog(vista, "ESTA SEGURO DE GUARDAR ESTE DATO", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                                                    if (enviar == JOptionPane.YES_NO_OPTION) {
-                                                        RolDao rol = new RolDao();
-                                                        int rol_iid = rol.Ff(vista.getCombo_Rol().getSelectedItem().toString());
-                                                        Empleado empl = new Empleado(Double.valueOf(vista.getTxtSalario().getText()), vista.getTxtPassword().getText(),
-                                                                rol_iid, vista.getTxtCedula().getText(), vista.getTxtNombre().getText(), vista.getTxtApellido().getText(),
-                                                                vista.getDateFecha().getDate(), vista.getTxtPhone().getText(), vista.getTxtCorreo().getText(), vista.getTxtDireccion().getText());
-                                                        if (modelo.insert(empl)) {
-                                                            JOptionPane.showMessageDialog(vista, "SE LOGRO GUARDAR EL DATO CON EXITO");
-                                                            cargaLista();
-                                                            Limpiar();
-                                                        } else {
-                                                            JOptionPane.showMessageDialog(vista, "NO SE LOGRO GUARDAR EL REGISTRO");
-
-                                                        }
-                                                    }
-                                                }
-
-                                            } else {
-                                                JOptionPane.showMessageDialog(null, "Su contraseña debe de tener 1 letra mayuscula,1 letra minuscula,"
-                                                        + "1 numero, 1 caracter especial, minimo 8 caracteres");
-                                            }
-
-                                        } else {
-                                            JOptionPane.showMessageDialog(null, "La Direccion debe de tener mas de 3 caracteres");
-
-                                        }
-
-                                    } else {
-                                        JOptionPane.showMessageDialog(null, "Ejemplo de Correo: Manuelita7@hotmail.com");
-
-                                    }
-
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "El numero de telefono debe de tener 10 digitos");
-
-                                }
-
-                            } else {
-                                JOptionPane.showMessageDialog(null, "El Salario no debe decer mayor o menor a 3 digitos");
-
-                            }
-
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Su Apellido debe de tener mas de 3 caracteres");
-
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Su Nombre debe de tener mas de 4 caracteres");
-
-                    }
-                }
+        if (existe != null) {
+            JOptionPane.showMessageDialog(null, "Empleado existente");
+        } else if (!digVfy(vista.getTxtCedula().getText())
+                || "".equals(vista.getTxtCedula().getText())
+                || "".equals(vista.getTxtNombre().getText())
+                || "".equals(vista.getTxtApellido().getText())
+                || "".equals(vista.getTxtPhone().getText())
+                || "".equals(vista.getTxtDireccion().getText())
+                || "".equals(vista.getTxtCorreo().getText())
+                || vista.getDateFecha().getDate() == null
+                || "".equals(vista.getTxtSalario().getText())
+                || "Seleccionar".equals(vista.getCombo_Rol().getSelectedItem().toString())) {
+            JOptionPane.showMessageDialog(null, "Llenar campos obligatorios");
+            Validacione_Campos();
+        } else if (per != null && existe == null) {
+            int rol_iid = rol.Ff(vista.getCombo_Rol().getSelectedItem().toString());
+            Empleado empl = new Empleado(Double.valueOf(vista.getTxtSalario().getText()), vista.getTxtPassword().getText(),
+                    rol_iid, vista.getTxtCedula().getText(), vista.getTxtNombre().getText(), vista.getTxtApellido().getText(),
+                    vista.getDateFecha().getDate(), vista.getTxtPhone().getText(), vista.getTxtCorreo().getText(), vista.getTxtDireccion().getText());
+            if (modelo.insEmpleado(empl)) {
+                JOptionPane.showMessageDialog(vista, "Empleado ingresado");
+                cargaLista();
+                Limpiar();
+            } else {
+                JOptionPane.showMessageDialog(vista, "NO SE LOGRO GUARDAR EL REGISTRO");
 
             }
         } else {
-            Validacione_Campos();
-        }
+            int rol_iid = rol.Ff(vista.getCombo_Rol().getSelectedItem().toString());
+            Empleado empl = new Empleado(Double.valueOf(vista.getTxtSalario().getText()), vista.getTxtPassword().getText(),
+                    rol_iid, vista.getTxtCedula().getText(), vista.getTxtNombre().getText(), vista.getTxtApellido().getText(),
+                    vista.getDateFecha().getDate(), vista.getTxtPhone().getText(), vista.getTxtCorreo().getText(), vista.getTxtDireccion().getText());
+            if (modelo.insert(empl)) {
+                JOptionPane.showMessageDialog(vista, "SE LOGRO GUARDAR EL DATO CON EXITO");
+                cargaLista();
+                Limpiar();
+            } else {
+                JOptionPane.showMessageDialog(vista, "NO SE LOGRO GUARDAR EL REGISTRO");
 
+            }
+        }
     }
 
     public void Modificar() {
@@ -349,6 +289,9 @@ public class ControladorE implements KeyListener {
         vista.getTxtPassword().addKeyListener(this);
         vista.getTxtCorreo().addKeyListener(this);
         vista.getTxtBuscar().addKeyListener(this);
+        vista.getTxtSalario().addKeyListener(this);
+        vista.getTxtCedula().addFocusListener(this);
+        vista.getTxtPhone().addFocusListener(this);
         vista.getTablaEmpleado().addMouseListener(new MouseAdapter() {
 
             public void mouseClicked(MouseEvent e) {
@@ -405,50 +348,42 @@ public class ControladorE implements KeyListener {
         return true;
     }
 
-// Validaciones de Campos y Validacion de Cedula.?
-    private boolean validarCedula(String cedula) {
-
-        //Validar Cedula Ecuatoriana//
-        boolean cedulaCorrecta = false;
-
+    public static boolean digVfy(String cedula) {
+        byte sum = 0;
         try {
-
-            if (cedula.length() == 10) {
-                int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
-                if (tercerDigito < 6) {
-                    int[] coefValCedula = {2, 1, 2, 1, 2, 1, 2, 1, 2};
-                    int verificador = Integer.parseInt(cedula.substring(9, 10));
-                    int suma = 0;
-                    int digito = 0;
-                    for (int i = 0; i < (cedula.length() - 1); i++) {
-                        digito = Integer.parseInt(cedula.substring(i, i + 1)) * coefValCedula[i];
-                        suma += ((digito % 10) + (digito / 10));
-                    }
-                    if ((suma % 10 == 0) && (suma % 10 == verificador)) {
-                        cedulaCorrecta = true;
-                    } else if ((10 - (suma % 10)) == verificador) {
-                        cedulaCorrecta = true;
-                    } else {
-                        cedulaCorrecta = false;
+            if (cedula.length() != 10) {
+                return false;
+            }
+            String[] data = cedula.split("");
+            byte verifier = Byte.parseByte(data[0] + data[1]);
+            if (verifier < 1 || verifier > 24) {
+                return false;
+            }
+            byte[] digits = new byte[data.length];
+            for (byte i = 0; i < digits.length; i++) {
+                digits[i] = Byte.parseByte(data[i]);
+            }
+            if (digits[2] > 6) {
+                return false;
+            }
+            for (byte i = 0; i < digits.length - 1; i++) {
+                if (i % 2 == 0) {
+                    verifier = (byte) (digits[i] * 2);
+                    if (verifier > 9) {
+                        verifier = (byte) (verifier - 9);
                     }
                 } else {
-                    cedulaCorrecta = false;
+                    verifier = (byte) (digits[i] * 1);
                 }
-            } else {
-                cedulaCorrecta = false;
+                sum = (byte) (sum + verifier);
             }
-        } catch (NumberFormatException nfe) {
-            cedulaCorrecta = false;
-        } catch (Exception err) {
-            JOptionPane.showMessageDialog(null, "Una excepcion ocurrio en el proceso de validadcion");
-            cedulaCorrecta = false;
+            if ((sum - (sum % 10) + 10 - sum) == digits[9]) {
+                return true;
+            }
+        } catch (NumberFormatException e) {
+            e.getMessage();
         }
-
-        if (!cedulaCorrecta) {
-            JOptionPane.showMessageDialog(null, "La Cédula ingresada es Incorrecta");
-        }
-        return cedulaCorrecta;
-
+        return false;
     }
 
     private void cbRoles() {
@@ -500,7 +435,6 @@ public class ControladorE implements KeyListener {
     }
 
     public void Validacione_Campos() {
-
         if (!vista.getTxtCedula().getText().isEmpty()) {
             vista.getLb1().setText("");
         } else {
@@ -509,64 +443,56 @@ public class ControladorE implements KeyListener {
 
         if (!vista.getTxtNombre().getText().isEmpty()) {
             vista.getLb2().setText("");
-
         } else {
             vista.getLb2().setText("Campos Requeridos.!");
         }
 
         if (!vista.getTxtApellido().getText().isEmpty()) {
             vista.getLb3().setText("");
-
         } else {
             vista.getLb3().setText("Campos Requeridos.!");
-
         }
 
         if (!vista.getCombo_Rol().getSelectedItem().equals("Seleccione")) {
             vista.getLb4().setText("");
         } else {
             vista.getLb4().setText("Campos Requeridos.!");
-
         }
+
         if (vista.getDateFecha().getDate() == null) {
             vista.getLb5().setText("Campos Requeriidos.!");
         } else {
             vista.getLb5().setText("");
-
         }
+
         if (!vista.getTxtSalario().getText().isEmpty()) {
             vista.getLb6().setText("");
         } else {
             vista.getLb6().setText("Campos Requeridos.!");
-
         }
 
         if (!vista.getTxtPhone().getText().isEmpty()) {
             vista.getLb7().setText("");
         } else {
             vista.getLb7().setText("Campos Requeridos.!");
-
         }
 
         if (!vista.getTxtCorreo().getText().isEmpty()) {
             vista.getLb8().setText("");
         } else {
             vista.getLb8().setText("Campos Requeridos.!");
-
         }
 
         if (!vista.getTxtDireccion().getText().isEmpty()) {
             vista.getLb9().setText("");
         } else {
             vista.getLb9().setText("Campos Requeridos.!");
-
         }
 
         if (!vista.getTxtPassword().getText().isEmpty()) {
             vista.getLb10().setText("");
         } else {
             vista.getLb10().setText("Campos Requeridos.!");
-
         }
 
     }
@@ -575,34 +501,33 @@ public class ControladorE implements KeyListener {
     public void keyTyped(KeyEvent e) {
         if (e.getSource() == vista.getTxtCedula()) {
             char c = e.getKeyChar();
-            if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)
-                    && (c != '.')) {
+            if (!Character.isDigit(c) && e.getKeyChar() != KeyEvent.VK_BACK_SPACE) {
                 e.consume();
             }
-
-        }
-        if (e.getSource() == vista.getTxtNombre()) {
+        } else if (e.getSource() == vista.getTxtNombre()) {
             char r = e.getKeyChar();
-
             if (((Character.isDigit(r)))) {
                 e.consume();
             }
-        }
-        if (e.getSource() == vista.getTxtApellido()) {
+        } else if (e.getSource() == vista.getTxtApellido()) {
             char r = e.getKeyChar();
-
             if (((Character.isDigit(r)))) {
                 e.consume();
             }
-        }
-
-        if (e.getSource() == vista.getTxtPhone()) {
+        } else if (e.getSource() == vista.getTxtPhone()) {
+            char c = e.getKeyChar();
+            if (!Character.isDigit(c) && e.getKeyChar() != KeyEvent.VK_BACK_SPACE) {
+                e.consume();
+            }
+        } else if (e.getSource() == vista.getTxtSalario()) {
             char c = e.getKeyChar();
             if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)
                     && (c != '.')) {
                 e.consume();
             }
-
+            if (c == '.' && vista.getTxtSalario().getText().contains(".")) {
+                e.consume();
+            }
         }
 
     }
@@ -616,75 +541,40 @@ public class ControladorE implements KeyListener {
         if (e.getSource() == vista.getTxtBuscar()) {
             vista.getTxtBuscar().getText();
             Buscar();
-
         }
+    }
 
+    @Override
+    public void focusGained(FocusEvent e) {
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
         if (e.getSource() == vista.getTxtCedula()) {
-            if (!vista.getTxtCedula().getText().trim().equals("")) {
+            if (modelo.existEmps(vista.getTxtCedula().getText()) != null) {
+                JOptionPane.showMessageDialog(null, "Registro existente");
+            } else if (digVfy(vista.getTxtCedula().getText())) {
+                vista.getLb1().setText("");
+                Persona per = modelo.existPer(vista.getTxtCedula().getText());
+                if (per != null) {
+                    vista.getTxtNombre().setText(per.getNombre());
+                    vista.getTxtApellido().setText(per.getApellido());
+                    vista.getDateFecha().setDate(per.getFecha_nacimiento());
+                    vista.getTxtPhone().setText(per.getNumero_telefono());
+                    vista.getTxtDireccion().setText(per.getDireccion());
+                    vista.getTxtCorreo().setText(per.getCorreo());
+                }
+            } else {
+                vista.getLb1().setText("No es una cedula!!!");
+            }
+            
+        } else if (e.getSource() == vista.getTxtPhone()) {
+            if (vista.getTxtPhone().getText().length() == 10) {
                 vista.getLb1().setText("");
             } else {
-                vista.getLb1().setText("Campos Requeridos.!");
+                vista.getLb7().setText("No es un telefono!!!");
             }
         }
-        if (e.getSource() == vista.getTxtNombre()) {
-            if (!vista.getTxtNombre().getText().trim().equals("")) {
-                vista.getLb2().setText("");
-            } else {
-                vista.getLb2().setText("Campos Requeridos.!");
-            }
-
-        }
-        if (e.getSource() == vista.getTxtApellido()) {
-            if (!vista.getTxtApellido().getText().trim().equals("")) {
-                vista.getLb3().setText("");
-            } else {
-                vista.getLb3().setText("Campos Requeridos.!");
-            }
-
-        }
-
-        if (e.getSource() == vista.getTxtSalario()) {
-            if (!vista.getTxtSalario().getText().trim().equals("")) {
-                vista.getLb6().setText("");
-            } else {
-                vista.getLb6().setText("Campos Requeridos.!");
-            }
-
-        }
-        if (e.getSource() == vista.getTxtPhone()) {
-            if (!vista.getTxtPhone().getText().trim().equals("")) {
-                vista.getLb7().setText("");
-            } else {
-                vista.getLb7().setText("Campos Requeridos.!");
-            }
-
-        }
-        if (e.getSource() == vista.getTxtCorreo()) {
-            if (!vista.getTxtCorreo().getText().trim().equals("")) {
-                vista.getLb8().setText("");
-            } else {
-                vista.getLb8().setText("Campos Requeridos.!");
-            }
-
-        }
-        if (e.getSource() == vista.getTxtDireccion()) {
-            if (!vista.getTxtDireccion().getText().trim().equals("")) {
-                vista.getLb9().setText("");
-            } else {
-                vista.getLb9().setText("Campos Requeridos.!");
-            }
-
-        }
-
-        if (e.getSource() == vista.getTxtPassword()) {
-            if (!vista.getTxtPassword().getText().trim().equals("")) {
-                vista.getLb10().setText("");
-            } else {
-                vista.getLb10().setText("Campos Requeridos.!");
-            }
-
-        }
-
     }
 
 }

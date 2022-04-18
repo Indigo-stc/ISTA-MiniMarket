@@ -116,14 +116,13 @@ public class MenuPricpal extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         btnCambia = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         btnCliente = new javax.swing.JButton();
         btnProveedor = new javax.swing.JButton();
         btnProducto = new javax.swing.JButton();
         btnFactura = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
         btnSalir = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         PANELCAR = new javax.swing.JPanel();
         card1 = new javax.swing.JPanel();
 
@@ -131,92 +130,48 @@ public class MenuPricpal extends javax.swing.JFrame {
 
         jSplitPane1.setDividerSize(0);
 
-        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanel4.setAutoscrolls(true);
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCambia.setBackground(new java.awt.Color(255, 255, 255));
+        btnCambia.setBackground(new java.awt.Color(0, 185, 167));
         btnCambia.setText("Empleado");
+        jPanel4.add(btnCambia, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 95, 149, 42));
 
         jLabel3.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Sistema.MK");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 15, -1, -1));
 
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-
-        btnCliente.setBackground(new java.awt.Color(255, 255, 255));
+        btnCliente.setBackground(new java.awt.Color(0, 0, 0));
         btnCliente.setText("Cliente");
+        jPanel4.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 149, 42));
 
-        btnProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        btnProveedor.setBackground(new java.awt.Color(0, 0, 0));
         btnProveedor.setText("Proveedor");
+        jPanel4.add(btnProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 263, 149, 42));
 
         btnProducto.setBackground(new java.awt.Color(255, 255, 255));
         btnProducto.setText("Producto");
+        jPanel4.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 345, 149, 42));
 
         btnFactura.setBackground(new java.awt.Color(255, 255, 255));
         btnFactura.setText("Factura");
-
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(btnFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 429, 149, 42));
 
         btnSalir.setBackground(new java.awt.Color(255, 102, 102));
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setText("Salir");
+        jPanel4.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 149, 42));
 
         btnReportes.setBackground(new java.awt.Color(255, 255, 255));
         btnReportes.setText("GenerarReporte");
+        jPanel4.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 512, 149, 42));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jSeparator2)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnReportes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(btnFactura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(btnProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(btnProveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(btnCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(btnCambia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jLabel3)))
-                .addGap(51, 51, 51))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(btnCambia, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(btnProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(btnFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
-        );
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Fondo.jpg"))); // NOI18N
+        jLabel1.setOpaque(true);
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 670));
 
         jSplitPane1.setLeftComponent(jPanel4);
 
@@ -224,8 +179,9 @@ public class MenuPricpal extends javax.swing.JFrame {
         PANELCAR.setAutoscrolls(true);
         PANELCAR.setLayout(new java.awt.CardLayout());
 
-        card1.setBackground(new java.awt.Color(255, 255, 204));
+        card1.setBackground(new java.awt.Color(255, 255, 255));
         card1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        card1.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout card1Layout = new javax.swing.GroupLayout(card1);
         card1.setLayout(card1Layout);
@@ -235,7 +191,7 @@ public class MenuPricpal extends javax.swing.JFrame {
         );
         card1Layout.setVerticalGroup(
             card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGap(0, 688, Short.MAX_VALUE)
         );
 
         PANELCAR.add(card1, "card2");
@@ -301,10 +257,9 @@ public class MenuPricpal extends javax.swing.JFrame {
     private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnSalir;
     private javax.swing.JPanel card1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables
 }

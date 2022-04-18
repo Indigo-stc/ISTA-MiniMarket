@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Empleado;
+import modelo.Persona;
 
 public class ModeloEmpleado implements Crud<Empleado> {
 
@@ -67,12 +68,9 @@ public class ModeloEmpleado implements Crud<Empleado> {
 
     @Override
     public boolean delete(String codigo) {
-        String sql2 = "DELETE FROM public.personas\n"
-                + "	WHERE dni='" + codigo + "';";
-
         String sql1 = "DELETE FROM public.empleados\n"
                 + "	WHERE dni='" + codigo + "';";
-        String sqlE = sql1 + sql2;
+        String sqlE = sql1;
         System.out.println("Eliminado: " + sqlE);
 
         return con.insertUpdateDelete(sqlE);
@@ -91,7 +89,7 @@ public class ModeloEmpleado implements Crud<Empleado> {
 
             List<Empleado> em = new ArrayList<>();
             while (rs.next()) {
-                Empleado emp = new Empleado();
+                Empleado emp = null;
                 emp.setCedula(rs.getString(1));
                 emp.setEmpleado_id(rs.getString(2));
                 emp.setNombre(rs.getString(3));
@@ -129,6 +127,8 @@ public class ModeloEmpleado implements Crud<Empleado> {
         String sql = sql1 + sql2;
         return con.insertUpdateDelete(sql);
     }
+    
+    
 
     @Override
     public ResultSet pk(String id) {
@@ -153,4 +153,48 @@ public class ModeloEmpleado implements Crud<Empleado> {
         return r;
     }
 
+    public Persona existPer(String cedula) {
+        String stm = "SELECT * FROM personas WHERE dni   = '"+cedula+"';";
+        ResultSet res = con.selectConsulta(stm);
+        Persona per = null;
+        try {
+            if (res.next()) {
+                per = new Persona(res.getString(1), res.getString(2), res.getString(3), 
+                        res.getDate(4), res.getString(5), res.getString(6), res.getString(7));
+            }
+            return per;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
+            return per;
+        }
+    }
+    
+    public Empleado existEmps(String cedula) {
+        String stm = "SELECT * FROM empleados WHERE dni = '"+cedula+"';";
+        ResultSet rs = con.selectConsulta(stm);
+        Empleado emp = null;
+        try {
+            if (rs.next()) {
+                emp = new Empleado(rs.getString(1), 0, null, 0, cedula, null, null, null, null, null, null);
+                return emp;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
+            return emp;
+        }
+        return emp;
+    }
+    
+    public boolean insEmpleado(Empleado empl) {
+        String sqlP = "UPDATE public.personas\n"
+                + "	SET  nombre='" + empl.getNombre() + "', apellido='" + empl.getApellido() + "', telefono='" + empl.getNumero_telefono()
+                + "', direccion='" + empl.getDireccion() + "', email='" + empl.getCorreo() + "'\n"
+                + "	WHERE dni='" + empl.getCedula() + "';";
+        String sqlE = " INSERT INTO public.empleados(\n"
+                + "	empleado_id, \"contraseña\", dni, rol_id, salarios)\n"
+                + "	VALUES ('" + empl.getEmpleado_id() + "', '" + empl.getPassword() + "', '"
+                + empl.getCedula() + "', '" + empl.getRol_id() + "', '" + empl.getSalario() + "');";
+        String sql = sqlP + sqlE;
+        return con.insertUpdateDelete(sql);
+    }
 }

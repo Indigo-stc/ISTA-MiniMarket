@@ -43,24 +43,20 @@ public class ProviderCtrl implements MouseListener, ActionListener, KeyListener 
         model.addColumn("Telefono");
         model.addColumn("Descripción");
         model.addColumn("");
-        model.addColumn("");
         tabla.setModel(model);
 
         tabla.getColumnModel().getColumn(4).setPreferredWidth(1);
-        tabla.getColumnModel().getColumn(5).setPreferredWidth(1);
         tabla.setRowHeight(20);
 
         IProveedorDAO sql = new IProveedorDAO();
         ArrayList<Proveedor> pvds = sql.buscar(search);
         JButton update = new JButton();
         update.setName("U");
-        JButton delete = new JButton();
-        delete.setName("D");
         if (!pvds.isEmpty()) {
             for (Proveedor pvd : pvds) {
                 Object[] fila = {pvd.getProveedor_id(), pvd.getNombre(),
                     pvd.getTelefono(), pvd.getDireccion(),
-                    update, delete};
+                    update};
                 model.addRow(fila);
             }
         }
@@ -85,9 +81,7 @@ public class ProviderCtrl implements MouseListener, ActionListener, KeyListener 
                 System.out.println(jb.getName());
                 if (jb.getName().equals("U")) {
                     sql.update(pvd);
-                    tblBuscar(vp.tblBuscar, "");
-                } else if (jb.getName().equals("D")) {
-                    sql.delete(pvd.getProveedor_id());
+                    JOptionPane.showMessageDialog(null, "Modificado");
                     tblBuscar(vp.tblBuscar, "");
                 }
             }

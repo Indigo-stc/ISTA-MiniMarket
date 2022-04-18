@@ -41,23 +41,19 @@ public class CategoryCtrl implements ActionListener, KeyListener,
         model.addColumn("ID");
         model.addColumn("Nombre");
         model.addColumn("");
-        model.addColumn("");
         table.setModel(model);
 
         table.getColumnModel().getColumn(2).setPreferredWidth(1);
-        table.getColumnModel().getColumn(3).setPreferredWidth(1);
         table.setRowHeight(20);
 
         ICategoriaDAO sql = new ICategoriaDAO();
         ArrayList<Categoria> pvds = sql.buscar(search);
         JButton update = new JButton();
         update.setName("U");
-        JButton delete = new JButton();
-        delete.setName("D");
         if (!pvds.isEmpty()) {
             for (Categoria tcg : pvds) {
                 Object[] fila = {tcg.getCategoria_id(), tcg.getTitulo(),
-                    update, delete};
+                    update};
                 model.addRow(fila);
             }
         }
@@ -114,9 +110,7 @@ public class CategoryCtrl implements ActionListener, KeyListener,
                     System.out.println(jb.getName());
                     if (jb.getName().equals("U")) {
                         sql.update(ctg);
-                        tblBuscar(vc.tblBuscar, "");
-                    } else if (jb.getName().equals("D")) {
-                        sql.delete(ctg.getCategoria_id());
+                        JOptionPane.showMessageDialog(null, "Modificado");
                         tblBuscar(vc.tblBuscar, "");
                     }
                 }

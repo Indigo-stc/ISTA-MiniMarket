@@ -10,7 +10,7 @@ public class ControladorM {
 
     public ControladorM() {
         this.vista = vista;
-        Vista();
+        Vista();        
         InicioControl();
     }
 
@@ -98,3 +98,7 @@ class Test {
         ControladorM c = new ControladorM();
     }
 }
+
+//claro e1f5fe
+//oscuro B3e5fc
+//barra 

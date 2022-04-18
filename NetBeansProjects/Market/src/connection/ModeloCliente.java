@@ -3,11 +3,11 @@ package connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Cliente;
+import modelo.Persona;
 
 public class ModeloCliente implements Crud<Cliente> {
 
@@ -98,13 +98,14 @@ public class ModeloCliente implements Crud<Cliente> {
 
 //    @Override
     public boolean ModificarT(Cliente tt, String cedula) {
-
-        String sqlC = "UPDATE public.personas\n"
+        String sqlC = "UPDATE public.personas "
                 + "	SET  nombre='" + tt.getNombre() + "', apellido='" + tt.getApellido()
                 + "', telefono='" + tt.getNumero_telefono() + "', direccion='"
                 + tt.getDireccion() + "', email='" + tt.getCorreo() + "'\n"
                 + "	WHERE dni='" + cedula + "';";
-        return con.insertUpdateDelete(sqlC);
+        String sqlP = "UPDATE clientes "
+                + "SET activo = TRUE;";
+        return con.insertUpdateDelete(sqlC + sqlP);
 
     }
 
@@ -123,5 +124,62 @@ public class ModeloCliente implements Crud<Cliente> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public Persona existPer(String cedula) {
+        String stm = "SELECT * FROM personas WHERE dni = '"+cedula+"';";
+        ResultSet res = con.selectConsulta(stm);
+        Persona per = null;
+        try {
+            if (res.next()) {
+                per = new Persona(res.getString(1), res.getString(2), res.getString(3), 
+                        res.getDate(4), res.getString(5), res.getString(6), res.getString(7));
+            }
+            return per;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
+            return per;
+        }
+    }
     
+    public Cliente existCLi(String cedula) {
+        String stm = "SELECT * FROM clientes WHERE dni = '"+cedula+"';";
+        ResultSet rs = con.selectConsulta(stm);
+        Cliente cli = null;
+        try {
+            if (rs.next()) {
+                cli = new Cliente(rs.getString(1), rs.getString(2), 
+                        null, null, null, null, null, null);
+                return cli;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
+            return cli;
+        }
+        return cli;
+    }
+    
+    public boolean activo(String cedula) {
+        String stm = "SELECT * FROM clientes WHERE dni = '"+cedula+"' AND activo = TRUE;";
+        ResultSet rs = con.selectConsulta(stm);
+        try {
+            if (rs.next()) { 
+            return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return false;
+    }
+    
+    public boolean insCliente(Cliente cli) {
+        String sqlP = "UPDATE public.personas\n"
+                + "	SET  nombre='" + cli.getNombre() + "', apellido='" + cli.getApellido() + "', telefono='" + cli.getNumero_telefono()
+                + "', direccion='" + cli.getDireccion() + "', email='" + cli.getCorreo() + "'\n"
+                + "	WHERE dni='" + cli.getCedula() + "';";
+        String sqlC = "INSERT INTO public.clientes(\n"
+                + "	cliente_id, dni, activo)\n"
+                + "	VALUES ('" + cli.getIdCliente() + "', '" + cli.getCedula() + "', TRUE);";
+        String sql = sqlP + sqlC;
+        return con.insertUpdateDelete(sql);
+    }
 }

@@ -4,7 +4,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -14,14 +13,16 @@ import modelo.Empleado;
 import modelo.MensajeFantasma;
 import connection.ModeloCliente;
 import connection.ModeloEmpleado;
-import connection.RolDao;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import modelo.Persona;
 import vista.PanelCliente;
 
 /**
  *
  * @author 59399
  */
-public class ControladorC implements KeyListener {
+public class ControladorC implements KeyListener, FocusListener {
 
     ModeloCliente modelo = new ModeloCliente();
     PanelCliente vista = new PanelCliente();
@@ -55,72 +56,50 @@ public class ControladorC implements KeyListener {
     }
 
     public void Registrar() {
-        if (!(vista.getTxtCedula().getText().isEmpty() || vista.getTxtNombre().getText().isEmpty()
-                || vista.getTxtApellido().getText().isEmpty()
-                || vista.getDateFecha().getDate() == null || vista.getTxtPhone().getText().isEmpty()
-                || vista.getTxtCorreo().getText().isEmpty() || vista.getTxtDireccion().getText().isEmpty())) {
-            if (validarCedula(vista.getTxtCedula().getText()) == true) {
-                if (CedulaE(vista.getTxtCedula().getText()) == true) {
-//
-//                    if ((vista.getTxtNombre().getText().matches("^[A-Za-z].{3,25}$"))) {
-//
-//                        if ((vista.getTxtApellido().getText().matches("^[A-Za-z].{3,25}$"))) {
-//
-//                            if ((vista.getTxtPhone().getText().matches("^\\d{10}$"))) {
-//
-//                                if ((vista.getTxtCorreo().getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-//                                        + "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*"
-//                                        + "(\\.[A-Za-z]{2,})$"))) {
-//
-//                                    if ((vista.getTxtDireccion().getText().matches("^[A-Za-z].{3,25}$"))) {
-
-                                        int enviar = JOptionPane.showConfirmDialog(vista, "ESTA SEGURO DE GUARDAR ESTE DATO", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                                        if (enviar == JOptionPane.YES_NO_OPTION) {
-                                            Cliente cl = new Cliente(vista.getTxtCedula().getText(), vista.getTxtNombre().getText(),
-                                                    vista.getTxtApellido().getText(), vista.getDateFecha().getDate(),
-                                                    vista.getTxtPhone().getText(), vista.getTxtCorreo().getText(), vista.getTxtDireccion().getText());
-                                            ModeloCliente md = new ModeloCliente();
-                                            if (md.insert(cl)) {
-                                                JOptionPane.showMessageDialog(vista, "SE LOGRO GUARDAR EL DATO CON EXITO");
-                                                cargaLista();
-                                                Limpiar();
-                                            } else {
-                                                JOptionPane.showMessageDialog(vista, "NO SE LOGRO GUARDAR EL REGISTRO");
-
-                                            }
-                                        }
-
-//                                    } else {
-//                                        JOptionPane.showMessageDialog(null, "La Direccion debe de tener mas de 3 caracteres");
-//
-//                                    }
-//
-//                                } else {
-//                                    JOptionPane.showMessageDialog(null, "Ejemplo de Correo: Manuelita7@hotmail.com");
-//
-//                                }
-//
-//                            } else {
-//                                JOptionPane.showMessageDialog(null, "El numero de telefono debe de tener 10 digitos");
-//
-//                            }
-
-//                        } else {
-//                            JOptionPane.showMessageDialog(null, "Su Apellido debe de tener mas de 3 caracteres");
-//
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(null, "Su Nombre debe de tener mas de 3 caracteres");
-//
-//                    }
-                }
-
+        Persona per = modelo.existPer(vista.getTxtCedula().getText());
+        Cliente existe = modelo.existCLi(vista.getTxtCedula().getText());
+        if (modelo.activo(vista.getTxtCedula().getText())) {
+            JOptionPane.showMessageDialog(null, "Registro existente");
+        } else if (!digVfy(vista.getTxtCedula().getText())
+                || "".equals(vista.getTxtCedula().getText())
+                || "".equals(vista.getTxtNombre().getText())
+                || "".equals(vista.getTxtApellido().getText())
+                || "".equals(vista.getTxtPhone().getText())
+                || "".equals(vista.getTxtDireccion().getText())
+                || "".equals(vista.getTxtCorreo().getText())
+                || vista.getDateFecha().getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Llenar campos obligatorios");
+            Validacione_Campos();
+        } else if (existe != null) {
+            existe.setNombre(vista.getTxtNombre().getText());
+            existe.setApellido(vista.getTxtApellido().getText());
+            existe.setFecha_nacimiento(vista.getDateFecha().getDate());
+            existe.setCorreo(vista.getTxtCorreo().getText());
+            existe.setDireccion(vista.getTxtDireccion().getText());
+            existe.setNumero_telefono(vista.getTxtPhone().getText());
+            if (modelo.ModificarT(existe, existe.getCedula())) {
+                JOptionPane.showMessageDialog(null, "Activando Cliente");
+                cargaLista();
+            }
+        } else if (per != null && existe == null) {
+            existe = new Cliente(vista.getTxtCedula().getText(), vista.getTxtNombre().getText(),
+                    vista.getTxtApellido().getText(),
+                    vista.getDateFecha().getDate(), vista.getTxtPhone().getText(),
+                    vista.getTxtCorreo().getText(), vista.getTxtDireccion().getText());
+            if (modelo.insCliente(existe)) {
+                JOptionPane.showMessageDialog(null, "CLiente Ingresado");
+                cargaLista();
             }
         } else {
-            Validacione_Campos();
-
+            existe = new Cliente(vista.getTxtCedula().getText(), vista.getTxtNombre().getText(),
+                    vista.getTxtApellido().getText(),
+                    vista.getDateFecha().getDate(), vista.getTxtPhone().getText(),
+                    vista.getTxtCorreo().getText(), vista.getTxtDireccion().getText());
+            if (modelo.insert(existe)) {
+                JOptionPane.showMessageDialog(null, "CLiente Ingresado");
+                cargaLista();
+            }
         }
-
     }
 
     public void Modificar() {
@@ -135,50 +114,44 @@ public class ControladorC implements KeyListener {
 //                if ((vista.getTxtNombre().getText().matches("^[A-Za-z].{3,25}$"))) {
 
 //                    if ((vista.getTxtApellido().getText().matches("^[A-Za-z].{3,25}$"))) {
-
 //                        if ((vista.getTxtPhone().getText().matches("^\\d{10}$"))) {
-
 //                            if ((vista.getTxtCorreo().getText().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 //                                    + "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*"
 //                                    + "(\\.[A-Za-z]{2,})$"))) {
-
 //                                if ((vista.getTxtDireccion().getText().matches("^[A-Za-z].{3,25}$"))) {
-                                    Cliente mdc = new Cliente();
-                                    mdc.setNombre(vista.getTxtNombre().getText());
-                                    mdc.setApellido(vista.getTxtApellido().getText());
-                                    mdc.setNumero_telefono(vista.getTxtPhone().getText());
-                                    mdc.setCorreo(vista.getTxtCorreo().getText());
-                                    mdc.setDireccion(vista.getTxtDireccion().getText());
+                Cliente mdc = new Cliente();
+                mdc.setNombre(vista.getTxtNombre().getText());
+                mdc.setApellido(vista.getTxtApellido().getText());
+                mdc.setNumero_telefono(vista.getTxtPhone().getText());
+                mdc.setCorreo(vista.getTxtCorreo().getText());
+                mdc.setDireccion(vista.getTxtDireccion().getText());
 
-                                    int resultado = JOptionPane.showConfirmDialog(vista, "ESTA SEGURO QUE LOS DATOS INGRESADOS SON CORRECTOS", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                                    if (resultado == JOptionPane.YES_NO_OPTION) {
-                                        if (modelo.ModificarT(mdc, vista.getTxtCedula().getText())) {
-                                            JOptionPane.showMessageDialog(vista, "SE LOGRO GRABAR EL DATO EN LA BDD");
-                                            cargaLista();
-                                            Limpiar();
-                                            vista.getTxtCedula().setEnabled(true);
-                                            vista.getDateFecha().setEnabled(true);
+                int resultado = JOptionPane.showConfirmDialog(vista, "ESTA SEGURO QUE LOS DATOS INGRESADOS SON CORRECTOS", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (resultado == JOptionPane.YES_NO_OPTION) {
+                    if (modelo.ModificarT(mdc, vista.getTxtCedula().getText())) {
+                        JOptionPane.showMessageDialog(vista, "SE LOGRO GRABAR EL DATO EN LA BDD");
+                        cargaLista();
+                        Limpiar();
+                        vista.getTxtCedula().setEnabled(true);
+                        vista.getDateFecha().setEnabled(true);
 
-                                        } else {
-                                            JOptionPane.showMessageDialog(vista, "NO SE LOGRO GRABAR EL REGISTRO");
-                                        }
-                                    }
+                    } else {
+                        JOptionPane.showMessageDialog(vista, "NO SE LOGRO GRABAR EL REGISTRO");
+                    }
+                }
 
 //                                } else {
 //                                    JOptionPane.showMessageDialog(null, "La Direccion debe de tener mas de 3 caracteres");
 //
 //                                }
-
 //                            } else {
 //                                JOptionPane.showMessageDialog(null, "Ejemplo de Correo: Manuelita7@hotmail.com");
 //
 //                            }
-
 //                        } else {
 //                            JOptionPane.showMessageDialog(null, "El numero de telefono debe de tener 10 digitos");
 //
 //                        }
-
 //                    } else {
 //                        JOptionPane.showMessageDialog(null, "Su Apellido debe de tener mas de 3 caracteres");
 //
@@ -252,8 +225,7 @@ public class ControladorC implements KeyListener {
     }
 
     public boolean CedulaE(String cedula) {
-        
-        
+
         List<Cliente> clie = modelo.LeerT();
 
         for (int i = 0; i < clie.size(); i++) {
@@ -262,7 +234,7 @@ public class ControladorC implements KeyListener {
                 return false;
             }
         }
-        
+
         ModeloEmpleado mdEmpleado = new ModeloEmpleado();
         List<Empleado> empl = mdEmpleado.LeerT();
         for (int i = 0; i < empl.size(); i++) {
@@ -274,51 +246,6 @@ public class ControladorC implements KeyListener {
 
         }
         return true;
-    }
-
-    private boolean validarCedula(String cedula) {
-
-        
-        //Validar Cedula Ecuatoriana//
-        boolean cedulaCorrecta = false;
-
-        try {
-
-            if (cedula.length() == 10) {
-                int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
-                if (tercerDigito < 6) {
-                    int[] coefValCedula = {2, 1, 2, 1, 2, 1, 2, 1, 2};
-                    int verificador = Integer.parseInt(cedula.substring(9, 10));
-                    int suma = 0;
-                    int digito = 0;
-                    for (int i = 0; i < (cedula.length() - 1); i++) {
-                        digito = Integer.parseInt(cedula.substring(i, i + 1)) * coefValCedula[i];
-                        suma += ((digito % 10) + (digito / 10));
-                    }
-                    if ((suma % 10 == 0) && (suma % 10 == verificador)) {
-                        cedulaCorrecta = true;
-                    } else if ((10 - (suma % 10)) == verificador) {
-                        cedulaCorrecta = true;
-                    } else {
-                        cedulaCorrecta = false;
-                    }
-                } else {
-                    cedulaCorrecta = false;
-                }
-            } else {
-                cedulaCorrecta = false;
-            }
-        } catch (NumberFormatException nfe) {
-            cedulaCorrecta = false;
-        } catch (Exception err) {
-            JOptionPane.showMessageDialog(null, "Una excepcion ocurrio en el proceso de validadcion");
-            cedulaCorrecta = false;
-        }
-
-        if (!cedulaCorrecta) {
-            JOptionPane.showMessageDialog(null, "La Cédula ingresada es Incorrecta");
-        }
-        return cedulaCorrecta;
     }
 
     public void IncioControl() {
@@ -333,7 +260,10 @@ public class ControladorC implements KeyListener {
         vista.getTxtPhone().addKeyListener(this);
         vista.getTxtCorreo().addKeyListener(this);
         vista.getTxtBuscar().addKeyListener(this);
+        vista.getTxtPhone().addFocusListener(this);
+        vista.getTxtCedula().addFocusListener(this);
         vista.getTxtDireccion().addKeyListener(this);
+
         vista.getTablaCliente().addMouseListener(new MouseAdapter() {
 
             public void mouseClicked(MouseEvent e) {
@@ -356,7 +286,6 @@ public class ControladorC implements KeyListener {
 
     }
 
-
     public void Campos() {
         vista.getLb1().setText("");
         vista.getLb2().setText("");
@@ -378,8 +307,6 @@ public class ControladorC implements KeyListener {
 
     }
 
-   
-
     public void Validacione_Campos() {
 
         if (!vista.getTxtCedula().getText().isEmpty()) {
@@ -390,45 +317,38 @@ public class ControladorC implements KeyListener {
 
         if (!vista.getTxtNombre().getText().isEmpty()) {
             vista.getLb2().setText("");
-
         } else {
             vista.getLb2().setText("Campos Requeridos.!");
         }
 
         if (!vista.getTxtApellido().getText().isEmpty()) {
             vista.getLb3().setText("");
-
         } else {
             vista.getLb3().setText("Campos Requeridos.!");
-
         }
 
         if (vista.getDateFecha().getDate() == null) {
             vista.getLb4().setText("Campos Requeriidos.!");
         } else {
             vista.getLb4().setText("");
-
         }
 
         if (!vista.getTxtPhone().getText().isEmpty()) {
             vista.getLb5().setText("");
         } else {
             vista.getLb5().setText("Campos Requeridos.!");
-
         }
 
         if (!vista.getTxtCorreo().getText().isEmpty()) {
             vista.getLb6().setText("");
         } else {
             vista.getLb6().setText("Campos Requeridos.!");
-
         }
 
         if (!vista.getTxtDireccion().getText().isEmpty()) {
             vista.getLb7().setText("");
         } else {
             vista.getLb7().setText("Campos Requeridos.!");
-
         }
 
     }
@@ -437,34 +357,24 @@ public class ControladorC implements KeyListener {
     public void keyTyped(KeyEvent e) {
         if (e.getSource() == vista.getTxtCedula()) {
             char c = e.getKeyChar();
-            if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)
-                    && (c != '.')) {
+            if (!Character.isDigit(c) && e.getKeyChar() != KeyEvent.VK_BACK_SPACE) {
                 e.consume();
             }
-
-        }
-        if (e.getSource() == vista.getTxtNombre()) {
+        } else if (e.getSource() == vista.getTxtNombre()) {
             char r = e.getKeyChar();
-
             if (((Character.isDigit(r)))) {
                 e.consume();
             }
-        }
-        if (e.getSource() == vista.getTxtApellido()) {
+        } else if (e.getSource() == vista.getTxtApellido()) {
             char r = e.getKeyChar();
-
             if (((Character.isDigit(r)))) {
                 e.consume();
             }
-        }
-
-        if (e.getSource() == vista.getTxtPhone()) {
+        } else if (e.getSource() == vista.getTxtPhone()) {
             char c = e.getKeyChar();
-            if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)
-                    && (c != '.')) {
+            if (!Character.isDigit(c) && e.getKeyChar() != KeyEvent.VK_BACK_SPACE) {
                 e.consume();
             }
-
         }
 
     }
@@ -475,63 +385,81 @@ public class ControladorC implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-
         if (e.getSource() == vista.getTxtBuscar()) {
             vista.getTxtBuscar().getText();
             Buscar();
-
         }
+    }
 
+    @Override
+    public void focusGained(FocusEvent e) {
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
         if (e.getSource() == vista.getTxtCedula()) {
-            if (!vista.getTxtCedula().getText().trim().equals("")) {
+            if (modelo.activo(vista.getTxtCedula().getText())) {
+                JOptionPane.showMessageDialog(null, "Registro existente");
+            } else if (digVfy(vista.getTxtCedula().getText())) {
+                vista.getLb1().setText("");
+                Persona per = modelo.existPer(vista.getTxtCedula().getText());
+                if (per != null) {
+                    vista.getTxtNombre().setText(per.getNombre());
+                    vista.getTxtApellido().setText(per.getApellido());
+                    vista.getDateFecha().setDate(per.getFecha_nacimiento());
+                    vista.getTxtPhone().setText(per.getNumero_telefono());
+                    vista.getTxtDireccion().setText(per.getDireccion());
+                    vista.getTxtCorreo().setText(per.getCorreo());
+                }
+            } else {
+                vista.getLb1().setText("No es una cedula!!!");
+            }
+        } else if (e.getSource() == vista.getTxtPhone()) {
+            if (vista.getTxtPhone().getText().length() == 10) {
                 vista.getLb1().setText("");
             } else {
-                vista.getLb1().setText("Campos Requeridos.!");
+                vista.getLb5().setText("No es un telefono!!!");
             }
         }
 
-        if (e.getSource() == vista.getTxtNombre()) {
-            if (!vista.getTxtNombre().getText().trim().equals("")) {
-                vista.getLb2().setText("");
-            } else {
-                vista.getLb2().setText("Campos Requeridos.!");
+    }
+
+    boolean digVfy(String cedula) {
+        byte sum = 0;
+        try {
+            if (cedula.length() != 10) {
+                return false;
             }
-
-        }
-        if (e.getSource() == vista.getTxtApellido()) {
-            if (!vista.getTxtApellido().getText().trim().equals("")) {
-                vista.getLb3().setText("");
-            } else {
-                vista.getLb3().setText("Campos Requeridos.!");
+            String[] data = cedula.split("");
+            byte verifier = Byte.parseByte(data[0] + data[1]);
+            if (verifier < 1 || verifier > 24) {
+                return false;
             }
-
-        }
-
-        if (e.getSource() == vista.getTxtPhone()) {
-            if (!vista.getTxtPhone().getText().trim().equals("")) {
-                vista.getLb5().setText("");
-            } else {
-                vista.getLb5().setText("Campos Requeridos.!");
+            byte[] digits = new byte[data.length];
+            for (byte i = 0; i < digits.length; i++) {
+                digits[i] = Byte.parseByte(data[i]);
             }
-
-        }
-        if (e.getSource() == vista.getTxtCorreo()) {
-            if (!vista.getTxtCorreo().getText().trim().equals("")) {
-                vista.getLb6().setText("");
-            } else {
-                vista.getLb6().setText("Campos Requeridos.!");
+            if (digits[2] > 6) {
+                return false;
             }
-
-        }
-        if (e.getSource() == vista.getTxtDireccion()) {
-            if (!vista.getTxtDireccion().getText().trim().equals("")) {
-                vista.getLb7().setText("");
-            } else {
-                vista.getLb7().setText("Campos Requeridos.!");
+            for (byte i = 0; i < digits.length - 1; i++) {
+                if (i % 2 == 0) {
+                    verifier = (byte) (digits[i] * 2);
+                    if (verifier > 9) {
+                        verifier = (byte) (verifier - 9);
+                    }
+                } else {
+                    verifier = (byte) (digits[i] * 1);
+                }
+                sum = (byte) (sum + verifier);
             }
-
+            if ((sum - (sum % 10) + 10 - sum) == digits[9]) {
+                return true;
+            }
+        } catch (NumberFormatException e) {
+            e.getMessage();
         }
-
+        return false;
     }
 
 }

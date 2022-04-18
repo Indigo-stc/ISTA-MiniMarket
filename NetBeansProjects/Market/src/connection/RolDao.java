@@ -8,10 +8,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Rol;
 
-/**
- *
- * @author 59399
- */
 public class RolDao {
 
     Conexion con = new Conexion();

@@ -15,7 +15,15 @@ public class Empleado extends Persona {
 
     public Empleado() {
     }
-    
+
+    public Empleado(String Empleado_id, double Salario, String Password, int Rol_id, String Cedula, String Nombre, String Apellido, Date fecha_nacimiento, String Numero_telefono, String Correo, String Direccion) {
+        super(Cedula, Nombre, Apellido, fecha_nacimiento, Numero_telefono, Correo, Direccion);
+        this.Empleado_id = Empleado_id;
+        this.Rol = Rol;
+        this.Salario = Salario;
+        this.Password = Password;
+        this.Rol_id = Rol_id;
+    }
 
     public Empleado(double Salario, String Password, int Rol_id, String Cedula, String Nombre, String Apellido, Date fecha_nacimiento, String Numero_telefono, String Correo, String Direccion) {
         super(Cedula, Nombre, Apellido, fecha_nacimiento, Numero_telefono, Correo, Direccion);

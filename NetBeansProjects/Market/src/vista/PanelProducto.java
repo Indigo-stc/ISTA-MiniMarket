@@ -45,7 +45,11 @@ public class PanelProducto extends javax.swing.JPanel {
         btnRegistrar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(254, 254, 254));
+        setForeground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(857, 493));
+
+        jPanel1.setBackground(new java.awt.Color(225, 245, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("Nombre");
 
@@ -163,6 +167,8 @@ public class PanelProducto extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(254, 254, 254));
 
+        tblProd.setBackground(new java.awt.Color(255, 255, 255));
+        tblProd.setForeground(new java.awt.Color(0, 0, 0));
         tblProd.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},

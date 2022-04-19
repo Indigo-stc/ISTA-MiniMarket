@@ -44,13 +44,7 @@ public class MenuPricpal extends javax.swing.JFrame {
         this.btnProducto = btnProducto;
     }
 
-    public JButton getBtnProveedor() {
-        return btnProveedor;
-    }
-
-    public void setBtnProveedor(JButton btnProveedor) {
-        this.btnProveedor = btnProveedor;
-    }
+ 
 
     public JButton getBtnReportes() {
         return btnReportes;
@@ -114,17 +108,18 @@ public class MenuPricpal extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel4 = new javax.swing.JPanel();
-        btnCambia = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        btnCliente = new javax.swing.JButton();
-        btnProveedor = new javax.swing.JButton();
-        btnProducto = new javax.swing.JButton();
-        btnFactura = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        btnFactura = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
+        btnCambia = new javax.swing.JButton();
+        btnCliente = new javax.swing.JButton();
+        btnProducto = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         PANELCAR = new javax.swing.JPanel();
         card1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,44 +129,67 @@ public class MenuPricpal extends javax.swing.JFrame {
         jPanel4.setAutoscrolls(true);
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCambia.setBackground(new java.awt.Color(0, 185, 167));
-        btnCambia.setText("Empleado");
-        jPanel4.add(btnCambia, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 95, 149, 42));
-
         jLabel3.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Sistema.MK");
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 15, -1, -1));
 
-        btnCliente.setBackground(new java.awt.Color(0, 0, 0));
-        btnCliente.setText("Cliente");
-        jPanel4.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 149, 42));
-
-        btnProveedor.setBackground(new java.awt.Color(0, 0, 0));
-        btnProveedor.setText("Proveedor");
-        jPanel4.add(btnProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 263, 149, 42));
-
-        btnProducto.setBackground(new java.awt.Color(255, 255, 255));
-        btnProducto.setText("Producto");
-        jPanel4.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 345, 149, 42));
-
-        btnFactura.setBackground(new java.awt.Color(255, 255, 255));
-        btnFactura.setText("Factura");
-        jPanel4.add(btnFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 429, 149, 42));
-
         btnSalir.setBackground(new java.awt.Color(255, 102, 102));
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
-        btnSalir.setText("Salir");
-        jPanel4.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 149, 42));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cerrar-sesion.png"))); // NOI18N
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 190, 60));
 
-        btnReportes.setBackground(new java.awt.Color(255, 255, 255));
-        btnReportes.setText("GenerarReporte");
-        jPanel4.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 512, 149, 42));
+        btnFactura.setBackground(new java.awt.Color(255, 153, 102));
+        btnFactura.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnFactura.setForeground(new java.awt.Color(0, 0, 0));
+        btnFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/factura.png"))); // NOI18N
+        btnFactura.setText("Factura");
+        btnFactura.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel4.add(btnFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 190, 60));
+
+        btnReportes.setBackground(new java.awt.Color(255, 153, 102));
+        btnReportes.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnReportes.setForeground(new java.awt.Color(0, 0, 0));
+        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/reporte.png"))); // NOI18N
+        btnReportes.setText("Reportes");
+        btnReportes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jPanel4.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 190, 60));
+
+        btnCambia.setBackground(new java.awt.Color(255, 153, 102));
+        btnCambia.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnCambia.setForeground(new java.awt.Color(0, 0, 0));
+        btnCambia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cajero (1).png"))); // NOI18N
+        btnCambia.setText("Empleado");
+        btnCambia.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel4.add(btnCambia, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 190, 60));
+
+        btnCliente.setBackground(new java.awt.Color(255, 153, 102));
+        btnCliente.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnCliente.setForeground(new java.awt.Color(0, 0, 0));
+        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cliente.png"))); // NOI18N
+        btnCliente.setText("Cliente");
+        btnCliente.setBorder(new javax.swing.border.MatteBorder(null));
+        btnCliente.setPreferredSize(new java.awt.Dimension(83, 22));
+        jPanel4.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 190, 60));
+
+        btnProducto.setBackground(new java.awt.Color(255, 153, 102));
+        btnProducto.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnProducto.setForeground(new java.awt.Color(0, 0, 0));
+        btnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/caja (1).png"))); // NOI18N
+        btnProducto.setText("Producto");
+        btnProducto.setBorder(new javax.swing.border.MatteBorder(null));
+        btnProducto.setPreferredSize(new java.awt.Dimension(75, 32));
+        jPanel4.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 190, 60));
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Fondo.jpg"))); // NOI18N
         jLabel1.setOpaque(true);
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 670));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 880));
 
         jSplitPane1.setLeftComponent(jPanel4);
 
@@ -179,19 +197,35 @@ public class MenuPricpal extends javax.swing.JFrame {
         PANELCAR.setAutoscrolls(true);
         PANELCAR.setLayout(new java.awt.CardLayout());
 
-        card1.setBackground(new java.awt.Color(255, 255, 255));
+        card1.setBackground(new java.awt.Color(153, 51, 255));
         card1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         card1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/tienda (1).png"))); // NOI18N
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout card1Layout = new javax.swing.GroupLayout(card1);
         card1.setLayout(card1Layout);
         card1Layout.setHorizontalGroup(
             card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 971, Short.MAX_VALUE)
+            .addGroup(card1Layout.createSequentialGroup()
+                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(card1Layout.createSequentialGroup()
+                        .addGap(327, 327, 327)
+                        .addComponent(jLabel2))
+                    .addGroup(card1Layout.createSequentialGroup()
+                        .addGap(236, 236, 236)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
         card1Layout.setVerticalGroup(
             card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 688, Short.MAX_VALUE)
+            .addGroup(card1Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86)
+                .addComponent(jLabel2)
+                .addContainerGap(181, Short.MAX_VALUE))
         );
 
         PANELCAR.add(card1, "card2");
@@ -211,6 +245,10 @@ public class MenuPricpal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,12 +291,13 @@ public class MenuPricpal extends javax.swing.JFrame {
     private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnFactura;
     private javax.swing.JButton btnProducto;
-    private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnSalir;
     private javax.swing.JPanel card1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables

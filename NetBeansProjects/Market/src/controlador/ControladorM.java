@@ -20,7 +20,7 @@ public class ControladorM {
             vista.getBtnCliente().setEnabled(true); 
             vista.getBtnFactura().setEnabled(true);
             vista.getBtnProducto().setEnabled(true);
-            vista.getBtnProveedor().setEnabled(true);
+//            vista.getBtnProveedor().setEnabled(true);
             vista.getBtnReportes().setEnabled(true);
             vista.getBtnSalir().setEnabled(true);       
         } else if(etiqueta.equalsIgnoreCase( "Cajero")){
@@ -42,12 +42,12 @@ public class ControladorM {
     public void InicioControl() {
         vista.getBtnCambia().addActionListener(l -> Empleado());
         vista.getBtnCliente().addActionListener(l -> Cliente());
-        vista.getBtnProveedor().addActionListener(l -> Proveedor());
+//        vista.getBtnProveedor().addActionListener(l -> Proveedor());
         vista.getBtnFactura().addActionListener(l -> Factura());
         vista.getBtnProducto().addActionListener(l -> Producto());
         vista.getBtnSalir().addActionListener(l -> System.exit(0));
 
-    }
+    }   
 
     public void Cliente() {
         ControladorC cliente = new ControladorC();
@@ -98,7 +98,3 @@ class Test {
         ControladorM c = new ControladorM();
     }
 }
-
-//claro e1f5fe
-//oscuro B3e5fc
-//barra 

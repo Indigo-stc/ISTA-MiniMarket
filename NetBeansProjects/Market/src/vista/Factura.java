@@ -28,6 +28,8 @@ public class Factura extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         blEstado1 = new javax.swing.JLabel();
         btnAgregarPersoD = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         xd = new javax.swing.JPanel();
         panelfactura = new javax.swing.JPanel();
         tituloProductos = new javax.swing.JLabel();
@@ -66,6 +68,9 @@ public class Factura extends javax.swing.JPanel {
         lblnumfacV = new javax.swing.JLabel();
         lblfecha = new javax.swing.JLabel();
         lblfechaV = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
 
         jLabel11.setText("Buscar");
 
@@ -146,24 +151,57 @@ public class Factura extends javax.swing.JPanel {
                 .addComponent(blEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        setBackground(new java.awt.Color(153, 51, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         xd.setLayout(new java.awt.CardLayout());
 
+        panelfactura.setBackground(new java.awt.Color(153, 51, 255));
         panelfactura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tituloProductos.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        tituloProductos.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        tituloProductos.setForeground(new java.awt.Color(0, 0, 0));
         tituloProductos.setText("PRODUCTOS");
         panelfactura.add(tituloProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 110, 26));
+
+        txt_idproducto.setBackground(new java.awt.Color(255, 255, 255));
+        txt_idproducto.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         panelfactura.add(txt_idproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 360, -1));
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("ID PRODUCTO");
-        panelfactura.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 90, 25));
+        panelfactura.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 110, 25));
 
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("CANTIDAD");
         panelfactura.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 80, 30));
         panelfactura.add(spinnetcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, 60, 30));
 
+        tbl_factura.setBackground(new java.awt.Color(255, 255, 255));
         tbl_factura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -176,7 +214,8 @@ public class Factura extends javax.swing.JPanel {
 
         panelfactura.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 620, 143));
 
-        btn_imprimir.setText("IMPRIMIR");
+        btn_imprimir.setBackground(new java.awt.Color(255, 255, 255));
+        btn_imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/imprimir.png"))); // NOI18N
         btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_imprimirActionPerformed(evt);
@@ -184,29 +223,40 @@ public class Factura extends javax.swing.JPanel {
         });
         panelfactura.add(btn_imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 110, 40));
 
-        btn_cancelar.setText("CANCELAR");
+        btn_cancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cancelar.png"))); // NOI18N
         panelfactura.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 520, 110, 40));
 
-        jLabel14.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("TOTAL");
         panelfactura.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 450, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("IVA 12%");
         panelfactura.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("SUB TOTAL");
         panelfactura.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 340, 90, -1));
 
+        txt_subtotal.setBackground(new java.awt.Color(255, 255, 255));
+        txt_subtotal.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         txt_subtotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_subtotalActionPerformed(evt);
             }
         });
         panelfactura.add(txt_subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 340, 180, -1));
+
+        txt_iva.setBackground(new java.awt.Color(255, 255, 255));
+        txt_iva.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         panelfactura.add(txt_iva, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 380, 180, 40));
 
+        txt_total.setBackground(new java.awt.Color(255, 255, 255));
+        txt_total.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         txt_total.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_totalActionPerformed(evt);
@@ -214,7 +264,8 @@ public class Factura extends javax.swing.JPanel {
         });
         panelfactura.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 440, 180, 50));
 
-        btn_quitar.setText("-");
+        btn_quitar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_quitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/signo-menos.png"))); // NOI18N
         btn_quitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_quitarActionPerformed(evt);
@@ -222,9 +273,12 @@ public class Factura extends javax.swing.JPanel {
         });
         panelfactura.add(btn_quitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 90, 40));
 
-        btn_agregar.setText("+");
+        btn_agregar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mas (3).png"))); // NOI18N
         panelfactura.add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 360, 90, 40));
 
+        txt_apellidos.setBackground(new java.awt.Color(255, 255, 255));
+        txt_apellidos.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         txt_apellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_apellidosActionPerformed(evt);
@@ -233,32 +287,47 @@ public class Factura extends javax.swing.JPanel {
         panelfactura.add(txt_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 180, -1));
         panelfactura.add(lblvrfapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 160, 30));
         panelfactura.add(lblvrfnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 170, 30));
+
+        txt_nombres.setBackground(new java.awt.Color(255, 255, 255));
+        txt_nombres.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         panelfactura.add(txt_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 180, -1));
+
+        txt_cedula.setBackground(new java.awt.Color(255, 255, 255));
+        txt_cedula.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         panelfactura.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 190, -1));
         panelfactura.add(lblvrfcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 170, 30));
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("CÉDULA");
         panelfactura.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 70, 24));
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("NOMBRES");
         panelfactura.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 80, -1));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("APELLIDOS");
         panelfactura.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 90, -1));
+
+        txt_telefono.setBackground(new java.awt.Color(255, 255, 255));
+        txt_telefono.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         panelfactura.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 190, -1));
         panelfactura.add(lblvrfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 170, 30));
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("TELÉFONO");
         panelfactura.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 90, -1));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("DATOS CLIENTE");
         panelfactura.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 140, -1));
 
+        btnConsumidorF.setBackground(new java.awt.Color(255, 255, 255));
         btnConsumidorF.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnConsumidorF.setText("CONSUMIDOR FINAL");
         btnConsumidorF.addActionListener(new java.awt.event.ActionListener() {
@@ -268,7 +337,8 @@ public class Factura extends javax.swing.JPanel {
         });
         panelfactura.add(btnConsumidorF, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 160, 180, 40));
 
-        Titulo_factura.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        Titulo_factura.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Titulo_factura.setForeground(new java.awt.Color(0, 0, 0));
         Titulo_factura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo_factura.setText("FACTURACIÓN");
         panelfactura.add(Titulo_factura, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 209, 40));
@@ -278,16 +348,60 @@ public class Factura extends javax.swing.JPanel {
         panelfactura.add(lblnumfac, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 80, 20));
         panelfactura.add(lblnumfacV, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 160, 30));
 
-        lblfecha.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblfecha.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblfecha.setForeground(new java.awt.Color(0, 0, 0));
         lblfecha.setText("FECHA:");
         panelfactura.add(lblfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 70, 30));
 
         lblfechaV.setText(" ");
         panelfactura.add(lblfechaV, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 200, 30));
 
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 610, Short.MAX_VALUE)
+        );
+
+        panelfactura.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 0, 20, 610));
+
         xd.add(panelfactura, "card4");
 
         add(xd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1130, 590));
+
+        jPanel1.setBackground(new java.awt.Color(153, 51, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1180, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 20));
+
+        jPanel2.setBackground(new java.awt.Color(153, 51, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1180, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 1180, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_quitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quitarActionPerformed
@@ -545,6 +659,11 @@ public class Factura extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;

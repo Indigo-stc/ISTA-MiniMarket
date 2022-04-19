@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ca00cd1b-ae5b-4870-926a-f35ee7b92d56">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT clientes.dni as cédula,
+    personas.nombre ||' '||personas.apellido Nombre_Apellido, count(*) as Asistencia
+FROM comprobante
+	INNER JOIN encabezados ON 
+	 comprobante.encabezado_id = encabezados.encabezado_id 
+	INNER JOIN clientes ON 
+	 encabezados.cliente_id = clientes.cliente_id 
+	INNER JOIN personas ON 
+	 clientes.dni = personas.dni
+GROUP BY clientes.dni, personas.nombre, personas.apellido
+HAVING count(*) >= 5
+ORDER BY clientes.dni DESC;]]>
+	</queryString>
+	<field name="cédula" class="java.lang.String"/>
+	<field name="nombre_apellido" class="java.lang.String"/>
+	<field name="asistencia" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="185" y="18" width="185" height="61" uuid="920c3ba5-a9e8-453d-a248-692612f78397"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE CLIENTE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="185" height="20" uuid="9e155865-2621-4cab-926d-a7383b8a89d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CÉDULA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="0" width="185" height="20" uuid="41672f18-d7f2-4152-bc4d-9eafd057dc84"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="185" height="20" uuid="ece533b2-5db2-4269-9191-f4f63a695ec9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Asistencia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="185" height="20" uuid="7c9217bc-92cc-4ff3-8f80-6d2a43108fdc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cédula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="0" width="185" height="20" uuid="5c45330c-abe4-46c9-803d-ea159ed39c7f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nombre_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="185" height="20" uuid="754430b6-19ab-48d4-ada0-0e9b0e2ca5e1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{asistencia}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

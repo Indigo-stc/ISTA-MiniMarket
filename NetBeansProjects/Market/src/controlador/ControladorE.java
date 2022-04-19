@@ -33,7 +33,7 @@ public class ControladorE implements KeyListener, FocusListener {
         cargaLista();
         cbRoles();
         IncioControl();
-        TextFantasma();
+//        TextFantasma();
 
     }
 
@@ -242,7 +242,7 @@ public class ControladorE implements KeyListener, FocusListener {
         lista.stream().forEach(p -> {
 
             String[] Persona = {p.getCedula(), p.getEmpleado_id(), p.getNombre(), p.getApellido(), p.getFecha_nacimiento().toString(),
-                p.getNumero_telefono(), p.getCorreo(), p.getRol(), String.valueOf(p.getSalario()), p.getDireccion(), p.getPassword()};
+                p.getNumero_telefono(), p.getCorreo(), p.getRol(), String.valueOf(p.getRol_id()),  String.valueOf(p.getSalario()), p.getDireccion(), p.getPassword()};
             tblModel.addRow(Persona);
         });
     }

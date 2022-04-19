@@ -134,8 +134,8 @@ public class CategoryCtrl implements ActionListener, KeyListener,
     }
 }
 
-class test {
-    public static void main(String[] args) {
-        CategoryCtrl pd = new CategoryCtrl();
-    }
-}
+//class test {
+//    public static void main(String[] args) {
+//        CategoryCtrl pd = new CategoryCtrl();
+//    }
+//}

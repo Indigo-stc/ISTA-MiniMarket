@@ -28,9 +28,9 @@ public class ControladorReporte implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == viewReport.btnImprimirCLI) {
-
+            ReporteCliente();
         } else if (e.getSource() == viewReport.btnimprimirEMP) {
-
+            ReporteProductos();
         }
 
     }
@@ -38,7 +38,7 @@ public class ControladorReporte implements ActionListener {
     private void ReporteCliente() {
         Conexion con = new Conexion();
         try {
-            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/viewReportes/ReportCli.jasper"));
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/viewReportes/ClientReport.jasper"));
 
             JasperPrint jp = JasperFillManager.fillReport(jr, null, con.getCon());//cargando el reporte con los datos BD
 
@@ -50,10 +50,10 @@ public class ControladorReporte implements ActionListener {
         }
     }
     
-    private void ReporteEmpleados() {
+    private void ReporteProductos() {
         Conexion con = new Conexion();
         try {
-            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/viewReportes/ReportEmp.jasper"));
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/viewReportes/ProductReport.jasper"));
 
             JasperPrint jp = JasperFillManager.fillReport(jr, null, con.getCon());//cargando el reporte con los datos BD
 

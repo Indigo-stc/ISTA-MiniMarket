@@ -47,7 +47,7 @@ public class ControladorM {
         vista.getBtnProducto().addActionListener(l -> Producto());
         vista.getBtnSalir().addActionListener(l -> System.exit(0));
 
-    }
+    }   
 
     public void Cliente() {
         ControladorC cliente = new ControladorC();
@@ -98,7 +98,3 @@ class Test {
         ControladorM c = new ControladorM();
     }
 }
-
-//claro e1f5fe
-//oscuro B3e5fc
-//barra 

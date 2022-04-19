@@ -89,7 +89,7 @@ public class ModeloEmpleado implements Crud<Empleado> {
 
             List<Empleado> em = new ArrayList<>();
             while (rs.next()) {
-                Empleado emp = null;
+                Empleado emp = new Empleado();
                 emp.setCedula(rs.getString(1));
                 emp.setEmpleado_id(rs.getString(2));
                 emp.setNombre(rs.getString(3));

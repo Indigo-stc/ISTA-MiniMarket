@@ -36,8 +36,8 @@ public class LoginCtrl implements ActionListener {
     
 }
 
-//class test {
-//    public static void main(String[] args) {
-//        LoginCtrl cl = new LoginCtrl();
-//    }
-//}
+class test {
+    public static void main(String[] args) {
+        LoginCtrl cl = new LoginCtrl();
+    }
+}

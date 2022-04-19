@@ -2,7 +2,7 @@ package controlador;
 
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import vista.MenuPricpal;
-import vista.PanelProveedor;
+//import vista.PanelProveedor;
 
 public class ControladorM {
 
@@ -75,14 +75,14 @@ public class ControladorM {
         vista.getPANELCAR().revalidate();
     }
 
-    public void Proveedor() {
-        PanelProveedor panelproveedor = new PanelProveedor();
-        vista.getPANELCAR().removeAll();
-        vista.getPANELCAR().add(panelproveedor);
-        vista.getPANELCAR().repaint();
-        vista.getPANELCAR().revalidate();
-
-    }
+//    public void Proveedor() {
+//        PanelProveedor panelproveedor = new PanelProveedor();
+//        vista.getPANELCAR().removeAll();
+//        vista.getPANELCAR().add(panelproveedor);
+//        vista.getPANELCAR().repaint();
+//        vista.getPANELCAR().revalidate();
+//
+//    }
 
     public void Factura() {
         ControladorFactura controler = new ControladorFactura();

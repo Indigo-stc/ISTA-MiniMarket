@@ -76,7 +76,8 @@ public class ProviderCtrl implements MouseListener, ActionListener, KeyListener 
             String address = vp.tblBuscar.getValueAt(row, 3).toString();
             Proveedor pvd = new Proveedor(id, name, phone, address);
             IProveedorDAO sql = new IProveedorDAO();
-            if (value instanceof JButton jb) {
+            if (value instanceof JButton) {
+                    JButton jb = new JButton();
                 jb.doClick();
                 System.out.println(jb.getName());
                 if (jb.getName().equals("U")) {

@@ -33,11 +33,13 @@ public class LoginCtrl implements ActionListener {
             JOptionPane.showMessageDialog(null, "Datos incorrectos");
         }
     }
-    
+
 }
 
-class test {
-    public static void main(String[] args) {
-        LoginCtrl cl = new LoginCtrl();
-    }
-}
+//class test {
+//
+//    public static void main(String[] args) {
+//        LoginCtrl cl = new LoginCtrl();
+//    }
+//}
+

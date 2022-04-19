@@ -151,11 +151,5 @@ public class ProviderCtrl implements MouseListener, ActionListener, KeyListener 
         vp.txtNom.setText(null);
         vp.txtTlf.setText(null);
     }
+    
 }
-
-//class test {
-//
-//    public static void main(String[] args) {
-//        ProviderCtrl pd = new ProviderCtrl();
-//    }
-//}

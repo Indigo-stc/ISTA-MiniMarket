@@ -57,7 +57,7 @@ public class PanelReporte extends javax.swing.JPanel {
 
         btnimprimirEMP.setBackground(new java.awt.Color(255, 255, 255));
         btnimprimirEMP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/imprimir.png"))); // NOI18N
-
+      
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(

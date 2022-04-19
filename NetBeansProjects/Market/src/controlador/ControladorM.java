@@ -46,6 +46,7 @@ public class ControladorM {
         vista.getBtnFactura().addActionListener(l -> Factura());
         vista.getBtnProducto().addActionListener(l -> Producto());
         vista.getBtnSalir().addActionListener(l -> System.exit(0));
+        vista.getBtnReportes().addActionListener(l -> reportes());
 
     }   
 
@@ -75,15 +76,6 @@ public class ControladorM {
         vista.getPANELCAR().revalidate();
     }
 
-//    public void Proveedor() {
-//        PanelProveedor panelproveedor = new PanelProveedor();
-//        vista.getPANELCAR().removeAll();
-//        vista.getPANELCAR().add(panelproveedor);
-//        vista.getPANELCAR().repaint();
-//        vista.getPANELCAR().revalidate();
-//
-//    }
-
     public void Factura() {
         ControladorFactura controler = new ControladorFactura();
         vista.getPANELCAR().removeAll();
@@ -91,10 +83,13 @@ public class ControladorM {
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
     }
-}   
-
-class Test {
-    public static void main(String[] args) {
-        ControladorM c = new ControladorM();
+    
+    public void reportes() {
+        ControladorReporte controler = new ControladorReporte();
+        vista.getPANELCAR().removeAll();
+        vista.getPANELCAR().add(controler.viewReport);
+        vista.getPANELCAR().repaint();
+        vista.getPANELCAR().revalidate();
     }
-}
+} 
+

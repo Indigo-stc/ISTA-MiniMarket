@@ -106,7 +106,8 @@ public class CategoryCtrl implements ActionListener, KeyListener,
                 String name = vc.tblBuscar.getValueAt(row, 1).toString();
                 Categoria ctg = new Categoria(id, name);
                 ICategoriaDAO sql = new ICategoriaDAO();
-                if (value instanceof JButton jb) {
+                if (value instanceof JButton) {
+                        JButton jb = new JButton();
                     jb.doClick();
                     System.out.println(jb.getName());
                     if (jb.getName().equals("U")) {
@@ -134,9 +135,3 @@ public class CategoryCtrl implements ActionListener, KeyListener,
     public void mouseExited(MouseEvent e) {
     }
 }
-
-//class test {
-//    public static void main(String[] args) {
-//        CategoryCtrl pd = new CategoryCtrl();
-//    }
-//}

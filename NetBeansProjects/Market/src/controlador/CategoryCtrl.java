@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -134,4 +135,3 @@ public class CategoryCtrl implements ActionListener, KeyListener,
     public void mouseExited(MouseEvent e) {
     }
 }
-

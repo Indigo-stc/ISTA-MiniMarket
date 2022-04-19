@@ -84,9 +84,8 @@ public class ModeloEmpleado implements Crud<Empleado> {
                     + "p.birth,p.telefono,p.email,r.etiqueta,\n"
                     + "                    e.rol_id,e.salarios,p.direccion,\n"
                     + "                    e.contraseña from personas p, empleados e, roles r where p.dni=e.dni and\n"
-                    + "                    e.rol_id=r.rol_id and p.dni like lower('%" + codigo + "%');";
+                    + "                    e.rol_id=r.rol_id and p.dni like lower('%"+codigo+"%');";
             ResultSet rs = con.selectConsulta(sql);
-
             List<Empleado> em = new ArrayList<>();
             while (rs.next()) {
                 Empleado emp = new Empleado();
@@ -127,25 +126,23 @@ public class ModeloEmpleado implements Crud<Empleado> {
         String sql = sql1 + sql2;
         return con.insertUpdateDelete(sql);
     }
-    
-    
 
     @Override
     public ResultSet pk(String id) {
-        throw new UnsupportedOperationException(""); 
+        throw new UnsupportedOperationException("");
 
     }
 
     @Override
     public ArrayList<Empleado> registros() {
-        throw new UnsupportedOperationException(""); 
+        throw new UnsupportedOperationException("");
     }
 
     @Override
     public boolean update(Empleado objeto) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     public ResultSet login(String usuario, String contraseña) {
         String s = "select*from empleados join roles on empleados.rol_id=roles.rol_id where dni= '" + usuario + "' and contraseña='" + contraseña + "' ; ";
         Conexion c = new Conexion();
@@ -154,12 +151,12 @@ public class ModeloEmpleado implements Crud<Empleado> {
     }
 
     public Persona existPer(String cedula) {
-        String stm = "SELECT * FROM personas WHERE dni   = '"+cedula+"';";
+        String stm = "SELECT * FROM personas WHERE dni   = '" + cedula + "';";
         ResultSet res = con.selectConsulta(stm);
         Persona per = null;
         try {
             if (res.next()) {
-                per = new Persona(res.getString(1), res.getString(2), res.getString(3), 
+                per = new Persona(res.getString(1), res.getString(2), res.getString(3),
                         res.getDate(4), res.getString(5), res.getString(6), res.getString(7));
             }
             return per;
@@ -168,9 +165,9 @@ public class ModeloEmpleado implements Crud<Empleado> {
             return per;
         }
     }
-    
+
     public Empleado existEmps(String cedula) {
-        String stm = "SELECT * FROM empleados WHERE dni = '"+cedula+"';";
+        String stm = "SELECT * FROM empleados WHERE dni = '" + cedula + "';";
         ResultSet rs = con.selectConsulta(stm);
         Empleado emp = null;
         try {
@@ -184,7 +181,7 @@ public class ModeloEmpleado implements Crud<Empleado> {
         }
         return emp;
     }
-    
+
     public boolean insEmpleado(Empleado empl) {
         String sqlP = "UPDATE public.personas\n"
                 + "	SET  nombre='" + empl.getNombre() + "', apellido='" + empl.getApellido() + "', telefono='" + empl.getNumero_telefono()

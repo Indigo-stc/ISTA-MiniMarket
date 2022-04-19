@@ -33,7 +33,7 @@ public class ControladorE implements KeyListener, FocusListener {
         cargaLista();
         cbRoles();
         IncioControl();
-        TextFantasma();
+//        TextFantasma();
 
     }
 

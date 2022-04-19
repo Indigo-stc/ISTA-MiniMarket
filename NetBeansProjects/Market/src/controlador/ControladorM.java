@@ -2,7 +2,7 @@ package controlador;
 
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import vista.MenuPricpal;
-import vista.PanelProveedor;
+//import vista.PanelProveedor;
 
 public class ControladorM {
 
@@ -20,7 +20,7 @@ public class ControladorM {
             vista.getBtnCliente().setEnabled(true); 
             vista.getBtnFactura().setEnabled(true);
             vista.getBtnProducto().setEnabled(true);
-            vista.getBtnProveedor().setEnabled(true);
+//            vista.getBtnProveedor().setEnabled(true);
             vista.getBtnReportes().setEnabled(true);
             vista.getBtnSalir().setEnabled(true);       
         } else if(etiqueta.equalsIgnoreCase( "Cajero")){
@@ -42,7 +42,7 @@ public class ControladorM {
     public void InicioControl() {
         vista.getBtnCambia().addActionListener(l -> Empleado());
         vista.getBtnCliente().addActionListener(l -> Cliente());
-        vista.getBtnProveedor().addActionListener(l -> Proveedor());
+//        vista.getBtnProveedor().addActionListener(l -> Proveedor());
         vista.getBtnFactura().addActionListener(l -> Factura());
         vista.getBtnProducto().addActionListener(l -> Producto());
         vista.getBtnSalir().addActionListener(l -> System.exit(0));
@@ -76,15 +76,6 @@ public class ControladorM {
         vista.getPANELCAR().revalidate();
     }
 
-    public void Proveedor() {
-        PanelProveedor panelproveedor = new PanelProveedor();
-        vista.getPANELCAR().removeAll();
-        vista.getPANELCAR().add(panelproveedor);
-        vista.getPANELCAR().repaint();
-        vista.getPANELCAR().revalidate();
-
-    }
-
     public void Factura() {
         ControladorFactura controler = new ControladorFactura();
         vista.getPANELCAR().removeAll();
@@ -100,10 +91,5 @@ public class ControladorM {
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
     }
-}   
+} 
 
-//class Test {
-//    public static void main(String[] args) {
-//        ControladorM c = new ControladorM();
-//    }
-//}

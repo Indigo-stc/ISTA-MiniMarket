@@ -55,7 +55,7 @@ public class ModeloCliente implements Crud<Cliente> {
         try {
 
             String sql = "select p.dni,c.cliente_id,p.nombre,p.apellido,p.birth,p.telefono,p.email,p.direccion from personas p,\n" +
-"	clientes c where p.dni=c.dni and p.dni like lower('%"+codigo+"%' and c.activo=true );";
+"	clientes c where p.dni=c.dni and p.dni like lower('%"+codigo+"%')and c.activo=true;";
             ResultSet rs = con.selectConsulta(sql);
             List<Cliente> cl = new ArrayList<>();
             while (rs.next()) {

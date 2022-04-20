@@ -189,7 +189,7 @@ public class MenuPricpal extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Fondo.jpg"))); // NOI18N
         jLabel1.setOpaque(true);
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 880));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 730));
 
         jSplitPane1.setLeftComponent(jPanel4);
 
@@ -197,9 +197,10 @@ public class MenuPricpal extends javax.swing.JFrame {
         PANELCAR.setAutoscrolls(true);
         PANELCAR.setLayout(new java.awt.CardLayout());
 
-        card1.setBackground(new java.awt.Color(153, 51, 255));
+        card1.setBackground(new java.awt.Color(107, 104, 247));
         card1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         card1.setForeground(new java.awt.Color(255, 255, 255));
+        card1.setPreferredSize(new java.awt.Dimension(898, 750));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/tienda (1).png"))); // NOI18N
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -214,18 +215,18 @@ public class MenuPricpal extends javax.swing.JFrame {
                         .addGap(327, 327, 327)
                         .addComponent(jLabel2))
                     .addGroup(card1Layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
+                        .addGap(179, 179, 179)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         card1Layout.setVerticalGroup(
             card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(card1Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(73, 73, 73)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86)
+                .addGap(85, 85, 85)
                 .addComponent(jLabel2)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         PANELCAR.add(card1, "card2");
@@ -240,7 +241,7 @@ public class MenuPricpal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
         );
 
         pack();

@@ -91,5 +91,12 @@ public class ControladorM {
         vista.getPANELCAR().repaint();
         vista.getPANELCAR().revalidate();
     }
+    
 } 
+
+class pruebas{
+    public static void main(String[] args) {
+        ControladorM xd = new ControladorM();
+    }
+}
 

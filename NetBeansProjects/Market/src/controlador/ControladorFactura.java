@@ -1,6 +1,6 @@
 package controlador;
 
-import com.sun.tools.javac.Main;
+
 import connection.ComprobanteDAO;
 import connection.Conexion;
 import connection.EncabezadoDAO;
@@ -13,19 +13,9 @@ import java.util.Date;
 import modelo.Comprobante;
 import modelo.Encabezado;
 import connection.IProductoDAO;
-import connection.ModeloCliente;
 import java.awt.Color;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.sql.ResultSet;
 import java.text.DateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,29 +28,12 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Producto;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRExporter;
-import net.sf.jasperreports.engine.JRExporterParameter;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.design.JRDesignQuery;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.postgresql.core.ConnectionFactory;
 import vista.MenuPricpal;
-import vista.PanelCliente;
 
 public class ControladorFactura implements ActionListener, FocusListener {
 
@@ -78,11 +51,9 @@ public class ControladorFactura implements ActionListener, FocusListener {
         viewFact.btn_agregar.addActionListener(this);
         viewFact.btn_cancelar.addActionListener(this);
         viewFact.btn_quitar.addActionListener(this);
-        viewFact.btnConsumidorF.addActionListener(l -> abrirven());
         viewFact.btn_imprimir.addActionListener(this);
         viewFact.txt_cedula.addFocusListener(this);
         viewFact.lblfechaV.setText(fechaActual.format(fechaActualF));
-        viewFact.lblnumfacV.setText(String.valueOf(contador));
 
     }
 
@@ -169,9 +140,7 @@ public class ControladorFactura implements ActionListener, FocusListener {
             btnimprimir();
         } else if (e.getSource() == viewFact.btn_quitar) {
             quitardetabla();
-        } else if (e.getSource() == viewFact.btnConsumidorF) {
-
-        }
+        } 
     }
 
     private void tblmodelfact() {
@@ -241,8 +210,7 @@ public class ControladorFactura implements ActionListener, FocusListener {
         int k = 0;
         while (k < listafact.size()) {
             for (int j = 0; j < listafact.size(); j++) {
-                listafact.remove(j);
-            };
+                listafact.remove(j);            };
             k++;
         }
         if (listafact.isEmpty()) {
@@ -309,7 +277,8 @@ public class ControladorFactura implements ActionListener, FocusListener {
         Date fechaAct = new Date();
         ComprobanteDAO comDao = new ComprobanteDAO();
         EncabezadoDAO conDao = new EncabezadoDAO();
-        Encabezado enca = new Encabezado(cli.getIdCliente() == null ? "XXXXXXXXX" : cli.getIdCliente(), fechaAct);
+        
+        Encabezado enca = new Encabezado(cli.getIdCliente() == null ? "XXXXXXXXXX" : cli.getIdCliente(), fechaAct);
         conDao.encabezadoinsert(enca);
         String ecd = enca.getCodigoEncabezado();
         System.out.println(ecd + " id refe1");
@@ -325,7 +294,6 @@ public class ControladorFactura implements ActionListener, FocusListener {
         }
         JOptionPane.showMessageDialog(viewFact, "Ingresada exitosamente!");
         ImprimirFactura(ecd);
-        viewFact.lblnumfacV.setText(String.valueOf(contador + 1));
 
     }
 

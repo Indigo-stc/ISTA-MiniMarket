@@ -1,20 +1,25 @@
 package controlador;
 
 import connection.ModeloEmpleado;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import vista.login;
 
-public class LoginCtrl implements ActionListener {
+public class LoginCtrl implements ActionListener, MouseListener {
 
     login lo = new login();
 
     public LoginCtrl() {
         lo.setLocationRelativeTo(null);
         lo.btnIngresar.addActionListener(this);
+        lo.txtUsuario.addMouseListener(this);
+        lo.pfCntraseña.addMouseListener(this);
         lo.setVisible(true);
     }
 
@@ -34,6 +39,42 @@ public class LoginCtrl implements ActionListener {
         }
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {}
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        if (e.getSource() == lo.txtUsuario) {
+            if (lo.txtUsuario.getText().equals("Ingrese su nombre de usuario")) {
+                lo.txtUsuario.setText("");
+                lo.txtUsuario.setForeground(Color.black);
+            }
+            if (String.valueOf(lo.pfCntraseña.getPassword()).isEmpty()) {
+                lo.pfCntraseña.setText("*********");
+                lo.pfCntraseña.setForeground(Color.gray);
+            }
+        } else if (e.getSource() == lo.pfCntraseña) {
+            if (String.valueOf(lo.pfCntraseña.getPassword()).equals("*********")) {
+                lo.pfCntraseña.setText("");
+                lo.pfCntraseña.setForeground(Color.black);
+            }
+            if (lo.txtUsuario.getText().isEmpty()) {
+                lo.txtUsuario.setText("Ingrese su nombre de usuario");
+                lo.txtUsuario.setForeground(Color.gray);
+            }
+        }
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+
+    @Override
+    public void mouseExited(MouseEvent e) {}
+
 }
 
 class test {
@@ -42,4 +83,3 @@ class test {
         LoginCtrl cl = new LoginCtrl();
     }
 }
-

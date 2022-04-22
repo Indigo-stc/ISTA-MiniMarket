@@ -80,6 +80,7 @@ public class ControladorC implements KeyListener, FocusListener {
             if (modelo.ModificarT(existe, existe.getCedula())) {
                 JOptionPane.showMessageDialog(null, "Activando Cliente");
                 cargaLista();
+                Limpiar();
             }
         } else if (per != null && existe == null) {
             existe = new Cliente(vista.getTxtCedula().getText(), vista.getTxtNombre().getText(),
@@ -89,6 +90,7 @@ public class ControladorC implements KeyListener, FocusListener {
             if (modelo.insCliente(existe)) {
                 JOptionPane.showMessageDialog(null, "CLiente Ingresado");
                 cargaLista();
+                Limpiar();
             }
         } else {
             existe = new Cliente(vista.getTxtCedula().getText(), vista.getTxtNombre().getText(),
@@ -98,6 +100,7 @@ public class ControladorC implements KeyListener, FocusListener {
             if (modelo.insert(existe)) {
                 JOptionPane.showMessageDialog(null, "CLiente Ingresado");
                 cargaLista();
+                Limpiar();
             }
         }
     }
@@ -309,10 +312,12 @@ public class ControladorC implements KeyListener, FocusListener {
 
     public void Validacione_Campos() {
 
-        if (!vista.getTxtCedula().getText().isEmpty()) {
-            vista.getLb1().setText("");
-        } else {
+        if (vista.getTxtCedula().getText().isEmpty()) {
             vista.getLb1().setText("Campos Requeridos.!");
+        } else if (!digVfy(vista.getTxtCedula().getText())) {
+            vista.getLb1().setText("No es cédula!!!");
+        } else {
+            vista.getLb1().setText("");
         }
 
         if (!vista.getTxtNombre().getText().isEmpty()) {

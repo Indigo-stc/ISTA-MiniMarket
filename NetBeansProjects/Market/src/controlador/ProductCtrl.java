@@ -398,16 +398,15 @@ public final class ProductCtrl implements FocusListener, KeyListener, MouseListe
             }
 
         } else if (e.getSource() == viewPdt.btnCtg) {
-            CategoryCtrl frd = new CategoryCtrl();
+            CategoryCtrl frd = new CategoryCtrl(viewPdt.cbCatgr);
         } else if (e.getSource() == viewPdt.btnPvdr) {
-            ProviderCtrl asd = new ProviderCtrl();
+            ProviderCtrl asd = new ProviderCtrl(viewPdt.cbProdr);
         }
     }
 
     void cautionMsg() {
         if ("".equals(viewPdt.txtNombre.getText().trim())) {
             viewPdt.lblNom.setText("Campo Obligatorio!!!");
-            viewPdt.txtNombre.setBackground(Color.red);
         } else {
             viewPdt.lblNom.setText(null);
         }

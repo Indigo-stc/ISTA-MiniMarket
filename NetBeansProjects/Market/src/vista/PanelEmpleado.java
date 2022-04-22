@@ -4,6 +4,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -41,16 +42,16 @@ public class PanelEmpleado extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         txtSalario = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
-        lb1 = new javax.swing.JLabel();
-        lb2 = new javax.swing.JLabel();
-        lb3 = new javax.swing.JLabel();
-        lb4 = new javax.swing.JLabel();
-        lb5 = new javax.swing.JLabel();
-        lb6 = new javax.swing.JLabel();
-        lb7 = new javax.swing.JLabel();
-        lb8 = new javax.swing.JLabel();
-        lb10 = new javax.swing.JLabel();
-        lb9 = new javax.swing.JLabel();
+        vfyCedula = new javax.swing.JLabel();
+        vfyNombre = new javax.swing.JLabel();
+        vfyApellido = new javax.swing.JLabel();
+        vfyBirth = new javax.swing.JLabel();
+        vfyContra = new javax.swing.JLabel();
+        vfyCorreo = new javax.swing.JLabel();
+        vfyCelu = new javax.swing.JLabel();
+        vfyDir = new javax.swing.JLabel();
+        vfyRol = new javax.swing.JLabel();
+        vfySalario = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
@@ -102,6 +103,7 @@ public class PanelEmpleado extends javax.swing.JPanel {
         txtCedula.setBackground(new java.awt.Color(255, 255, 255));
         txtCedula.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtCedula.setForeground(new java.awt.Color(0, 0, 0));
+        txtCedula.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -118,6 +120,7 @@ public class PanelEmpleado extends javax.swing.JPanel {
 
         txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
         txtDireccion.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtDireccion.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         DateFecha.setToolTipText("");
 
@@ -144,81 +147,82 @@ public class PanelEmpleado extends javax.swing.JPanel {
 
         txtSalario.setBackground(new java.awt.Color(255, 255, 255));
         txtSalario.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtSalario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtSalario.setMinimumSize(new java.awt.Dimension(70, 22));
 
         txtPassword.setBackground(new java.awt.Color(255, 255, 255));
         txtPassword.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         txtPassword.setToolTipText("");
 
-        lb1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lb1.setForeground(new java.awt.Color(255, 0, 0));
-        lb1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vfyCedula.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        vfyCedula.setForeground(new java.awt.Color(255, 0, 0));
+        vfyCedula.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
-        lb2.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lb2.setForeground(new java.awt.Color(255, 0, 0));
-        lb2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lb2.setPreferredSize(new java.awt.Dimension(8, 16));
+        vfyNombre.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        vfyNombre.setForeground(new java.awt.Color(255, 0, 0));
+        vfyNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vfyNombre.setPreferredSize(new java.awt.Dimension(8, 16));
 
-        lb3.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lb3.setForeground(new java.awt.Color(255, 0, 0));
-        lb3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vfyApellido.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        vfyApellido.setForeground(new java.awt.Color(255, 0, 0));
+        vfyApellido.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
-        lb4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lb4.setForeground(new java.awt.Color(255, 0, 0));
-        lb4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vfyBirth.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        vfyBirth.setForeground(new java.awt.Color(255, 0, 0));
+        vfyBirth.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
-        lb5.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lb5.setForeground(new java.awt.Color(255, 0, 0));
-        lb5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vfyContra.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        vfyContra.setForeground(new java.awt.Color(255, 0, 0));
+        vfyContra.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
-        lb6.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lb6.setForeground(new java.awt.Color(255, 0, 0));
-        lb6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vfyCorreo.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        vfyCorreo.setForeground(new java.awt.Color(255, 0, 0));
+        vfyCorreo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
-        lb7.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lb7.setForeground(new java.awt.Color(255, 0, 0));
-        lb7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vfyCelu.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        vfyCelu.setForeground(new java.awt.Color(255, 0, 0));
+        vfyCelu.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
-        lb8.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lb8.setForeground(new java.awt.Color(255, 0, 0));
-        lb8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vfyDir.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        vfyDir.setForeground(new java.awt.Color(255, 0, 0));
+        vfyDir.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
-        lb10.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lb10.setForeground(new java.awt.Color(255, 0, 0));
-        lb10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vfyRol.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        vfyRol.setForeground(new java.awt.Color(255, 0, 0));
+        vfyRol.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
-        lb9.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        lb9.setForeground(new java.awt.Color(255, 0, 0));
-        lb9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vfySalario.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        vfySalario.setForeground(new java.awt.Color(255, 0, 0));
+        vfySalario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(120, 120, 120)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lb8, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lb7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(vfyDir, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lb6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(DateFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(120, 120, 120)
+                                    .addComponent(vfyCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(DateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(vfyBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(119, 119, 119)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,11 +230,11 @@ public class PanelEmpleado extends javax.swing.JPanel {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel10)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lb5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(vfyContra, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lb10, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(vfyRol, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(Combo_Rol, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
@@ -238,29 +242,29 @@ public class PanelEmpleado extends javax.swing.JPanel {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lb9, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(vfySalario, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(50, 50, 50)
-                        .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(vfyCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lb2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(vfyNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lb4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(vfyCelu, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lb3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(vfyApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(40, 40, 40))
         );
@@ -273,9 +277,9 @@ public class PanelEmpleado extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addComponent(jLabel7)
                         .addComponent(jLabel12))
-                    .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lb8, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lb9, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vfyCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vfyDir, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vfySalario, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -283,13 +287,14 @@ public class PanelEmpleado extends javax.swing.JPanel {
                     .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel6)
-                        .addComponent(lb2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lb6, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lb10, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(vfyNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel6)))
+                    .addComponent(vfyCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vfyRol, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,18 +306,18 @@ public class PanelEmpleado extends javax.swing.JPanel {
                         .addComponent(jLabel5)
                         .addComponent(jLabel4)
                         .addComponent(jLabel10)
-                        .addComponent(lb3, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lb7, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lb5, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(vfyApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vfyContra, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vfyBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9)
-                    .addComponent(lb4, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vfyCelu, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -323,11 +328,6 @@ public class PanelEmpleado extends javax.swing.JPanel {
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/modi.png"))); // NOI18N
         btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
 
         btnEliminar.setBackground(new java.awt.Color(193, 163, 176));
         btnEliminar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -399,8 +399,7 @@ public class PanelEmpleado extends javax.swing.JPanel {
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(832, 832, 832))
+                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PanelEmpleadoLayout.createSequentialGroup()
                         .addGap(242, 242, 242)
                         .addComponent(btnAceptar)
@@ -458,10 +457,6 @@ public class PanelEmpleado extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnModificarActionPerformed
-
     public JComboBox<String> getCombo_Rol() {
         return Combo_Rol;
     }
@@ -478,13 +473,12 @@ public class PanelEmpleado extends javax.swing.JPanel {
         this.DateFecha = DateFecha;
     }
 
-
-    public JTextField getTxtBuscar() {
-        return txtBuscar;
+    public JPanel getPanelEmpleado() {
+        return PanelEmpleado;
     }
 
-    public void setTxtBuscar(JTextField txtBuscar) {
-        this.txtBuscar = txtBuscar;
+    public void setPanelEmpleado(JPanel PanelEmpleado) {
+        this.PanelEmpleado = PanelEmpleado;
     }
 
     public JTable getTablaEmpleado() {
@@ -511,88 +505,6 @@ public class PanelEmpleado extends javax.swing.JPanel {
         this.btnEliminar = btnEliminar;
     }
 
-
-
-    public JLabel getLb1() {
-        return lb1;
-    }
-
-    public void setLb1(JLabel lb1) {
-        this.lb1 = lb1;
-    }
-
-    public JLabel getLb10() {
-        return lb10;
-    }
-
-    public void setLb10(JLabel lb10) {
-        this.lb10 = lb10;
-    }
-
-    public JLabel getLb2() {
-        return lb2;
-    }
-
-    public void setLb2(JLabel lb2) {
-        this.lb2 = lb2;
-    }
-
-    public JLabel getLb3() {
-        return lb3;
-    }
-
-    public void setLb3(JLabel lb3) {
-        this.lb3 = lb3;
-    }
-
-    public JLabel getLb4() {
-        return lb4;
-    }
-
-    public void setLb4(JLabel lb4) {
-        this.lb4 = lb4;
-    }
-
-    public JLabel getLb5() {
-        return lb5;
-    }
-
-    public void setLb5(JLabel lb5) {
-        this.lb5 = lb5;
-    }
-
-    public JLabel getLb6() {
-        return lb6;
-    }
-
-    public void setLb6(JLabel lb6) {
-        this.lb6 = lb6;
-    }
-
-    public JLabel getLb7() {
-        return lb7;
-    }
-
-    public void setLb7(JLabel lb7) {
-        this.lb7 = lb7;
-    }
-
-    public JLabel getLb8() {
-        return lb8;
-    }
-
-    public void setLb8(JLabel lb8) {
-        this.lb8 = lb8;
-    }
-
-    public JLabel getLb9() {
-        return lb9;
-    }
-
-    public void setLb9(JLabel lb9) {
-        this.lb9 = lb9;
-    }
-
     public JButton getBtnLimpiar() {
         return btnLimpiar;
     }
@@ -600,9 +512,6 @@ public class PanelEmpleado extends javax.swing.JPanel {
     public void setBtnLimpiar(JButton btnLimpiar) {
         this.btnLimpiar = btnLimpiar;
     }
-
-
-    
 
     public JButton getBtnModificar() {
         return btnModificar;
@@ -612,14 +521,20 @@ public class PanelEmpleado extends javax.swing.JPanel {
         this.btnModificar = btnModificar;
     }
 
-
-
     public JTextField getTxtApellido() {
         return txtApellido;
     }
 
     public void setTxtApellido(JTextField txtApellido) {
         this.txtApellido = txtApellido;
+    }
+
+    public JTextField getTxtBuscar() {
+        return txtBuscar;
+    }
+
+    public void setTxtBuscar(JTextField txtBuscar) {
+        this.txtBuscar = txtBuscar;
     }
 
     public JTextField getTxtCedula() {
@@ -677,8 +592,86 @@ public class PanelEmpleado extends javax.swing.JPanel {
     public void setTxtSalario(JTextField txtSalario) {
         this.txtSalario = txtSalario;
     }
- 
-    
+
+    public JLabel getVfyApellido() {
+        return vfyApellido;
+    }
+
+    public void setVfyApellido(JLabel vfyApellido) {
+        this.vfyApellido = vfyApellido;
+    }
+
+    public JLabel getVfyBirth() {
+        return vfyBirth;
+    }
+
+    public void setVfyBirth(JLabel vfyBirth) {
+        this.vfyBirth = vfyBirth;
+    }
+
+    public JLabel getVfyCedula() {
+        return vfyCedula;
+    }
+
+    public void setVfyCedula(JLabel vfyCedula) {
+        this.vfyCedula = vfyCedula;
+    }
+
+    public JLabel getVfyCelu() {
+        return vfyCelu;
+    }
+
+    public void setVfyCelu(JLabel vfyCelu) {
+        this.vfyCelu = vfyCelu;
+    }
+
+    public JLabel getVfyContra() {
+        return vfyContra;
+    }
+
+    public void setVfyContra(JLabel vfyContra) {
+        this.vfyContra = vfyContra;
+    }
+
+    public JLabel getVfyCorreo() {
+        return vfyCorreo;
+    }
+
+    public void setVfyCorreo(JLabel vfyCorreo) {
+        this.vfyCorreo = vfyCorreo;
+    }
+
+    public JLabel getVfyDir() {
+        return vfyDir;
+    }
+
+    public void setVfyDir(JLabel vfyDir) {
+        this.vfyDir = vfyDir;
+    }
+
+    public JLabel getVfyNombre() {
+        return vfyNombre;
+    }
+
+    public void setVfyNombre(JLabel vfyNombre) {
+        this.vfyNombre = vfyNombre;
+    }
+
+    public JLabel getVfyRol() {
+        return vfyRol;
+    }
+
+    public void setVfyRol(JLabel vfyRol) {
+        this.vfyRol = vfyRol;
+    }
+
+    public JLabel getVfySalario() {
+        return vfySalario;
+    }
+
+    public void setVfySalario(JLabel vfySalario) {
+        this.vfySalario = vfySalario;
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -706,16 +699,6 @@ public class PanelEmpleado extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lb1;
-    private javax.swing.JLabel lb10;
-    private javax.swing.JLabel lb2;
-    private javax.swing.JLabel lb3;
-    private javax.swing.JLabel lb4;
-    private javax.swing.JLabel lb5;
-    private javax.swing.JLabel lb6;
-    private javax.swing.JLabel lb7;
-    private javax.swing.JLabel lb8;
-    private javax.swing.JLabel lb9;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCedula;
@@ -725,5 +708,15 @@ public class PanelEmpleado extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtSalario;
+    private javax.swing.JLabel vfyApellido;
+    private javax.swing.JLabel vfyBirth;
+    private javax.swing.JLabel vfyCedula;
+    private javax.swing.JLabel vfyCelu;
+    private javax.swing.JLabel vfyContra;
+    private javax.swing.JLabel vfyCorreo;
+    private javax.swing.JLabel vfyDir;
+    private javax.swing.JLabel vfyNombre;
+    private javax.swing.JLabel vfyRol;
+    private javax.swing.JLabel vfySalario;
     // End of variables declaration//GEN-END:variables
 }

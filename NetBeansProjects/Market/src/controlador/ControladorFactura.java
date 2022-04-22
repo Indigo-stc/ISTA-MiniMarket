@@ -13,7 +13,6 @@ import java.util.Date;
 import modelo.Comprobante;
 import modelo.Encabezado;
 import connection.IProductoDAO;
-import java.awt.Color;
 import java.text.DateFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,13 +39,12 @@ public class ControladorFactura implements ActionListener, FocusListener {
     Factura viewFact = new Factura();
     Cliente cli = null;
     Date fechaActualF = new Date();
-    DateFormat fechaActual = DateFormat.getDateInstance(DateFormat.SHORT);
+    DateFormat fechaActual = DateFormat.getDateInstance(DateFormat.FULL);
     ArrayList<Comprobante> listafact = new ArrayList();
     int cantidad = 0;
     int contador = 1;
 
     public ControladorFactura() {
-
         spinnerModelFa();
         viewFact.btn_agregar.addActionListener(this);
         viewFact.btn_cancelar.addActionListener(this);
@@ -54,7 +52,6 @@ public class ControladorFactura implements ActionListener, FocusListener {
         viewFact.btn_imprimir.addActionListener(this);
         viewFact.txt_cedula.addFocusListener(this);
         viewFact.lblfechaV.setText(fechaActual.format(fechaActualF));
-
     }
 
     @Override
@@ -188,7 +185,7 @@ public class ControladorFactura implements ActionListener, FocusListener {
 
     private void spinnerModelFa() {
         SpinnerNumberModel model = new SpinnerNumberModel();
-        model.setMinimum(0);
+        model.setMinimum(1);
         viewFact.spinnetcant.setModel(model);
         JFormattedTextField tf = ((JSpinner.DefaultEditor) viewFact.spinnetcant.getEditor()).getTextField();
         tf.setEditable(false);
@@ -204,19 +201,18 @@ public class ControladorFactura implements ActionListener, FocusListener {
         while (i < listafact.size()) {
             for (int j = 0; j < listafact.size(); j++) {
                 listafact.remove(j);
-            };
+            }
             i++;
         }
         int k = 0;
         while (k < listafact.size()) {
             for (int j = 0; j < listafact.size(); j++) {
-                listafact.remove(j);            };
+                listafact.remove(j);            }
             k++;
         }
         if (listafact.isEmpty()) {
             viewFact.getTxt_cedula().setText("");
             viewFact.getTxt_nombres().setText("");
-            viewFact.getTxt_apellidos().setText("");
             viewFact.getTxt_telefono().setText("");
             viewFact.getTxt_subtotal().setText("");
             viewFact.getTxt_iva().setText("");
@@ -282,7 +278,6 @@ public class ControladorFactura implements ActionListener, FocusListener {
         conDao.encabezadoinsert(enca);
         String ecd = enca.getCodigoEncabezado();
         System.out.println(ecd + " id refe1");
-        verificacion();
         for (int i = 0; i < listafact.size(); i++) {
             listafact.get(i).setCodigoEncabezado(enca.getCodigoEncabezado());
             if (comDao.insertarCompro(listafact.get(i))) {
@@ -299,7 +294,6 @@ public class ControladorFactura implements ActionListener, FocusListener {
 
     @Override
     public void focusGained(FocusEvent e) {
-
     }
 
     @Override
@@ -308,103 +302,24 @@ public class ControladorFactura implements ActionListener, FocusListener {
         cli = encdao.clienteEnca(viewFact.txt_cedula.getText());
         if (cli == null) {
             ControladorC cliente = new ControladorC();
-            viewFact.xd.removeAll();
-            viewFact.xd.add(cliente.vista);
-            viewFact.xd.repaint();
-            viewFact.xd.revalidate();
+            viewFact.Panel.removeAll();
+            viewFact.Panel.add(cliente.vista);
+            viewFact.Panel.repaint();
+            viewFact.Panel.revalidate();
         } else {
             viewFact.txt_nombres.setText(cli.getNombre());
-            viewFact.txt_apellidos.setText(cli.getApellido());
             viewFact.txt_telefono.setText(cli.getNumero_telefono());
         }
     }
 
-    void verificacion() {
-        if ("".equals(viewFact.txt_cedula.getText().trim())) {
-            viewFact.lblvrfcedula.setText("Campo Obligatorio!!!");
-            viewFact.txt_cedula.setBackground(Color.red);
-        } else {
-            viewFact.lblvrfcedula.setText(null);
-        }
-        if ("".equals(viewFact.txt_nombres.getText())) {
-            viewFact.lblvrfnombre.setText("Campo obligatorio!!!");
-        } else {
-            viewFact.lblvrfnombre.setText(null);
-        }
-        if ("".equals(viewFact.txt_apellidos.getText())) {
-            viewFact.lblvrfapellido.setText("Campo Obligatorio!!!");
-        } else {
-            viewFact.lblvrfapellido.setText(null);
-        }
-        if ("".equals(viewFact.txt_telefono.getText())) {
-            viewFact.lblvrfTelefono.setText("Campo Obligatorio!!!");
-        } else {
-            viewFact.lblvrfTelefono.setText(null);
-        }
-    }
-
-    public void abrirven() {
-
+    public void insCliente() {
         ControladorC cliente = new ControladorC();
         MenuPricpal venta = new MenuPricpal();
         venta.getPANELCAR().removeAll();
         venta.getPANELCAR().add(cliente.vista);
         venta.getPANELCAR().repaint();
         venta.getPANELCAR().revalidate();
-
     }
-
-    //Imprimir Reporte Facturacion
-    private void ReporteFactura() {
-        Conexion con = new Conexion();
-        try {
-            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/viewReportes/Factura.jasper"));
-
-            JasperPrint jp = JasperFillManager.fillReport(jr, null, con.getCon());//cargando el reporte con los datos BD
-
-            JasperViewer jv = new JasperViewer(jp, false);
-
-            jv.setVisible(true);
-        } catch (JRException ex) {
-            Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-//    public void crearPDF(Encabezado enca) {
-//        PDDocument doc = null;
-//        try {
-//            doc = new PDDocument();
-//            PDPage page = new PDPage();
-//            doc.addPage(page);
-//            PDPageContentStream contentStream = new PDPageContentStream(doc, page);
-//
-//            PDFont pdfFont = PDType1Font.TIMES_ROMAN;
-//            float fontSize = 25;
-//            float leading = 1.5f * fontSize;
-//
-//            PDRectangle mediabox = page.getMediaBox();
-//            float margin = 28;
-//            float width = mediabox.getWidth() - 2 * margin;
-//            float startX = mediabox.getLowerLeftX() + margin;
-//            float startY = mediabox.getUpperRightY() - margin;
-//            Conexion con = new Conexion();
-//            ResultSet prueba = con.buscarTicketsSal(txtTicketIngreso.getText());
-//            String text = "";
-//            if (prueba.next()) {
-//                text = "TICKET SALIDA --> " + prueba.getString(1) + "                  "
-//                        + "TICKET INGRESO: " + prueba.getString(2) + "                         "
-//                        + "Cedula: " + prueba.getString(3) + "                                      "
-//                        + "Costo_Hora: " + prueba.getString(4) + "                                                            "
-//                        + "F. Ingreso: " + prueba.getString(5) + "                                                            "
-//                        + "F. Salida: " + prueba.getString(6) + "                                                             "
-//                        + "Tiempo: " + prueba.getString(7) + "min                                                             "
-//                        + "Precio final: " + prueba.getString(8) + "$";
-//
-//            }
-//        } catch (IOException ex) {
-//            Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
 
     private void ImprimirFactura(String idEnca) {
         Conexion conexion = new Conexion();
@@ -412,7 +327,6 @@ public class ControladorFactura implements ActionListener, FocusListener {
             JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/viewReportes/asdf.jasper"));
             Map<String, Object> parametros = new HashMap<>();
             parametros.put("id_enca", idEnca);
-            System.out.println(idEnca + " hola!!!!!!!");
             JasperPrint jp = JasperFillManager.fillReport(jr, parametros, conexion.getCon());
             JasperViewer jv = new JasperViewer(jp, false);
             JasperViewer.viewReport(jp);
@@ -421,36 +335,5 @@ public class ControladorFactura implements ActionListener, FocusListener {
             System.out.println("Infrese en catch");
             Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-//        try {
-//            JasperDesign jdDisgn = JRXmlLoader.load("/home/andres/Desktop/Redo/Respaldo/ISTA-MiniMarket/NetBeansProjects/Market/src/vista/viewReportes/asdf.jrxml");
-//            String sql = "SELECT encabezados.encabezado_id,\n" +
-//"    clientes.cliente_id,\n" +
-//"    clientes.dni,\n" +
-//"    personas.nombre,\n" +
-//"    personas.apellido,\n" +
-//"    comprobante.producto_id,\n" +
-//"    comprobante.cantidad,\n" +
-//"    encabezados.fecha,\n" +
-//"    comprobante.total,\n" +
-//"    personas.telefono,\n" +
-//"    comprobante.subtotal,\n" +
-//"    comprobante.iva\n" +
-//"FROM comprobante\n" +
-//"    INNER JOIN encabezados ON \n" +
-//"     comprobante.encabezado_id = encabezados.encabezado_id \n" +
-//"    INNER JOIN clientes ON \n" +
-//"     encabezados.cliente_id = clientes.cliente_id \n" +
-//"    INNER JOIN personas ON \n" +
-//"     clientes.dni = personas.dni \n" +
-//"WHERE \n" +
-//"    encabezados.encabezado_id = '"+idEnca+"';";
-//            JRDesignQuery asd = new JRDesignQuery();
-//            asd.setText(sql);
-//            jdDisgn.setQuery(asd);
-//            
-//        } catch (JRException ex) {
-//            Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 }

@@ -110,6 +110,7 @@ public class PanelCliente extends javax.swing.JPanel {
         txtCedula.setBackground(new java.awt.Color(255, 255, 255));
         txtCedula.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         txtCedula.setForeground(new java.awt.Color(0, 0, 0));
+        txtCedula.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtCedula.setPreferredSize(new java.awt.Dimension(72, 23));
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255));
@@ -154,24 +155,31 @@ public class PanelCliente extends javax.swing.JPanel {
 
         lblCedula.setFont(new java.awt.Font("Roboto Light", 0, 11)); // NOI18N
         lblCedula.setForeground(new java.awt.Color(255, 102, 102));
+        lblCedula.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         lblApellido.setFont(new java.awt.Font("Roboto Light", 0, 11)); // NOI18N
         lblApellido.setForeground(new java.awt.Color(255, 102, 102));
+        lblApellido.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         lblBirth.setFont(new java.awt.Font("Roboto Light", 0, 11)); // NOI18N
         lblBirth.setForeground(new java.awt.Color(255, 102, 102));
+        lblBirth.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         lblNombre.setFont(new java.awt.Font("Roboto Light", 0, 11)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 102, 102));
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         lblPhone.setFont(new java.awt.Font("Roboto Light", 0, 11)); // NOI18N
         lblPhone.setForeground(new java.awt.Color(255, 102, 102));
+        lblPhone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         lblCorreo.setFont(new java.awt.Font("Roboto Light", 0, 11)); // NOI18N
         lblCorreo.setForeground(new java.awt.Color(255, 102, 102));
+        lblCorreo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         lblDireccion.setFont(new java.awt.Font("Roboto Light", 0, 11)); // NOI18N
         lblDireccion.setForeground(new java.awt.Color(255, 102, 102));
+        lblDireccion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -239,11 +247,12 @@ public class PanelCliente extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel10)
-                            .addComponent(lblCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCedula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPhone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel10)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)

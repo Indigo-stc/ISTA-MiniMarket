@@ -8,9 +8,11 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -20,15 +22,30 @@ import vista.VProveedor;
 public class ProviderCtrl implements MouseListener, ActionListener, KeyListener {
 
     private VProveedor vp = new VProveedor();
-
-    public ProviderCtrl() {
+    JComboBox cb = new JComboBox();
+    IProveedorDAO sqlp = new IProveedorDAO();
+    
+    public ProviderCtrl(JComboBox cb) {
         tblBuscar(vp.tblBuscar, "");
         vp.txtBuscar.addKeyListener(this);
         vp.btnInserr.addActionListener(this);
         vp.btnSalir.addActionListener(this);
         vp.tblBuscar.addMouseListener(this);
         vp.txtTlf.addKeyListener(this);
+        this.cb = cb;
         vp.setVisible(true);
+    }
+    
+    void cbProdrModel(JComboBox cb) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        model.addElement("Seleccionar");
+        ArrayList<Proveedor> pvrs = sqlp.registros();
+        if (!pvrs.isEmpty()) {
+            for (Proveedor r : pvrs) {
+                model.addElement(r.getNombre());
+            }
+        }
+        cb.setModel(model);
     }
 
     void tblBuscar(JTable tabla, String search) {
@@ -50,8 +67,7 @@ public class ProviderCtrl implements MouseListener, ActionListener, KeyListener 
         tabla.getColumnModel().getColumn(4).setPreferredWidth(1);
         tabla.setRowHeight(20);
 
-        IProveedorDAO sql = new IProveedorDAO();
-        ArrayList<Proveedor> pvds = sql.buscar(search);
+        ArrayList<Proveedor> pvds = sqlp.buscar(search);
         Icon icon = new ImageIcon("/Image/editar.png");
         JButton update = new JButton("Modificar", icon);
         update.setBounds(40,80,200,50);  
@@ -78,11 +94,10 @@ public class ProviderCtrl implements MouseListener, ActionListener, KeyListener 
             String phone = vp.tblBuscar.getValueAt(row, 2).toString();
             String address = vp.tblBuscar.getValueAt(row, 3).toString();
             Proveedor pvd = new Proveedor(id, name, phone, address);
-            IProveedorDAO sql = new IProveedorDAO();
             if (value instanceof JButton) {
                 JButton jb = new JButton();
                 jb.doClick();
-                sql.update(pvd);
+                sqlp.update(pvd);
                 JOptionPane.showMessageDialog(null, "Modificado");
                 tblBuscar(vp.tblBuscar, "");
             }
@@ -110,17 +125,17 @@ public class ProviderCtrl implements MouseListener, ActionListener, KeyListener 
         if (e.getSource() == vp.btnInserr) {
             Proveedor pvd = new Proveedor(vp.txtNom.getText(),
                     vp.txtTlf.getText(), vp.txtDir.getText());
-            IProveedorDAO sql = new IProveedorDAO();
             if ("".equals(pvd.getNombre().trim())
                     || "".equals(pvd.getTelefono().trim())
                     || "".equals(pvd.getDireccion().trim())) {
                 JOptionPane.showMessageDialog(null, "Llenar todos los campos!!!");
-            } else if (sql.existPvd(pvd)) {
+            } else if (sqlp.existPvd(pvd)) {
                 JOptionPane.showMessageDialog(null, "Proveedor existente!!!");
                 clean();
-            } else if (sql.insert(pvd)) {
+            } else if (sqlp.insert(pvd)) {
                 JOptionPane.showMessageDialog(null, "Proveedor registrado");
                 clean();
+                cbProdrModel(cb);
                 tblBuscar(vp.tblBuscar, "");
             }
         } else if (e.getSource() == vp.btnSalir) {

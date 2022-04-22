@@ -81,7 +81,7 @@ public class ControladorE implements KeyListener, FocusListener {
                 || vista.getDateFecha().getDate() == null
                 || "".equals(vista.getTxtSalario().getText())
                 || "Seleccionar".equals(vista.getCombo_Rol().getSelectedItem().toString())) {
-            JOptionPane.showMessageDialog(null, "Llenar campos obligatorios");
+            JOptionPane.showMessageDialog(null, "Llenar campos requeridos");
             Validacione_Campos();
         } else if (per != null && existe == null) {
             int rol_iid = rol.Ff(vista.getCombo_Rol().getSelectedItem().toString());
@@ -268,8 +268,7 @@ public class ControladorE implements KeyListener, FocusListener {
         vista.getTxtPassword().getToolTipText();
         vista.getTxtCedula().getToolTipText();
         vista.getDateFecha().getToolTipText();
-        vista.getLb4().setText("");
-
+        Campos();
     }
 
     public void IncioControl() {
@@ -277,10 +276,8 @@ public class ControladorE implements KeyListener, FocusListener {
         vista.getBtnLimpiar().addActionListener(l -> Limpiar());
         vista.getBtnModificar().addActionListener(l -> Modificar());
         vista.getBtnEliminar().addActionListener(l -> Eliminar());
-//        vista.getBtnBuscar().addActionListener(l -> Buscar());
         vista.getTxtCedula().addKeyListener(this);
         vista.getDateFecha().addPropertyChangeListener(l -> ValidarCampoJcalendar());
-        vista.getCombo_Rol().addActionListener(l -> ValidacionDeCombobox());
         vista.getTxtNombre().addKeyListener(this);
         vista.getTxtApellido().addKeyListener(this);
         vista.getTxtPhone().addKeyListener(this);
@@ -292,6 +289,7 @@ public class ControladorE implements KeyListener, FocusListener {
         vista.getTxtSalario().addKeyListener(this);
         vista.getTxtCedula().addFocusListener(this);
         vista.getTxtPhone().addFocusListener(this);
+        vista.getCombo_Rol().addFocusListener(this);
         vista.getTablaEmpleado().addMouseListener(new MouseAdapter() {
 
             public void mouseClicked(MouseEvent e) {
@@ -396,103 +394,93 @@ public class ControladorE implements KeyListener, FocusListener {
 
     }
 
-    public void ValidacionDeCombobox() {
-        if (vista.getCombo_Rol().getSelectedIndex() > -1) {
-            String as = vista.getCombo_Rol().getSelectedItem().toString();
-
-            if (as.equals("Seleccione")) {
-                vista.getLb4().setText("Campos Requeridos.!");
-
-            } else {
-                vista.getLb4().setText("");
-
-            }
-        }
-    }
-
     public void ValidarCampoJcalendar() {
         if (vista.getDateFecha().getDate() == null) {
-            vista.getLb5().setText("");
+            vista.getVfyBirth().setText("");
 
         } else {
-            vista.getLb5().setText("");
+            vista.getVfyBirth().setText("");
         }
 
     }
 
     public void Campos() {
-        vista.getLb1().setText("");
-        vista.getLb2().setText("");
-        vista.getLb3().setText("");
-        vista.getLb4().setText("");
-        vista.getLb5().setText("");
-        vista.getLb6().setText("");
-        vista.getLb7().setText("");
-        vista.getLb8().setText("");
-        vista.getLb9().setText("");
-        vista.getLb10().setText("");
+        vista.getVfyCedula().setText("");
+        vista.getVfyNombre().setText("");
+        vista.getVfyApellido().setText("");
+        vista.getVfyCelu().setText("");
+        vista.getVfyDir().setText("");
+        vista.getVfyBirth().setText("");
+        vista.getVfyContra().setText("");
+        vista.getVfyRol().setText("");
+        vista.getVfySalario().setText("");
+        vista.getVfyCorreo().setText("");
 
     }
 
     public void Validacione_Campos() {
-        if (!vista.getTxtCedula().getText().isEmpty()) {
-            vista.getLb1().setText("");
+        if (vista.getTxtCedula().getText().isEmpty()) {
+            vista.getVfyCedula().setText("Campos Requeridos.!");
+        } else if (!digVfy(vista.getTxtCedula().getText())) {
+            vista.getVfyCedula().setText("No es cédula!!!");
         } else {
-            vista.getLb1().setText("Campos Requeridos.!");
+            vista.getVfyCedula().setText("");
         }
 
         if (!vista.getTxtNombre().getText().isEmpty()) {
-            vista.getLb2().setText("");
+            vista.getVfyNombre().setText("");
         } else {
-            vista.getLb2().setText("Campos Requeridos.!");
+            vista.getVfyNombre().setText("Campos Requeridos.!");
         }
 
         if (!vista.getTxtApellido().getText().isEmpty()) {
-            vista.getLb3().setText("");
+            vista.getVfyApellido().setText("");
         } else {
-            vista.getLb3().setText("Campos Requeridos.!");
+            vista.getVfyApellido().setText("Campos Requeridos.!");
         }
 
         if (!vista.getCombo_Rol().getSelectedItem().equals("Seleccione")) {
-            vista.getLb4().setText("");
+            vista.getVfyRol().setText("");
         } else {
-            vista.getLb4().setText("Campos Requeridos.!");
+            vista.getVfyRol().setText("Campos Requeridos.!");
         }
 
         if (vista.getDateFecha().getDate() == null) {
-            vista.getLb5().setText("Campos Requeriidos.!");
+            vista.getVfyBirth().setText("Campos Requeriidos.!");
         } else {
-            vista.getLb5().setText("");
+            vista.getVfyBirth().setText("");
         }
 
         if (!vista.getTxtSalario().getText().isEmpty()) {
-            vista.getLb6().setText("");
+            vista.getVfySalario().setText("");
         } else {
-            vista.getLb6().setText("Campos Requeridos.!");
+            vista.getVfySalario().setText("Campos Requeridos.!");
         }
 
         if (!vista.getTxtPhone().getText().isEmpty()) {
-            vista.getLb7().setText("");
+            vista.getVfyCelu().setText("");
         } else {
-            vista.getLb7().setText("Campos Requeridos.!");
+            vista.getVfyCelu().setText("Campos Requeridos.!");
         }
 
         if (!vista.getTxtCorreo().getText().isEmpty()) {
-            vista.getLb8().setText("");
+            vista.getVfyCorreo().setText("");
         } else {
-            vista.getLb8().setText("Campos Requeridos.!");
+            vista.getVfyCorreo().setText("Campos Requeridos.!");
         }
 
         if (!vista.getTxtDireccion().getText().isEmpty()) {
-            vista.getLb9().setText("");
+            vista.getVfyDir().setText("");
         } else {
-            vista.getLb9().setText("Campos Requeridos.!");
+            vista.getVfyDir().setText("Campos Requeridos.!");
         }
 
-        if (!vista.getTxtPassword().getText().isEmpty()) {
-            vista.getLb10().setText("");
+        if (vista.getTxtPassword().getText().isEmpty() 
+                && (vista.getCombo_Rol().getSelectedItem().equals("Administrador") 
+                || vista.getCombo_Rol().getSelectedItem().equals("Cajero"))) {
+            vista.getVfyContra().setText("Campos Requeridos.!");
         } else {
-            vista.getLb10().setText("Campos Requeridos.!");
+            vista.getVfyContra().setText("");
         }
 
     }
@@ -554,7 +542,7 @@ public class ControladorE implements KeyListener, FocusListener {
             if (modelo.existEmps(vista.getTxtCedula().getText()) != null) {
                 JOptionPane.showMessageDialog(null, "Registro existente");
             } else if (digVfy(vista.getTxtCedula().getText())) {
-                vista.getLb1().setText("");
+                vista.getVfyCedula().setText("");
                 Persona per = modelo.existPer(vista.getTxtCedula().getText());
                 if (per != null) {
                     vista.getTxtNombre().setText(per.getNombre());
@@ -565,14 +553,20 @@ public class ControladorE implements KeyListener, FocusListener {
                     vista.getTxtCorreo().setText(per.getCorreo());
                 }
             } else {
-                vista.getLb1().setText("No es una cedula!!!");
+                vista.getVfyCedula().setText("No es una cedula!!!");
             }
-            
         } else if (e.getSource() == vista.getTxtPhone()) {
-            if (vista.getTxtPhone().getText().length() == 10) {
-                vista.getLb1().setText("");
+            if (vista.getTxtPhone().getText().length() <= 10) {
+                vista.getVfyCelu().setText("");
             } else {
-                vista.getLb7().setText("No es un telefono!!!");
+                vista.getVfyCelu().setText("No es un telefono!!!");
+            }
+        } else if (e.getSource() == vista.getCombo_Rol()) {
+            if (vista.getCombo_Rol().getSelectedItem().equals("Administrador") 
+                    || vista.getCombo_Rol().getSelectedItem().equals("Cajero")) {
+                vista.getTxtPassword().setEnabled(true);
+            } else {
+                vista.getTxtPassword().setEnabled(false);
             }
         }
     }

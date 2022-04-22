@@ -8,9 +8,11 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -21,14 +23,29 @@ public class CategoryCtrl implements ActionListener, KeyListener,
         MouseListener {
 
     VCategoria vc = new VCategoria();
+    JComboBox cb = new JComboBox();
+    ICategoriaDAO sqlc = new ICategoriaDAO();
 
-    public CategoryCtrl() {
+    public CategoryCtrl(JComboBox cb) {
         tblBuscar(vc.tblBuscar, "");
         vc.btnInserr.addActionListener(this);
         vc.btnSalir.addActionListener(this);
         vc.txtBuscar.addKeyListener(this);
         vc.tblBuscar.addMouseListener(this);
+        this.cb = cb;
         vc.setVisible(true);
+    }
+    
+    void cbCatgrModel(JComboBox cb) {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        model.addElement("Seleccionar");
+        ArrayList<Categoria> ctgs = sqlc.registros();
+        if (!ctgs.isEmpty()) {
+            for (Categoria r : ctgs) {
+                model.addElement(r.getTitulo());
+            }
+        }
+        cb.setModel(model);
     }
 
     void tblBuscar(JTable table, String search) {
@@ -47,9 +64,8 @@ public class CategoryCtrl implements ActionListener, KeyListener,
 
         table.getColumnModel().getColumn(2).setPreferredWidth(1);
         table.setRowHeight(20);
-
-        ICategoriaDAO sql = new ICategoriaDAO();
-        ArrayList<Categoria> pvds = sql.buscar(search);
+        
+        ArrayList<Categoria> pvds = sqlc.buscar(search);
         Icon icon = new ImageIcon("/Image/editar.png");
         JButton update = new JButton("Modificar", icon);
         update.setBounds(40,80,200,50); 
@@ -66,16 +82,16 @@ public class CategoryCtrl implements ActionListener, KeyListener,
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vc.btnInserr) {
             Categoria cyg = new Categoria(vc.txtNom.getText());
-            ICategoriaDAO sql = new ICategoriaDAO();
             if ("".equals(cyg.getTitulo().trim())) {
                 JOptionPane.showMessageDialog(null, "Llenar todos los campos!!!");
-            } else if (sql.existCtg(cyg)) {
+            } else if (sqlc.existCtg(cyg)) {
                 JOptionPane.showMessageDialog(null, "Categoría existente!!!");
                 vc.txtNom.setText(null);
-            } else if (sql.insert(cyg)) {
+            } else if (sqlc.insert(cyg)) {
                 JOptionPane.showMessageDialog(null, "Categoría registrada");
                 tblBuscar(vc.tblBuscar, "");
                 vc.txtNom.setText(null);
+                cbCatgrModel(cb);
             }
         } else if (e.getSource() == vc.btnSalir) {
             vc.dispose();
@@ -107,11 +123,10 @@ public class CategoryCtrl implements ActionListener, KeyListener,
                 String id = vc.tblBuscar.getValueAt(row, 0).toString();
                 String name = vc.tblBuscar.getValueAt(row, 1).toString();
                 Categoria ctg = new Categoria(id, name);
-                ICategoriaDAO sql = new ICategoriaDAO();
                 if (value instanceof JButton) {
                         JButton jb = new JButton();
                     jb.doClick();
-                        sql.update(ctg);
+                        sqlc.update(ctg);
                         JOptionPane.showMessageDialog(null, "Modificado");
                         tblBuscar(vc.tblBuscar, "");
                 }

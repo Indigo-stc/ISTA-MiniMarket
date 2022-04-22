@@ -18,6 +18,7 @@ public class LoginCtrl implements ActionListener, MouseListener {
     public LoginCtrl() {
         lo.setLocationRelativeTo(null);
         lo.btnIngresar.addActionListener(this);
+        lo.btnSalir.addActionListener(l -> System.exit(0));
         lo.txtUsuario.addMouseListener(this);
         lo.pfCntraseña.addMouseListener(this);
         lo.setVisible(true);
@@ -45,21 +46,21 @@ public class LoginCtrl implements ActionListener, MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getSource() == lo.txtUsuario) {
-            if (lo.txtUsuario.getText().equals("Ingrese su nombre de usuario")) {
+            if (lo.txtUsuario.getText().equals("Ingresar usuario")) {
                 lo.txtUsuario.setText("");
                 lo.txtUsuario.setForeground(Color.black);
             }
             if (String.valueOf(lo.pfCntraseña.getPassword()).isEmpty()) {
-                lo.pfCntraseña.setText("*********");
+                lo.pfCntraseña.setText("******");
                 lo.pfCntraseña.setForeground(Color.gray);
             }
         } else if (e.getSource() == lo.pfCntraseña) {
-            if (String.valueOf(lo.pfCntraseña.getPassword()).equals("*********")) {
+            if (String.valueOf(lo.pfCntraseña.getPassword()).equals("******")) {
                 lo.pfCntraseña.setText("");
                 lo.pfCntraseña.setForeground(Color.black);
             }
             if (lo.txtUsuario.getText().isEmpty()) {
-                lo.txtUsuario.setText("Ingrese su nombre de usuario");
+                lo.txtUsuario.setText("Ingresar usuario");
                 lo.txtUsuario.setForeground(Color.gray);
             }
         }

@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -49,8 +50,9 @@ public class CategoryCtrl implements ActionListener, KeyListener,
 
         ICategoriaDAO sql = new ICategoriaDAO();
         ArrayList<Categoria> pvds = sql.buscar(search);
-        JButton update = new JButton();
-        update.setName("U");
+        Icon icon = new ImageIcon("/Image/editar.png");
+        JButton update = new JButton("Modificar", icon);
+        update.setBounds(40,80,200,50); 
         if (!pvds.isEmpty()) {
             for (Categoria tcg : pvds) {
                 Object[] fila = {tcg.getCategoria_id(), tcg.getTitulo(),
@@ -109,12 +111,9 @@ public class CategoryCtrl implements ActionListener, KeyListener,
                 if (value instanceof JButton) {
                         JButton jb = new JButton();
                     jb.doClick();
-                    System.out.println(jb.getName());
-                    if (jb.getName().equals("U")) {
                         sql.update(ctg);
                         JOptionPane.showMessageDialog(null, "Modificado");
                         tblBuscar(vc.tblBuscar, "");
-                    }
                 }
             }
         }

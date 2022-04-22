@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -10,12 +11,16 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import static javax.swing.SwingConstants.CENTER;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 
 class RenderTabla extends DefaultTableCellRenderer {
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         setHorizontalAlignment(CENTER);
         table.setShowGrid(false);
+        table.setShowHorizontalLines(true);
+        table.setIntercellSpacing(new Dimension(0, 0));
+        JTableHeader tableHeader = table.getTableHeader();
         DefaultCellEditor singleclick = new DefaultCellEditor(new JTextField());
         singleclick.setClickCountToStart(1);
         for (int i = 0; i < table.getColumnCount(); i++) {

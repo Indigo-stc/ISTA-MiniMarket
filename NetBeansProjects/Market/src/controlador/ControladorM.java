@@ -2,7 +2,6 @@ package controlador;
 
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import vista.MenuPricpal;
-//import vista.PanelProveedor;
 
 public class ControladorM {
 
@@ -42,12 +41,10 @@ public class ControladorM {
     public void InicioControl() {
         vista.getBtnCambia().addActionListener(l -> Empleado());
         vista.getBtnCliente().addActionListener(l -> Cliente());
-//        vista.getBtnProveedor().addActionListener(l -> Proveedor());
         vista.getBtnFactura().addActionListener(l -> Factura());
         vista.getBtnProducto().addActionListener(l -> Producto());
         vista.getBtnSalir().addActionListener(l -> System.exit(0));
         vista.getBtnReportes().addActionListener(l -> reportes());
-
     }   
 
     public void Cliente() {
@@ -73,7 +70,7 @@ public class ControladorM {
         vista.getPANELCAR().removeAll();
         vista.getPANELCAR().add(panelPdt.viewPdt);
         vista.getPANELCAR().repaint();
-        vista.getPANELCAR().revalidate();
+        vista.getPANELCAR().revalidate();   
     }
 
     public void Factura() {

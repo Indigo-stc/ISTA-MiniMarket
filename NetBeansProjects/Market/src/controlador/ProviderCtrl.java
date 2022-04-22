@@ -8,6 +8,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -50,8 +52,9 @@ public class ProviderCtrl implements MouseListener, ActionListener, KeyListener 
 
         IProveedorDAO sql = new IProveedorDAO();
         ArrayList<Proveedor> pvds = sql.buscar(search);
-        JButton update = new JButton();
-        update.setName("U");
+        Icon icon = new ImageIcon("/Image/editar.png");
+        JButton update = new JButton("Modificar", icon);
+        update.setBounds(40,80,200,50);  
         if (!pvds.isEmpty()) {
             for (Proveedor pvd : pvds) {
                 Object[] fila = {pvd.getProveedor_id(), pvd.getNombre(),
@@ -77,14 +80,11 @@ public class ProviderCtrl implements MouseListener, ActionListener, KeyListener 
             Proveedor pvd = new Proveedor(id, name, phone, address);
             IProveedorDAO sql = new IProveedorDAO();
             if (value instanceof JButton) {
-                    JButton jb = new JButton();
+                JButton jb = new JButton();
                 jb.doClick();
-                System.out.println(jb.getName());
-                if (jb.getName().equals("U")) {
-                    sql.update(pvd);
-                    JOptionPane.showMessageDialog(null, "Modificado");
-                    tblBuscar(vp.tblBuscar, "");
-                }
+                sql.update(pvd);
+                JOptionPane.showMessageDialog(null, "Modificado");
+                tblBuscar(vp.tblBuscar, "");
             }
         }
     }
@@ -152,5 +152,5 @@ public class ProviderCtrl implements MouseListener, ActionListener, KeyListener 
         vp.txtNom.setText(null);
         vp.txtTlf.setText(null);
     }
-    
+
 }

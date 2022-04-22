@@ -404,19 +404,6 @@ public final class ProductCtrl implements FocusListener, KeyListener, MouseListe
         }
     }
 
-    void modificar(String id) {
-        if ("".equals(viewPdt.txtNombre.getText().trim())
-                || "".equals(viewPdt.txtPrecio.getText())
-                || (viewPdt.cbCatgr.getSelectedIndex() == 0)
-                || (viewPdt.cbProdr.getSelectedIndex() == 0)
-                || (viewPdt.lblImagen.getIcon() == null)) {
-            JOptionPane.showMessageDialog(null, "Llenar campos Obligatorios");
-            cautionMsg();
-        } else {
-
-        }
-    }
-
     void cautionMsg() {
         if ("".equals(viewPdt.txtNombre.getText().trim())) {
             viewPdt.lblNom.setText("Campo Obligatorio!!!");

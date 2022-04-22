@@ -13,16 +13,15 @@ import java.util.Date;
 import modelo.Comprobante;
 import modelo.Encabezado;
 import connection.IProductoDAO;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.DateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import vista.Factura;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Producto;
@@ -32,9 +31,8 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import vista.MenuPricpal;
 
-public class ControladorFactura implements ActionListener, FocusListener {
+public class ControladorFactura implements ActionListener, FocusListener, KeyListener {
 
     Factura viewFact = new Factura();
     Cliente cli = null;
@@ -45,7 +43,6 @@ public class ControladorFactura implements ActionListener, FocusListener {
     int contador = 1;
 
     public ControladorFactura() {
-        spinnerModelFa();
         viewFact.btn_agregar.addActionListener(this);
         viewFact.btn_cancelar.addActionListener(this);
         viewFact.btn_quitar.addActionListener(this);
@@ -56,7 +53,6 @@ public class ControladorFactura implements ActionListener, FocusListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if (e.getSource() == viewFact.btn_agregar) {
             IProductoDAO DAOpro = new IProductoDAO();
             Producto rs = DAOpro.produ(viewFact.txt_idproducto.getText());
@@ -73,17 +69,18 @@ public class ControladorFactura implements ActionListener, FocusListener {
                         listafact.add(compro);
                         tblmodelfact();
                         totales();
-                        //limpiarProd();
+                        limpiarProd();
                     }
                 } else {
                     for (int i = 0; i < listafact.size(); i++) {
-                        if (viewFact.txt_idproducto.getText().equals(listafact.get(i).getProductoID())) {
+                        if (viewFact.txt_idproducto.getText().equals(listafact.get(i).getProductoID().trim())) {
                             listafact.get(i).setCantidadProducto(listafact.get(i).getCantidadProducto() + cant);
                             listafact.get(i).setSubTotal(listafact.get(i).getSubTotal() + rs.getPrecio() * listafact.get(i).getCantidadProducto());
                             listafact.get(i).setIVA(listafact.get(i).getIVA() + listafact.get(i).getSubTotal() * 0.12 + listafact.get(i).getIVA());
                             listafact.get(i).setTotal(listafact.get(i).getTotal() + listafact.get(i).getSubTotal() * 1.12 + listafact.get(i).getTotal());
                             tblmodelfact();
-                            //limpiarProd();
+                            totales();
+                            limpiarProd();
                             break;
                         } else {
                             Comprobante compro = new Comprobante(viewFact.txt_idproducto.getText(),
@@ -94,43 +91,14 @@ public class ControladorFactura implements ActionListener, FocusListener {
                             listafact.add(compro);
                             totales();
                             tblmodelfact();
-                            //limpiarProd();
-                            System.out.println(compro.getProductoID() + "valio!");
+                            limpiarProd();
                             break;
                         }
                     }
-                    
-                    
-                    
-                    for (Comprobante comprobante : listafact) {
-                        if (viewFact.txt_idproducto.getText().equals(comprobante.getProductoID())) {
-                            comprobante.setCantidadProducto(comprobante.getCantidadProducto() + cant);
-                            comprobante.setSubTotal(comprobante.getSubTotal() + rs.getPrecio() * comprobante.getCantidadProducto());
-                            comprobante.setIVA(comprobante.getIVA() + comprobante.getSubTotal() * 0.12 + comprobante.getIVA());
-                            comprobante.setTotal(comprobante.getTotal() + comprobante.getSubTotal() * 1.12 + comprobante.getTotal());
-                            tblmodelfact();
-                            //limpiarProd();
-                            break;
-                        } else {
-                            Comprobante compro = new Comprobante(viewFact.txt_idproducto.getText(),
-                                    cant,
-                                    rs.getPrecio() * cant,
-                                    rs.getPrecio() * cant * 0.12,
-                                    rs.getPrecio() * cant * 1.12, "");
-                            listafact.add(compro);
-                            totales();
-                            tblmodelfact();
-//                            limpiarProd();
-                            System.out.println(compro.getProductoID() + "valio!");
-                            break;
-                        }
-                    }
-
                 }
             } else {
                 JOptionPane.showMessageDialog(viewFact, "Producto no existente");
             }
-
         } else if (e.getSource() == viewFact.btn_cancelar) {
             Cancelar();
         } else if (e.getSource() == viewFact.btn_imprimir) {
@@ -142,7 +110,6 @@ public class ControladorFactura implements ActionListener, FocusListener {
 
     private void tblmodelfact() {
         DefaultTableModel modelo = new DefaultTableModel() {
-
             @Override
             public boolean isCellEditable(int row, int column) {
                 return column == 1 || column == 2 || column == 3 || column == 4;
@@ -168,32 +135,26 @@ public class ControladorFactura implements ActionListener, FocusListener {
     }
 
     public void totales() {
-
         Double subtotal = 0.0;
         Double iva = 0.0;
         Double total = 0.0;
-
         for (Comprobante comprobante : listafact) {
             subtotal = subtotal + comprobante.getSubTotal();
             iva = iva + comprobante.getIVA();
             total = total + comprobante.getTotal();
+            Math.ceil(subtotal);
+            Math.ceil(iva);
+            Math.ceil(total);
             viewFact.txt_subtotal.setText(subtotal.toString());
             viewFact.txt_iva.setText(iva.toString());
             viewFact.txt_total.setText(total.toString());
         }
     }
 
-    private void spinnerModelFa() {
-        SpinnerNumberModel model = new SpinnerNumberModel();
-        model.setMinimum(1);
-        viewFact.spinnetcant.setModel(model);
-        JFormattedTextField tf = ((JSpinner.DefaultEditor) viewFact.spinnetcant.getEditor()).getTextField();
-        tf.setEditable(false);
-    }
-
     public void limpiarProd() {
         viewFact.txt_idproducto.setText(null);
-        viewFact.spinnetcant.setValue(0);
+        viewFact.lblvrfcedula.setText("");
+        viewFact.spinnetcant.setValue(1);
     }
 
     public void Cancelar() {
@@ -274,7 +235,7 @@ public class ControladorFactura implements ActionListener, FocusListener {
         ComprobanteDAO comDao = new ComprobanteDAO();
         EncabezadoDAO conDao = new EncabezadoDAO();
         
-        Encabezado enca = new Encabezado(cli.getIdCliente() == null ? "XXXXXXXXXX" : cli.getIdCliente(), fechaAct);
+        Encabezado enca = new Encabezado(cli == null ? "CONS-FIN" : cli.getIdCliente(), fechaAct);
         conDao.encabezadoinsert(enca);
         String ecd = enca.getCodigoEncabezado();
         System.out.println(ecd + " id refe1");
@@ -284,12 +245,13 @@ public class ControladorFactura implements ActionListener, FocusListener {
                 System.out.println("Ingresaron");
                 System.out.println(enca.getCodigoEncabezado());
                 System.out.println(listafact.get(i).getProductoID());
-                Cancelar();
             }
         }
         JOptionPane.showMessageDialog(viewFact, "Ingresada exitosamente!");
         ImprimirFactura(ecd);
-
+        limpiarProd();
+        Cancelar();
+        cli = null;
     }
 
     @Override
@@ -300,25 +262,59 @@ public class ControladorFactura implements ActionListener, FocusListener {
     public void focusLost(FocusEvent e) {
         EncabezadoDAO encdao = new EncabezadoDAO();
         cli = encdao.clienteEnca(viewFact.txt_cedula.getText());
-        if (cli == null) {
+        if (viewFact.txt_cedula.getText() == null) {
+            viewFact.lblvrfcedula.setText("");
+        } else if (!digVfy(viewFact.txt_cedula.getText())) {
+            viewFact.lblvrfcedula.setText("No es cédula");
+        } else if (cli == null && digVfy(viewFact.txt_cedula.getText())) {
             ControladorC cliente = new ControladorC();
-            viewFact.Panel.removeAll();
-            viewFact.Panel.add(cliente.vista);
-            viewFact.Panel.repaint();
-            viewFact.Panel.revalidate();
+            viewFact.changePanel.removeAll();
+            viewFact.changePanel.add(cliente.vista);
+            viewFact.changePanel.repaint();
+            viewFact.changePanel.revalidate();
         } else {
-            viewFact.txt_nombres.setText(cli.getNombre());
+            viewFact.txt_nombres.setText(cli.getNombre() + " " + cli.getApellido());
             viewFact.txt_telefono.setText(cli.getNumero_telefono());
+            viewFact.lblvrfcedula.setText("");
         }
     }
-
-    public void insCliente() {
-        ControladorC cliente = new ControladorC();
-        MenuPricpal venta = new MenuPricpal();
-        venta.getPANELCAR().removeAll();
-        venta.getPANELCAR().add(cliente.vista);
-        venta.getPANELCAR().repaint();
-        venta.getPANELCAR().revalidate();
+    
+    public boolean digVfy(String cedula) {
+        byte sum = 0;
+        try {
+            if (cedula.length() != 10) {
+                return false;
+            }
+            String[] data = cedula.split("");
+            byte verifier = Byte.parseByte(data[0] + data[1]);
+            if (verifier < 1 || verifier > 24) {
+                return false;
+            }
+            byte[] digits = new byte[data.length];
+            for (byte i = 0; i < digits.length; i++) {
+                digits[i] = Byte.parseByte(data[i]);
+            }
+            if (digits[2] > 6) {
+                return false;
+            }
+            for (byte i = 0; i < digits.length - 1; i++) {
+                if (i % 2 == 0) {
+                    verifier = (byte) (digits[i] * 2);
+                    if (verifier > 9) {
+                        verifier = (byte) (verifier - 9);
+                    }
+                } else {
+                    verifier = (byte) (digits[i] * 1);
+                }
+                sum = (byte) (sum + verifier);
+            }
+            if ((sum - (sum % 10) + 10 - sum) == digits[9]) {
+                return true;
+            }
+        } catch (NumberFormatException e) {
+            e.getMessage();
+        }
+        return false;
     }
 
     private void ImprimirFactura(String idEnca) {
@@ -329,11 +325,26 @@ public class ControladorFactura implements ActionListener, FocusListener {
             parametros.put("id_enca", idEnca);
             JasperPrint jp = JasperFillManager.fillReport(jr, parametros, conexion.getCon());
             JasperViewer jv = new JasperViewer(jp, false);
-            JasperViewer.viewReport(jp);
             jv.setVisible(true);
         } catch (JRException ex) {
             System.out.println("Infrese en catch");
             Logger.getLogger(ControladorFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        if (e.getSource() == viewFact.txt_cedula) {
+            char c = e.getKeyChar();
+            if (!Character.isDigit(c) && e.getKeyChar() != KeyEvent.VK_BACK_SPACE) {
+                e.consume();
+            }
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {}
+
+    @Override
+    public void keyReleased(KeyEvent e) {}
 }

@@ -19,9 +19,9 @@ public class VProveedor extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtDir = new javax.swing.JTextField();
         btnInserr = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBuscar = new javax.swing.JTable();
-        txtBuscar = new javax.swing.JTextField();
         btnSalir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
@@ -48,11 +48,6 @@ public class VProveedor extends javax.swing.JFrame {
 
         txtTlf.setBackground(new java.awt.Color(255, 255, 255));
         txtTlf.setForeground(new java.awt.Color(0, 0, 0));
-        txtTlf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTlfActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 17)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -109,6 +104,10 @@ public class VProveedor extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
+        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscar.setFont(new java.awt.Font("Roboto Light", 0, 13)); // NOI18N
+        txtBuscar.setForeground(new java.awt.Color(0, 0, 0));
+
         tblBuscar.setBackground(new java.awt.Color(255, 255, 255));
         tblBuscar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,14 +121,6 @@ public class VProveedor extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tblBuscar);
-
-        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        txtBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarActionPerformed(evt);
-            }
-        });
 
         btnSalir.setBackground(new java.awt.Color(255, 142, 150));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cerrar-sesion.png"))); // NOI18N
@@ -184,45 +175,6 @@ public class VProveedor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscarActionPerformed
-
-    private void txtTlfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTlfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTlfActionPerformed
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VProveedor().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnInserr;

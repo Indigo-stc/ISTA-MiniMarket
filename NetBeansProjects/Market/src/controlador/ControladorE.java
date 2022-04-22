@@ -346,7 +346,7 @@ public class ControladorE implements KeyListener, FocusListener {
         return true;
     }
 
-    public static boolean digVfy(String cedula) {
+    public boolean digVfy(String cedula) {
         byte sum = 0;
         try {
             if (cedula.length() != 10) {

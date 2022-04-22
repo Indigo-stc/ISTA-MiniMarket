@@ -91,9 +91,3 @@ public class ControladorM {
     
 } 
 
-class pruebas{
-    public static void main(String[] args) {
-        ControladorM xd = new ControladorM();
-    }
-}
-

@@ -96,9 +96,3 @@ public class LoginCtrl implements ActionListener, MouseListener, KeyListener {
     public void keyReleased(KeyEvent e) {}
 
 }
-
-class test {
-    public static void main(String[] args) {
-        LoginCtrl cl = new LoginCtrl();
-    }
-}

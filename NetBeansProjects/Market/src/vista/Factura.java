@@ -205,6 +205,7 @@ public class Factura extends javax.swing.JPanel {
 
         lblvrfcedula.setFont(new java.awt.Font("Roboto Light", 0, 10)); // NOI18N
         lblvrfcedula.setForeground(new java.awt.Color(255, 102, 102));
+        lblvrfcedula.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         panelarriba.add(lblvrfcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 108, 12));
 
         txt_cedula.setBackground(new java.awt.Color(255, 255, 255));

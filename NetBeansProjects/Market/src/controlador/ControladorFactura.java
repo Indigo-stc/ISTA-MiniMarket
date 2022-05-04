@@ -262,7 +262,8 @@ public class ControladorFactura implements ActionListener, FocusListener, KeyLis
     public void focusLost(FocusEvent e) {
         EncabezadoDAO encdao = new EncabezadoDAO();
         cli = encdao.clienteEnca(viewFact.txt_cedula.getText());
-        if (viewFact.txt_cedula.getText() == null) {
+        if (viewFact.txt_cedula.getText() == null 
+                || "".equals(viewFact.txt_cedula.getText().trim())) {
             viewFact.lblvrfcedula.setText("");
         } else if (!digVfy(viewFact.txt_cedula.getText())) {
             viewFact.lblvrfcedula.setText("No es cédula");

@@ -131,6 +131,7 @@ public final class ProductCtrl implements FocusListener, KeyListener, MouseListe
 
         IProductoDAO dao = new IProductoDAO();
         ArrayList<Producto> registros = dao.buscar(search);
+        JLabel jl = new JLabel();
         if (!registros.isEmpty()) {
             Object[] fila = new Object[8];
             for (Producto pdt : registros) {
@@ -144,7 +145,8 @@ public final class ProductCtrl implements FocusListener, KeyListener, MouseListe
                     InputStream inputStream = new ByteArrayInputStream(im);
                     bufferedImage = ImageIO.read(inputStream);
                     ImageIcon mIcono = new ImageIcon(bufferedImage.getScaledInstance(60, 60, 60));
-                    fila[4] = new JLabel(mIcono);
+                    jl.setIcon(mIcono);
+                    fila[4] = jl;
                 } catch (IOException ex) {
                     System.out.println("No hay imagen");
                 }
